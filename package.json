@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",

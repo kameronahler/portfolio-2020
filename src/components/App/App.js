@@ -1,9 +1,6 @@
 import React from 'react'
+import PageRouter from '../PageRouter/PageRouter'
 
 export default function App() {
-  return (
-    <>
-      <h1>Parcel + React</h1>
-    </>
-  )
+  return <PageRouter />
 }
