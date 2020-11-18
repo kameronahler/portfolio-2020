@@ -1,5 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import AppNav from '../AppNav/AppNav'
+import AppPage from '../AppPage/AppPage'
+
 import PageHome from '../Pages/PageHome'
 import PageExperience from '../Pages/PageExperience'
 import PageWork from '../Pages/PageWork'
@@ -9,13 +12,18 @@ import PageContact from '../Pages/PageContact'
 export default function PageRouter() {
   return (
     <Router>
-      <Switch>
-        <Route path='/' exact component={PageHome} />
-        <Route path='/experience' exact component={PageExperience} />
-        <Route path='/work' exact component={PageWork} />
-        <Route path='/about' exact component={PageAbout} />
-        <Route path='/contact' exact component={PageContact} />
-      </Switch>
+      <AppNav />
+      <main>
+        <div className='app-page'>
+          <Switch>
+            <Route path='/' exact component={PageHome} />
+            <Route path='/experience' exact component={PageExperience} />
+            <Route path='/work' exact component={PageWork} />
+            <Route path='/about' exact component={PageAbout} />
+            <Route path='/contact' exact component={PageContact} />
+          </Switch>
+        </div>
+      </main>
     </Router>
   )
 }
