@@ -1,3 +1,13 @@
+// variables
+@import './scss/variables';
+
+// reset
 @import '../node_modules/normalize.css/normalize.css';
+
+// global
+@import './scss/base';
+@import './scss/elements';
+
+// components
 @import './components/AppNav/AppNav';
 @import './components/AppPage/AppPage';

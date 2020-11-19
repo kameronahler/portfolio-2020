@@ -1,8 +1,8 @@
 .app-nav {
-  background-color: gray;
+  background-color: var(--color-gray-dark);
   height: 100vh;
   left: 0;
   position: absolute;
   top: 0;
-  width: 300px;
+  width: var(--app-nav-width);
 }
