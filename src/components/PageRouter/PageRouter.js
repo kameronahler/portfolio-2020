@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNav from '../AppNav/AppNav'
-import AppPage from '../AppPage/AppPage'
 
 import PageHome from '../Pages/PageHome'
 import PageExperience from '../Pages/PageExperience'
@@ -17,10 +16,10 @@ export default function PageRouter() {
         <div className='app-page'>
           <Switch>
             <Route path='/' exact component={PageHome} />
-            <Route path='/experience' exact component={PageExperience} />
-            <Route path='/work' exact component={PageWork} />
-            <Route path='/about' exact component={PageAbout} />
-            <Route path='/contact' exact component={PageContact} />
+            <Route path='/experience' component={PageExperience} />
+            <Route path='/work' component={PageWork} />
+            <Route path='/about' component={PageAbout} />
+            <Route path='/contact' component={PageContact} />
           </Switch>
         </div>
       </main>

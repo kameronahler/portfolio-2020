@@ -12,11 +12,6 @@ export default function AppNav() {
             </Link>
           </li>
           <li className='app-nav__list-item'>
-            <Link className='app-nav__link' to='/about'>
-              About
-            </Link>
-          </li>
-          <li className='app-nav__list-item'>
             <Link className='app-nav__link' to='/experience'>
               Experience
             </Link>
@@ -24,6 +19,11 @@ export default function AppNav() {
           <li className='app-nav__list-item'>
             <Link className='app-nav__link' to='/work'>
               Work
+            </Link>
+          </li>
+          <li className='app-nav__list-item'>
+            <Link className='app-nav__link' to='/about'>
+              About
             </Link>
           </li>
           <li className='app-nav__list-item'>
