@@ -1,5 +1,5 @@
 import React from 'react'
-import PageNav from '../PageNav/Page'
+import PageNav from '../PageNav/PageNav'
 
 export default function PageExperience() {
   return (
