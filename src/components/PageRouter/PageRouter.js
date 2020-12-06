@@ -13,7 +13,7 @@ export default function PageRouter() {
     <Router>
       <AppNav />
       <main>
-        <div className='app-page'>
+        <div className='page'>
           <Switch>
             <Route path='/' exact component={PageHome} />
             <Route path='/experience' component={PageExperience} />
