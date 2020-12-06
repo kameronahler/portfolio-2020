@@ -1,12 +1,12 @@
 import React from 'react'
-import InPageNav from '../InPageNav/InPageNav'
+import PageNav from '../PageNav/Page'
 
 export default function PageAbout() {
   return (
     <>
-      <InPageNav to='/work' text='Previous: Work' />
+      <PageNav to='/work' text='Previous: Work' />
       <h1>About</h1>
-      <InPageNav to='/contact' text='Next: Contact' />
+      <PageNav to='/contact' text='Next: Contact' />
     </>
   )
 }

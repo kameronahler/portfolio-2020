@@ -1,5 +1,5 @@
 import React from 'react'
-import InPageNav from '../InPageNav/InPageNav'
+import PageNav from '../PageNav/Page'
 
 export default function PageHome() {
   return (
@@ -11,7 +11,7 @@ export default function PageHome() {
         itaque quasi, nisi voluptas quod ea, dolores quibusdam amet? Qui rem
         fuga eligendi.
       </p>
-      <InPageNav to='/experience' text='Next: Experience' />
+      <PageNav to='/experience' text='Next: Experience' />
     </>
   )
 }
