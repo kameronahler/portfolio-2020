@@ -1,0 +1,39 @@
+.page {
+  background-color: var(--color-gray);
+  margin-left: var(--app-nav-width);
+  min-height: 100vh;
+  width: calc(100vw - var(--app-nav-width));
+
+  &__transition-group {
+    position: relative;
+  }
+
+  &__transition {
+    &--enter {
+      opacity: 0.01;
+      transform: translateY(2rem);
+    }
+
+    &--enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform $page-transition-duration-ms ease,
+        opacity $page-transition-duration-ms ease;
+    }
+
+    &--exit {
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+    }
+
+    &--exit-active {
+      opacity: 0.01;
+      transform: translateY(2rem);
+      transition: opacity $page-transition-duration-ms ease,
+        transform $page-transition-duration-ms ease;
+    }
+  }
+}

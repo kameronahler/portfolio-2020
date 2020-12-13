@@ -1,5 +1,6 @@
+// packages
 import React from 'react'
-import PageNav from '../PageNav/PageNav'
+import { Link } from 'react-router-dom'
 
 export default function PageHome() {
   return (
@@ -11,7 +12,7 @@ export default function PageHome() {
         itaque quasi, nisi voluptas quod ea, dolores quibusdam amet? Qui rem
         fuga eligendi.
       </p>
-      <PageNav to='/experience' text='Next: Experience' />
+      <Link to='/work'>Next</Link>
     </>
   )
 }

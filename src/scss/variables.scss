@@ -1,27 +1,30 @@
+// colors
+$color-gray-light: #ddd;
+$color-gray: #aaa;
+$color-gray-dark: #666;
+
+// font-family
+$font-family-fallback: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+  helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+
+// line-height
+$line-height: 1.5;
+$line-height-heading: 1.2;
+
+// shared component styles
+$app-nav-width: 300px;
+$page-transition-duration: 1000;
+$page-transition-duration-ms: $page-transition-duration * 1ms;
+
+// css vars
 :root {
-  // colors
-  $color-gray-light: #ddd;
   --color-gray-light: #{$color-gray-light};
-
-  $color-gray: #aaa;
   --color-gray: #{$color-gray};
-
-  $color-gray-dark: #666;
   --color-gray-dark: #{$color-gray-dark};
-
-  // font-family
-  $font-family-fallback: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-    helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
   --font-family-fallback: #{$font-family-fallback};
-
-  // line-height
-  $line-height: 1.5;
   --line-height: #{$line-height};
-
-  $line-height-heading: 1.2;
   --line-height-heading: #{$line-height-heading};
-
-  // shared component styles
-  $app-nav-width: 300px;
   --app-nav-width: #{$app-nav-width};
+  --page-transition-duration: #{$page-transition-duration};
+  --page-transition-duration-ms: #{$page-transition-duration-ms};
 }

@@ -1,12 +1,19 @@
+// packages
 import React from 'react'
-import PageNav from '../PageNav/PageNav'
+import { Link } from 'react-router-dom'
 
 export default function PageAbout() {
   return (
     <>
-      <PageNav to='/work' text='Previous: Work' />
+      <Link to='/work'>Previous</Link>
       <h1>About</h1>
-      <PageNav to='/contact' text='Next: Contact' />
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
+        aliquam vel laudantium deleniti nobis reprehenderit eaque necessitatibus
+        itaque quasi, nisi voluptas quod ea, dolores quibusdam amet? Qui rem
+        fuga eligendi.
+      </p>
+      <Link to='/contact'>Next</Link>
     </>
   )
 }
