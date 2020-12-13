@@ -17,8 +17,9 @@
     &--enter-active {
       opacity: 1;
       transform: translateY(0);
-      transition: transform $page-transition-duration-ms ease,
-        opacity $page-transition-duration-ms ease;
+      transition: transform $page-transition-duration-ms ease
+          $page-transition-duration-ms,
+        opacity $page-transition-duration-ms ease $page-transition-duration-ms;
     }
 
     &--exit {
@@ -26,7 +27,6 @@
       opacity: 1;
       position: absolute;
       top: 0;
-      z-index: -1;
     }
 
     &--exit-active {
