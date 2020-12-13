@@ -1,36 +1,26 @@
 import React from 'react'
+import { routes } from '../../routes'
 import { Link } from 'react-router-dom'
 
 export default function Sidebar() {
+  const jsxListItems = routes.map(({ name, path }) => {
+    const title = name.charAt(0).toUpperCase() + name.slice(1)
+
+    return (
+      <li
+        key={name}
+        className={`app-nav__list-item app-nav__list-item--${name}`}
+      >
+        <Link className={`app-nav__link app-nav__link--${name}`} to={path}>
+          {title}
+        </Link>
+      </li>
+    )
+  })
+
   return (
     <nav className='app-nav'>
-      <ul className='app-nav__list'>
-        <li className='app-nav__list-item'>
-          <Link className='app-nav__link' to='/'>
-            Home
-          </Link>
-        </li>
-        <li className='app-nav__list-item'>
-          <Link className='app-nav__link' to='/experience'>
-            Experience
-          </Link>
-        </li>
-        <li className='app-nav__list-item'>
-          <Link className='app-nav__link' to='/work'>
-            Work
-          </Link>
-        </li>
-        <li className='app-nav__list-item'>
-          <Link className='app-nav__link' to='/about'>
-            About
-          </Link>
-        </li>
-        <li className='app-nav__list-item'>
-          <Link className='app-nav__link' to='/contact'>
-            Contact
-          </Link>
-        </li>
-      </ul>
+      <ul className='app-nav__list'>{jsxListItems}</ul>
     </nav>
   )
 }
