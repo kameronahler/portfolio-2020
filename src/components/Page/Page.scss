@@ -2,6 +2,7 @@
   background-color: var(--color-gray);
   margin-left: var(--app-nav-width);
   min-height: 100vh;
+  padding: 2rem;
   width: calc(100vw - var(--app-nav-width));
 
   &__transition-group {
@@ -11,12 +12,12 @@
   &__transition {
     &--enter {
       opacity: 0.01;
-      transform: translateY(2rem);
+      transform: translateX(-2rem);
     }
 
     &--enter-active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(0);
       transition: transform $page-transition-duration-ms ease
           $page-transition-duration-ms,
         opacity $page-transition-duration-ms ease $page-transition-duration-ms;
@@ -31,7 +32,7 @@
 
     &--exit-active {
       opacity: 0.01;
-      transform: translateY(2rem);
+      transform: translateX(2rem);
       transition: opacity $page-transition-duration-ms ease,
         transform $page-transition-duration-ms ease;
     }

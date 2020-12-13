@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 export default function PageExperience() {
   return (
     <>
-      <Link to='/'>Previous</Link>
       <div>
         <h1>Experience</h1>
         <p>
@@ -15,6 +14,7 @@ export default function PageExperience() {
           amet? Qui rem fuga eligendi.
         </p>
       </div>
+      <Link to='/'>Previous </Link>
       <Link to='/work'>Next</Link>
     </>
   )
