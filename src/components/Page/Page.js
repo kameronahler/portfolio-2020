@@ -5,6 +5,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 // routes
 import { routes } from '../../routes'
+import PageHome from '../Pages/PageHome'
 
 export default function Page() {
   const location = useLocation()
@@ -13,7 +14,6 @@ export default function Page() {
       '--page-transition-duration'
     ) * 2
   const jsxRoutes = routes.map(({ name, component, path }) => {
-    console.log(typeof component)
     return <Route key={name} path={path} component={component} exact />
   })
 
@@ -26,7 +26,10 @@ export default function Page() {
           timeout={pageTransitionDurations}
         >
           <div className='page__transition'>
-            <Switch location={location}>{jsxRoutes}</Switch>
+            <Switch location={location}>
+              {jsxRoutes}
+              <Route component={PageHome} />
+            </Switch>
           </div>
         </CSSTransition>
       </TransitionGroup>
