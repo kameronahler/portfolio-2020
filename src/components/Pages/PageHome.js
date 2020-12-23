@@ -12,7 +12,7 @@ export default function PageHome() {
         itaque quasi, nisi voluptas quod ea, dolores quibusdam amet? Qui rem
         fuga eligendi.
       </p>
-      <Link to='/work'>Next</Link>
+      <Link to='/experience'>Next</Link>
     </>
   )
 }
