@@ -42,7 +42,7 @@ export default function PageDribbble() {
         <h1>Dribbble</h1>
       </div>
       <div>{imgs ? imgs : 'Loading...'}</div>
-      <Link to='/work'>Previous </Link>
+      <Link to='/blog'>Previous </Link>
       <Link to='/about'>Next</Link>
     </>
   )

@@ -13,7 +13,7 @@ export default function PageWork() {
         fuga eligendi.
       </p>
       <Link to='/experience'>Previous </Link>
-      <Link to='/dribbble'>Next</Link>
+      <Link to='/blog'>Next</Link>
     </>
   )
 }
