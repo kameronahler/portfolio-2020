@@ -4,48 +4,44 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 const dribbbleAPIKey = process.env.DRIBBBLE_API_KEY
+const url = `https://api.dribbble.com/v2/user/shots?per_page=6&access_token=${dribbbleAPIKey}`
 
 export default function PageDribbble() {
   const [imgs, setImgs] = useState(null)
-  const [error, setError] = useState(null)
 
   const fetchDribbble = async () => {
     const source = axios.CancelToken.source()
 
     try {
-      const res = await axios.get(
-        `https://api.dribbble.com/v2/user/shots?per_page=6&access_token=${dribbbleAPIKey}`,
-        { cancelToken: source.token }
-      )
+      const res = await axios.get(url, { cancelToken: source.token })
+
       if (res.status === 200) {
         setImgs(
           res.data.map(shot => (
             <img key={shot.id} src={shot.images.two_x}></img>
           ))
         )
+      } else {
+        throw new Error('Unable to load Dribbble shots')
       }
     } catch (err) {
-      setError('Error')
+      console.error(err)
     }
 
-    // unmount
+    // cleanup
     return () => {
-      console.log('unmounted')
-      source.cancel('page unmounted')
+      source.cancel('Component unmounted before completing request')
     }
   }
 
-  useEffect(fetchDribbble)
+  useEffect(fetchDribbble, [])
 
   return (
     <>
       <div>
         <h1>Dribbble</h1>
       </div>
-      <div>
-        {imgs && !error ? imgs : 'Loading...'}
-        {error ? error : null}
-      </div>
+      <div>{imgs ? imgs : 'Loading...'}</div>
       <Link to='/work'>Previous </Link>
       <Link to='/about'>Next</Link>
     </>
