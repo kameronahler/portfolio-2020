@@ -2,6 +2,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// components
+import Options from '../Options/Options'
+
 export default function PageHome() {
   return (
     <>
@@ -12,6 +15,7 @@ export default function PageHome() {
         itaque quasi, nisi voluptas quod ea, dolores quibusdam amet? Qui rem
         fuga eligendi.
       </p>
+      <Options />
       <Link to='/experience'>Next</Link>
     </>
   )
