@@ -5,9 +5,9 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 // routes
 import { routes } from '../../routes'
-import PageHome from '../Pages/PageHome'
+import { PageHome } from '../Pages/PageHome'
 
-export default function Page() {
+export const Page = () => {
   const location = useLocation()
   const pageTransitionDurations =
     +getComputedStyle(document.documentElement).getPropertyValue(

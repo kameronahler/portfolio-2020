@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function PageWork() {
+export const PageWork = () => {
   return (
     <>
       <h1>Work</h1>

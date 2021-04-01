@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import kwesforms from 'kwesforms'
 
-export default function PageContact() {
+export const PageContact = () => {
   useEffect(() => {
     kwesforms.init()
   }, [])

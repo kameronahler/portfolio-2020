@@ -3,9 +3,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // components
-import Options from '../Options/Options'
+import { Options } from '../Options/Options'
 
-export default function PageHome() {
+export const PageHome = () => {
   return (
     <>
       <h1>Home</h1>

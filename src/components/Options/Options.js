@@ -1,7 +1,7 @@
 // packages
 import React, { useState } from 'react'
 
-export default function Options() {
+export const Options = () => {
   // state
   const [checks, setChecks] = useState(() => {
     return {

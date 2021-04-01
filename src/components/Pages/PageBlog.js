@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { createClient } from 'contentful'
 import { Link } from 'react-router-dom'
 
-export default function PageBlog() {
+export const PageBlog = () => {
   // state
   const [contentfulPosts, setContentfulPosts] = useState(null)
 

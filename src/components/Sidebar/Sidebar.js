@@ -2,7 +2,7 @@ import React from 'react'
 import { routes } from '../../routes'
 import { NavLink } from 'react-router-dom'
 
-export default function Sidebar() {
+export const Sidebar = () => {
   const jsxListItems = routes.map(({ name, path }) => {
     const title = name.charAt(0).toUpperCase() + name.slice(1)
 

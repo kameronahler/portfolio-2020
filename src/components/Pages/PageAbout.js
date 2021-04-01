@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function PageAbout() {
+export const PageAbout = () => {
   return (
     <>
       <h1>About</h1>

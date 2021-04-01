@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const dribbbleAPIKey = process.env.DRIBBBLE_API_KEY
 const url = `https://api.dribbble.com/v2/user/shots?per_page=6&access_token=${dribbbleAPIKey}`
 
-export default function PageDribbble() {
+export const PageDribbble = () => {
   const [imgs, setImgs] = useState(null)
 
   const fetchDribbble = async () => {
