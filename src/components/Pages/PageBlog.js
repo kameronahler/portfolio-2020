@@ -1,43 +1,42 @@
 // packages
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { createClient } from 'contentful'
 import { Link } from 'react-router-dom'
 
 export const PageBlog = () => {
   // state
   const [contentfulPosts, setContentfulPosts] = useState(null)
+  const mounted = useRef(true)
 
   // contentful
   const contentfulSpace = process.env.CONTENTFUL_SPACE
   const contentfulAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN
   const contentfulClient = createClient({
     space: contentfulSpace,
-    environment: 'master',
     accessToken: contentfulAccessToken,
   })
   const fetchContentful = async () => {
-    // not sure what contentful's unsub strategy is at the moment, so using
-    // this local state to know if we need to update state after request resolves
-    let mounted = true
-
+    // contentful does not have an unsub strategy at the moment - even though
+    // they use axios
     try {
-      const res = await contentfulClient.getEntries({
-        content_type: 'blogPost',
-      })
+      if (mounted.current) {
+        const res = await contentfulClient.getEntries({
+          content_type: 'blogPost',
+        })
 
-      if (mounted) {
         setContentfulPosts(res.items)
       }
     } catch (err) {
       console.error(err)
     }
-
-    return () => {
-      mounted = false
-    }
   }
 
-  useEffect(fetchContentful, [])
+  useEffect(() => {
+    fetchContentful()
+    return () => {
+      mounted.current = false
+    }
+  }, [])
 
   return (
     <>
