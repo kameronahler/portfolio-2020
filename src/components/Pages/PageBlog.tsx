@@ -15,6 +15,7 @@ export const PageBlog = () => {
     space: contentfulSpace,
     accessToken: contentfulAccessToken,
   })
+
   const fetchContentful = async () => {
     // contentful does not have an unsub strategy at the moment - even though
     // they use axios

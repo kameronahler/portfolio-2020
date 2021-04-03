@@ -9,6 +9,7 @@
       "~/*": ["./*"]
     },
     "strict": false,
+    "types": ["node"],
     "target": "es2017"
   },
   "include": ["src/**/*"]
