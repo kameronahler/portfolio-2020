@@ -1,24 +1,23 @@
-// packages
+// react
 import React, { useState, useRef, useEffect } from 'react'
-import { createClient } from 'contentful'
 import { Link } from 'react-router-dom'
 
+// packages
+import { createClient } from 'contentful'
+
+// constants
+const CONTENTFUL_SPACE = process.env.CONTENTFUL_SPACE
+const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN
+
 export const PageBlog = () => {
-  // state
   const [contentfulPosts, setContentfulPosts] = useState(null)
   const mounted = useRef(true)
-
-  // contentful
-  const contentfulSpace = process.env.CONTENTFUL_SPACE
-  const contentfulAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN
   const contentfulClient = createClient({
-    space: contentfulSpace,
-    accessToken: contentfulAccessToken,
+    space: CONTENTFUL_SPACE,
+    accessToken: CONTENTFUL_ACCESS_TOKEN,
   })
 
   const fetchContentful = async () => {
-    // contentful does not have an unsub strategy at the moment - even though
-    // they use axios
     try {
       if (mounted.current) {
         const res = await contentfulClient.getEntries({
@@ -35,6 +34,8 @@ export const PageBlog = () => {
   useEffect(() => {
     fetchContentful()
     return () => {
+      // contentful's package does not have a cancel/unsub method at the moment
+      // this ref is used as a condition to the fetch
       mounted.current = false
     }
   }, [])

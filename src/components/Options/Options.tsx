@@ -1,8 +1,7 @@
-// packages
+// react
 import React, { useState } from 'react'
 
 export const Options = () => {
-  // state
   const [checks, setChecks] = useState(() => {
     return {
       option_1: false,

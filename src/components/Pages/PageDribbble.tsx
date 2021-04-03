@@ -1,17 +1,21 @@
-// packages
+// react
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const dribbbleAPIKey = process.env.DRIBBBLE_API_KEY
-const url = `https://api.dribbble.com/v2/user/shots?per_page=6&access_token=${dribbbleAPIKey}`
+// packages
+import axios from 'axios'
+
+// constants
+const URL =
+  'https://api.dribbble.com/v2/user/shots?per_page=6&access_token=' +
+  process.env.DRIBBBLE_API_KEY
 
 export const PageDribbble = () => {
   const [imgs, setImgs] = useState(null)
 
   const fetchDribbble = async source => {
     try {
-      const res = await axios.get(url, { cancelToken: source.token })
+      const res = await axios.get(URL, { cancelToken: source.token })
 
       if (res.status === 200) {
         setImgs(

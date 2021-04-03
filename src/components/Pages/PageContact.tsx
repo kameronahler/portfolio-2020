@@ -1,6 +1,8 @@
-// packages
+// react
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
+// packages
 import kwesforms from 'kwesforms'
 
 export const PageContact = () => {
