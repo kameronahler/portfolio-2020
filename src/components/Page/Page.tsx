@@ -6,17 +6,13 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 // routes
 import { routes } from '../../routes'
 
-// hooks
-import { useCustomProp } from '../../hooks/hooks'
-
 // components
 import { Page__Wrapper } from './Page__Wrapper'
 import { Page__Transition } from './Page__Transition'
 import { PageHome } from '../Pages/PageHome'
 
 // constants
-const PAGE_TRANSITION_DURATION =
-  +useCustomProp('--duration-page-transition') * 2
+const PAGE_TRANSITION_DURATION = 1000
 
 export const Page = () => {
   const location = useLocation()
@@ -24,7 +20,6 @@ export const Page = () => {
   const jsxRoutes = routes.map(({ name, component, path }) => {
     return <Route key={name} path={path} component={component} exact />
   })
-
   return (
     <Page__Wrapper>
       <TransitionGroup style={{ position: 'relative' }}>
