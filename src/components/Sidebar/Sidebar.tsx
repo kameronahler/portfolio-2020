@@ -1,28 +1,37 @@
 // react
 import React from 'react'
-import { routes } from '../../routes'
 import { NavLink } from 'react-router-dom'
+
+// packages
+import styled from 'styled-components'
+
+// routes
+import { routes } from '../../routes'
+
+// styled
+const StyledSidebar = styled.nav`
+  background-color: var(--color-gray-dark);
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: var(--w-sidebar);
+`
 
 export const Sidebar = () => {
   const jsxListItems = routes.map(({ name, path }) => {
     const title = name.charAt(0).toUpperCase() + name.slice(1)
 
     return (
-      <li key={name} className='app-nav__list-item'>
-        <NavLink
-          className={`app-nav__link app-nav__link--${name}`}
-          activeClassName='app-nav__link--active'
-          to={path}
-        >
-          {title}
-        </NavLink>
+      <li key={name}>
+        <NavLink to={path}>{title}</NavLink>
       </li>
     )
   })
 
   return (
-    <nav className='app-nav'>
-      <ul className='app-nav__list'>{jsxListItems}</ul>
-    </nav>
+    <StyledSidebar>
+      <ul>{jsxListItems}</ul>
+    </StyledSidebar>
   )
 }

@@ -10,11 +10,13 @@ import { routes } from '../../routes'
 import { useCustomProp } from '../../hooks/hooks'
 
 // components
+import { Page__Wrapper } from './Page__Wrapper'
+import { Page__Transition } from './Page__Transition'
 import { PageHome } from '../Pages/PageHome'
 
 // constants
 const PAGE_TRANSITION_DURATION =
-  +useCustomProp('--page-transition-duration') * 2
+  +useCustomProp('--duration-page-transition') * 2
 
 export const Page = () => {
   const location = useLocation()
@@ -24,21 +26,17 @@ export const Page = () => {
   })
 
   return (
-    <div className='page'>
-      <TransitionGroup className='page__transition-group'>
-        <CSSTransition
-          classNames='page__transition-'
-          key={location.key}
-          timeout={PAGE_TRANSITION_DURATION}
-        >
-          <div className='page__transition'>
+    <Page__Wrapper>
+      <TransitionGroup style={{ position: 'relative' }}>
+        <CSSTransition key={location.key} timeout={PAGE_TRANSITION_DURATION}>
+          <Page__Transition>
             <Switch location={location}>
               {jsxRoutes}
               <Route component={PageHome} />
             </Switch>
-          </div>
+          </Page__Transition>
         </CSSTransition>
       </TransitionGroup>
-    </div>
+    </Page__Wrapper>
   )
 }
