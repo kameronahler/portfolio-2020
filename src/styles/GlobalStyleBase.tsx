@@ -35,4 +35,12 @@ export const GlobalStyleBase = createGlobalStyle`
     margin: unset;
     padding-left: unset;
   }
+
+  a {
+    text-decoration: unset;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `
