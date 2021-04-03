@@ -1,6 +1,6 @@
 // react
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 // packages
 import styled from 'styled-components'
@@ -28,6 +28,8 @@ const StyledObjNavLinkActive = {
 }
 
 export const Sidebar = () => {
+  const location = useLocation()
+
   const jsxListItems = routes.map(({ name, path }) => {
     const title = name.charAt(0).toUpperCase() + name.slice(1)
 
@@ -37,6 +39,13 @@ export const Sidebar = () => {
           activeStyle={StyledObjNavLinkActive}
           activeClassName={null}
           exact={true}
+          onClick={
+            location.pathname === path
+              ? (e: MouseEvent) => {
+                  e.preventDefault()
+                }
+              : null
+          }
           to={path}
         >
           {title}
