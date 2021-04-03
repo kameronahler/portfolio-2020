@@ -6,7 +6,7 @@ import { GlobalStyleVars } from './GlobalStyleVars'
 import { GlobalStyleNormalize } from './GlobalStyleNormalize'
 import { GlobalStyleBase } from './GlobalStyleBase'
 
-export const GlobalStyles = () => (
+export const GlobalStyle = () => (
   <>
     <GlobalStyleVars />
     <GlobalStyleNormalize />

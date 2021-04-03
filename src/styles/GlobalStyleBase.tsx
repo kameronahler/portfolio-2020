@@ -16,7 +16,7 @@ export const GlobalStyleBase = createGlobalStyle`
   }
 
   body {
-    font-family: var(--font-family-fallback);
+    font-family: var(--font-sans);
     font-size: 1em;
     height: 100%;
     line-height: var(--line-height-normal);

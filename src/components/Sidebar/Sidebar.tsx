@@ -8,14 +8,19 @@ import styled from 'styled-components'
 // routes
 import { routes } from '../../routes'
 
+// theme
+import { THEME } from '../../styles/GlobalTheme'
+
 // styled
 const StyledSidebar = styled.nav`
-  background-color: var(--color-gray-dark);
-  height: 100vh;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: var(--w-sidebar);
+  @media (min-width: ${THEME.w.screenSm}) {
+    background-color: var(--color-gray-dark);
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: var(--w-sidebar);
+  } ;
 `
 
 const StyledObjNavLinkActive = {
