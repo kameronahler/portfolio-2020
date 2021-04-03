@@ -18,13 +18,24 @@ const StyledSidebar = styled.nav`
   width: var(--w-sidebar);
 `
 
+const StyledObjNavLinkActive = {
+  fontWeight: 'bold',
+}
+
 export const Sidebar = () => {
   const jsxListItems = routes.map(({ name, path }) => {
     const title = name.charAt(0).toUpperCase() + name.slice(1)
 
     return (
       <li key={name}>
-        <NavLink to={path}>{title}</NavLink>
+        <NavLink
+          activeStyle={StyledObjNavLinkActive}
+          activeClassName={null}
+          exact={true}
+          to={path}
+        >
+          {title}
+        </NavLink>
       </li>
     )
   })
