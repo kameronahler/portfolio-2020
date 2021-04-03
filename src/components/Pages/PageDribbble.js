@@ -9,9 +9,7 @@ const url = `https://api.dribbble.com/v2/user/shots?per_page=6&access_token=${dr
 export const PageDribbble = () => {
   const [imgs, setImgs] = useState(null)
 
-  const fetchDribbble = async () => {
-    const source = axios.CancelToken.source()
-
+  const fetchDribbble = async source => {
     try {
       const res = await axios.get(url, { cancelToken: source.token })
 
@@ -27,14 +25,16 @@ export const PageDribbble = () => {
     } catch (err) {
       console.error(err)
     }
+  }
 
-    // cleanup
+  useEffect(() => {
+    const source = axios.CancelToken.source()
+    fetchDribbble(source)
+
     return () => {
       source.cancel('Component unmounted before completing request')
     }
-  }
-
-  useEffect(fetchDribbble, [])
+  }, [])
 
   return (
     <>
