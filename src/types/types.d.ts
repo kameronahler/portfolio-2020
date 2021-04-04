@@ -1,8 +1,9 @@
-interface InterfaceLocation {
+interface ILocation {
   pathname: string
 }
 
-interface InterfaceRoutes {
-  path: string
+interface IRoutes {
   name: string
+  path: string
+}
 }

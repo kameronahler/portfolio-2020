@@ -28,9 +28,9 @@ const StyledObjNavLinkActive = {
 }
 
 export const Sidebar = () => {
-  const location: InterfaceLocation = useLocation()
+  const location: ILocation = useLocation()
 
-  const jsxListItems = routes.map(({ name, path }: InterfaceRoutes) => {
+  const jsxListItems = routes.map(({ name, path }: IRoutes) => {
     const title = name.charAt(0).toUpperCase() + name.slice(1)
 
     return (
