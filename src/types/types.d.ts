@@ -19,3 +19,8 @@ interface IDribbbleShot {
   }
   title: string
 }
+
+interface ILoaderSVG {
+  size: number
+  strokeWidth: number
+}

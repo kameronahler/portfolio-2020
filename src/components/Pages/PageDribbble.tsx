@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom'
 import axios, { CancelTokenSource } from 'axios'
 import styled from 'styled-components'
 
+// components
+import { Loader } from '../Loader/Loader'
+
 // styled
 const StyledShots__Grid = styled.div`
   display: grid;
@@ -20,8 +23,10 @@ const StyledShots__Img = styled.img`
 
 // constants
 const URL =
-  'https://api.dribbble.com/v2/user/shots?per_page=6&access_token=' +
+  'https://api.dribbble.com/v2/user/shots?per_page=8&access_token=' +
   process.env.DRIBBBLE_API_KEY
+const CANCEL_FETCH_MSG = 'Component unmounted before completing request'
+const ERROR_FETCH_MSG = 'Unable to load Dribbble shots'
 
 export const PageDribbble = () => {
   const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
@@ -35,7 +40,7 @@ export const PageDribbble = () => {
       if (res.status === 200) {
         setShots(res.data)
       } else {
-        throw new Error('Unable to load Dribbble shots')
+        throw new Error(ERROR_FETCH_MSG)
       }
     } catch (err) {
       console.error(err)
@@ -47,7 +52,7 @@ export const PageDribbble = () => {
     fetchDribbble(source)
 
     return () => {
-      source.cancel('Component unmounted before completing request')
+      source.cancel(CANCEL_FETCH_MSG)
     }
   }, [])
 
@@ -56,18 +61,25 @@ export const PageDribbble = () => {
       <div>
         <h1>Dribbble</h1>
       </div>
-      <StyledShots__Grid>
-        {shots
-          ? shots.map(shot => (
-              <a key={shot.id} href={shot.html_url} target='_blank'>
-                <StyledShots__Img
-                  alt={shot.title}
-                  src={shot.images.hidpi}
-                ></StyledShots__Img>
-              </a>
-            ))
-          : 'Loading...'}
-      </StyledShots__Grid>
+      {shots ? (
+        <StyledShots__Grid>
+          {shots.map(shot => (
+            <a key={shot.id} href={shot.html_url} target='_blank'>
+              <StyledShots__Img
+                alt={shot.title}
+                src={shot.images.hidpi}
+              ></StyledShots__Img>
+            </a>
+          ))}
+        </StyledShots__Grid>
+      ) : (
+        <div
+          style={{ display: 'grid', minHeight: '50vh', placeItems: 'center' }}
+        >
+          <Loader size={50} strokeWidth={6} />
+        </div>
+      )}
+
       <Link to='/blog'>Previous </Link>
       <Link to='/about'>Next</Link>
     </>
