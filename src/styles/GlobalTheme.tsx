@@ -6,7 +6,7 @@ export const THEME = {
   },
   duration: {
     pageTransition: '500',
-    'pageTransition-ms': '500ms',
+    pageTransitionMs: '500ms',
   },
   font: {
     sans: `-apple-system, BlinkMacSystemFont, 'Segoe UI',

@@ -14,7 +14,7 @@ import { Page__Wrapper } from './Page__Wrapper'
 import { Page__Transition } from './Page__Transition'
 
 // constants
-const PAGE_TRANSITION_DURATION = THEME.duration.pageTransition
+const PAGE_TRANSITION_DURATION = +THEME.duration.pageTransition * 2
 
 export const Page = () => {
   const location = useLocation()
