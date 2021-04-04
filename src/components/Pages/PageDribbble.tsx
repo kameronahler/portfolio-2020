@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // packages
-import axios from 'axios'
+import axios, { CancelTokenSource } from 'axios'
 
 // constants
 const URL =
@@ -11,18 +11,16 @@ const URL =
   process.env.DRIBBBLE_API_KEY
 
 export const PageDribbble = () => {
-  const [imgs, setImgs] = useState(null)
+  const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
 
-  const fetchDribbble = async source => {
+  const fetchDribbble = async (source: CancelTokenSource) => {
     try {
-      const res = await axios.get(URL, { cancelToken: source.token })
+      const res = await axios.get<IDribbbleShot[]>(URL, {
+        cancelToken: source.token,
+      })
 
       if (res.status === 200) {
-        setImgs(
-          res.data.map(shot => (
-            <img key={shot.id} src={shot.images.two_x}></img>
-          ))
-        )
+        setShots(res.data)
       } else {
         throw new Error('Unable to load Dribbble shots')
       }
@@ -45,7 +43,15 @@ export const PageDribbble = () => {
       <div>
         <h1>Dribbble</h1>
       </div>
-      <div>{imgs ? imgs : 'Loading...'}</div>
+      <div>
+        {shots
+          ? shots.map(shot => (
+              <a key={shot.id} href={shot.html_url} target='_blank'>
+                <img alt={shot.title} src={shot.images.hidpi}></img>
+              </a>
+            ))
+          : 'Loading...'}
+      </div>
       <Link to='/blog'>Previous </Link>
       <Link to='/about'>Next</Link>
     </>
