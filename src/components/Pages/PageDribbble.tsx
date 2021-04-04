@@ -4,6 +4,19 @@ import { Link } from 'react-router-dom'
 
 // packages
 import axios, { CancelTokenSource } from 'axios'
+import styled from 'styled-components'
+
+// styled
+const StyledShots__Grid = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+`
+
+const StyledShots__Img = styled.img`
+  display: block;
+  max-width: 100%;
+`
 
 // constants
 const URL =
@@ -43,15 +56,18 @@ export const PageDribbble = () => {
       <div>
         <h1>Dribbble</h1>
       </div>
-      <div>
+      <StyledShots__Grid>
         {shots
           ? shots.map(shot => (
               <a key={shot.id} href={shot.html_url} target='_blank'>
-                <img alt={shot.title} src={shot.images.hidpi}></img>
+                <StyledShots__Img
+                  alt={shot.title}
+                  src={shot.images.hidpi}
+                ></StyledShots__Img>
               </a>
             ))
           : 'Loading...'}
-      </div>
+      </StyledShots__Grid>
       <Link to='/blog'>Previous </Link>
       <Link to='/about'>Next</Link>
     </>
