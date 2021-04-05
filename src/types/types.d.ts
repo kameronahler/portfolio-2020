@@ -11,6 +11,10 @@ interface IContentfulBlogEntry {
   title: string
 }
 
+interface IContentfulPortfolioEntry {
+  body: Document
+}
+
 interface IDribbbleShot {
   html_url: string
   id: string
