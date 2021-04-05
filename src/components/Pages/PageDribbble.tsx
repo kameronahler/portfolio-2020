@@ -13,7 +13,7 @@ import { Loader } from '../Loader/Loader'
 const StyledShots__Grid = styled.div`
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `
 
 const StyledShots__Img = styled.img`
@@ -21,19 +21,25 @@ const StyledShots__Img = styled.img`
   max-width: 100%;
 `
 
+const StyledShots__ViewMore = styled.a`
+  display: grid;
+  place-items: center;
+`
+
 // constants
-const URL =
-  'https://api.dribbble.com/v2/user/shots?per_page=8&access_token=' +
+const API_URL =
+  'https://api.dribbble.com/v2/user/shots?per_page=9&access_token=' +
   process.env.DRIBBBLE_API_KEY
 const CANCEL_FETCH_MSG = 'Component unmounted before completing request'
 const ERROR_FETCH_MSG = 'Unable to load Dribbble shots'
+const PROFILE_URL = 'https://dribbble.com/kamtr0n'
 
 export const PageDribbble = () => {
   const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
 
   const fetchDribbble = async (source: CancelTokenSource) => {
     try {
-      const res = await axios.get<IDribbbleShot[]>(URL, {
+      const res = await axios.get<IDribbbleShot[]>(API_URL, {
         cancelToken: source.token,
       })
 
@@ -71,6 +77,9 @@ export const PageDribbble = () => {
               ></StyledShots__Img>
             </a>
           ))}
+          <StyledShots__ViewMore href={PROFILE_URL}>
+            View more
+          </StyledShots__ViewMore>
         </StyledShots__Grid>
       ) : (
         <div
