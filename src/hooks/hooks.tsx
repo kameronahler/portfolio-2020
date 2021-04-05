@@ -24,3 +24,24 @@ export const useFetchContentful = async <T,>({
     console.error(err)
   }
 }
+
+export const useFilterContentfulByTag = ({
+  entries,
+  targetTag,
+}: {
+  entries: EntryCollection<any>
+  targetTag: string
+}) => {
+  const filteredDown = entries.items.filter((entry: any) => {
+    // this any is needed because metadata is not part of contentful's types at the moment...
+    const filteredByTag = entry.metadata.tags.filter(
+      tag => tag.sys.id === targetTag
+    )
+
+    if (filteredByTag.length) {
+      return entry
+    }
+  })
+  console.log(filteredDown)
+  return filteredDown
+}
