@@ -1,3 +1,10 @@
+interface IPropsUseFetchContentful<ContentfulClientApi, EntryCollection> {
+  contentfulClient: ContentfulClientApi
+  countentfulEntryType: string
+  mountedRef: React.MutableRefObject<Boolean>
+  setState: React.Dispatch<React.SetStateAction<EntryCollection>>
+}
+
 interface ILocation {
   pathname: string
 }

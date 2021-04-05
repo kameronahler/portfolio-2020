@@ -5,14 +5,17 @@ import { Link } from 'react-router-dom'
 // packages
 import { createClient, EntryCollection } from 'contentful'
 
-//components
+// hooks
+import { useFetchContentful } from '../../hooks/hooks'
+
+// components
 import { Loader } from '../Loader/Loader'
 
 // constants
 const CONTENTFUL_ENTRY_TYPE = 'blogPost'
 const CONTENTFUL_SPACE = process.env.CONTENTFUL_SPACE
 const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN
-const contentfulClient = createClient({
+const CONTENTFUL_CLIENT = createClient({
   space: CONTENTFUL_SPACE,
   accessToken: CONTENTFUL_ACCESS_TOKEN,
 })
@@ -24,27 +27,13 @@ export const PageBlog = () => {
     setContentfulEntries,
   ] = useState<EntryCollection<IContentfulBlogEntry> | null>(null)
 
-  const fetchContentful = async () => {
-    try {
-      if (mounted.current) {
-        const res = await contentfulClient.getEntries<IContentfulBlogEntry>({
-          content_type: CONTENTFUL_ENTRY_TYPE,
-        })
-        setContentfulEntries(res)
-      }
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
   useEffect(() => {
-    fetchContentful()
-
-    // contentful's package does not have a cancel/unsub method at the moment
-    // this ref is used as a condition to the fetch
-    return () => {
-      mounted.current = false
-    }
+    useFetchContentful<IContentfulBlogEntry>({
+      contentfulClient: CONTENTFUL_CLIENT,
+      countentfulEntryType: CONTENTFUL_ENTRY_TYPE,
+      mountedRef: mounted,
+      setState: setContentfulEntries,
+    })
   }, [])
 
   return (

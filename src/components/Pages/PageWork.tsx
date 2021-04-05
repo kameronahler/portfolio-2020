@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom'
 import { createClient, EntryCollection } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
+// hooks
+import { useFetchContentful } from '../../hooks/hooks'
+
 //components
 import { Loader } from '../Loader/Loader'
 
@@ -25,27 +28,13 @@ export const PageWork = () => {
     setContentfulEntries,
   ] = useState<EntryCollection<any> | null>(null)
 
-  const fetchContentful = async () => {
-    try {
-      if (mounted.current) {
-        const res = await CONTENTFUL_CLIENT.getEntries<IContentfulPortfolioEntry>(
-          {
-            content_type: CONTENTFUL_ENTRY_TYPE,
-          }
-        )
-        setContentfulEntries(res)
-      }
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
   useEffect(() => {
-    fetchContentful()
-
-    return () => {
-      mounted.current = false
-    }
+    useFetchContentful<IContentfulPortfolioEntry>({
+      contentfulClient: CONTENTFUL_CLIENT,
+      countentfulEntryType: CONTENTFUL_ENTRY_TYPE,
+      mountedRef: mounted,
+      setState: setContentfulEntries,
+    })
   }, [])
 
   return (
