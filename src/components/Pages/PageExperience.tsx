@@ -20,7 +20,7 @@ const CONTENTFUL_CLIENT = createClient({
   accessToken: CONTENTFUL_ACCESS_TOKEN,
 })
 
-export const PageExperience = () => {
+export const PageExperience = React.memo(() => {
   const mounted = useRef<Boolean>(true)
   const [
     contentfulEntries,
@@ -68,4 +68,4 @@ export const PageExperience = () => {
       <Link to='/work'>Next</Link>
     </>
   )
-}
+})
