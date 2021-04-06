@@ -1,22 +1,28 @@
-// third party types
-import { ContentfulClientApi, EntryCollection } from 'contentful'
+// packages
+import { createClient, ContentfulClientApi, EntryCollection } from 'contentful'
 
 export const useCustomProp = (property: string) =>
   getComputedStyle(document.documentElement).getPropertyValue(property)
 
 export const useFetchContentful = async <T,>({
-  contentfulClient,
-  countentfulEntryType,
+  contentfulEntryType,
   mountedRef,
   setState,
 }: IPropsUseFetchContentful<
   ContentfulClientApi,
   EntryCollection<any>
 >): Promise<void> => {
+  const CONTENTFUL_SPACE = process.env.CONTENTFUL_SPACE
+  const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN
+  const CONTENTFUL_CLIENT = createClient({
+    space: CONTENTFUL_SPACE,
+    accessToken: CONTENTFUL_ACCESS_TOKEN,
+  })
+
   try {
     if (mountedRef.current) {
-      const res = await contentfulClient.getEntries<T>({
-        content_type: countentfulEntryType,
+      const res = await CONTENTFUL_CLIENT.getEntries<T>({
+        content_type: contentfulEntryType,
       })
       setState(res)
     }
@@ -42,6 +48,5 @@ export const useFilterContentfulByTag = ({
       return entry
     }
   })
-  console.log(filteredDown)
   return filteredDown
 }
