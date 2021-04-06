@@ -8,6 +8,7 @@ import styled from 'styled-components'
 
 // components
 import { Loader } from '../Loader/Loader'
+import { THEME } from '~/styles/GlobalTheme'
 
 // styled
 const StyledShots__Grid = styled.div`
@@ -16,9 +17,18 @@ const StyledShots__Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `
 
+const StyledShots__ImgWrapper = styled.div`
+  padding-top: 75%;
+  position: relative;
+  background-color: var(--color-gray-dark);
+`
+
 const StyledShots__Img = styled.img`
+  position: absolute;
   display: block;
   max-width: 100%;
+  top: 0;
+  left: 0;
 `
 
 const StyledShots__ViewMore = styled.a`
@@ -71,10 +81,9 @@ export const PageDribbble = () => {
         <StyledShots__Grid>
           {shots.map(shot => (
             <a key={shot.id} href={shot.html_url} target='_blank'>
-              <StyledShots__Img
-                alt={shot.title}
-                src={shot.images.hidpi}
-              ></StyledShots__Img>
+              <StyledShots__ImgWrapper>
+                <StyledShots__Img alt={shot.title} src={shot.images.hidpi} />
+              </StyledShots__ImgWrapper>
             </a>
           ))}
           <StyledShots__ViewMore href={PROFILE_URL}>
