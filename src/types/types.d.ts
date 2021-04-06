@@ -14,7 +14,7 @@ interface IRoutes {
 }
 
 interface IContentfulBlogEntry {
-  title: string
+  body: any
 }
 
 interface IContentfulPortfolioEntry {

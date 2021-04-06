@@ -8,7 +8,6 @@ import styled from 'styled-components'
 
 // components
 import { Loader } from '../Loader/Loader'
-import { THEME } from '~/styles/GlobalTheme'
 
 // styled
 const StyledShots__Grid = styled.div`
