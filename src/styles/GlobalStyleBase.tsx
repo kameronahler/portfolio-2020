@@ -38,11 +38,18 @@ export const GlobalStyleBase = createGlobalStyle`
   }
 
   a {
-    color: var(--color-primary);
+    color: inherit;
     text-decoration: unset;
+  }
 
-    &:hover {
-      text-decoration: underline;
+  a,
+  button {
+    &:focus {
+      outline: none;
+    }
+    &:focus-visible {
+      outline: 1px dashed var(--color-text);
+      outline-offset: 0.5rem;
     }
   }
 `
