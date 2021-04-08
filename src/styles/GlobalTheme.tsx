@@ -9,7 +9,7 @@ export const THEME = {
     pageTransitionMs: '500ms',
   },
   font: {
-    sans: `-apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans: `'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol'`,
   },
