@@ -14,7 +14,7 @@ import { THEME } from '../../styles/GlobalTheme'
 // styled
 const StyledSidebar = styled.nav`
   @media (min-width: ${THEME.w.screenSm}) {
-    background-color: var(--color-gray-dark);
+    background-color: var(--color-bg-dark);
     height: 100vh;
     left: 0;
     position: absolute;

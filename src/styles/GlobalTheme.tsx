@@ -1,8 +1,7 @@
 export const THEME = {
   color: {
-    gray: '#aaa',
-    grayLight: '#ddd',
-    grayDark: '#666',
+    bg: '#aaa',
+    bgDark: '#666',
   },
   duration: {
     pageTransition: '500',

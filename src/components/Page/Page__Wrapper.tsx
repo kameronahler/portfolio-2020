@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 // styled
 const StyledPage__Wrapper = styled.div`
-  background-color: var(--color-gray);
+  background-color: var(--color-bg);
   height: 100vh;
   margin-left: var(--w-sidebar);
   overflow-y: auto;

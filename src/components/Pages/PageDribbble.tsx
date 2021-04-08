@@ -19,7 +19,7 @@ const StyledShots__Grid = styled.div`
 const StyledShots__ImgWrapper = styled.div`
   padding-top: 75%;
   position: relative;
-  background-color: var(--color-gray-dark);
+  background-color: var(--color-bg-dark);
 `
 
 const StyledShots__Img = styled.img`
