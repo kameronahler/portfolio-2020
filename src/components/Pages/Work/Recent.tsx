@@ -4,29 +4,29 @@ import React, { useState, useRef, useEffect } from 'react'
 // packages
 import { EntryCollection } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichText'
 
 // hooks
 import { useFetchContentful } from '../../../hooks/hooks'
 
 // components
-import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichText'
+import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 import { Loader } from '../../Loader/Loader'
-import { PageHeader } from '../../PageHeader/PageHeader'
 
 // constants
-const CONTENTFUL_ENTRY_TYPE = 'blogPost'
+const CONTENTFUL_TYPE = 'blogPost'
 
-// styled
-export const PageBlog = React.memo(() => {
-  const mounted = useRef<Boolean>(true)
+export const Recent = () => {
   const [
     contentfulEntries,
     setContentfulEntries,
-  ] = useState<EntryCollection<IContentfulBlogEntry> | null>(null)
+  ] = useState<EntryCollection<any> | null>(null)
+
+  const mounted = useRef<Boolean>(true)
 
   useEffect(() => {
-    useFetchContentful<IContentfulBlogEntry>({
-      contentfulEntryType: CONTENTFUL_ENTRY_TYPE,
+    useFetchContentful<IContentfulPortfolioEntry>({
+      contentfulEntryType: CONTENTFUL_TYPE,
       mountedRef: mounted,
       setState: setContentfulEntries,
     })
@@ -34,7 +34,6 @@ export const PageBlog = React.memo(() => {
 
   return (
     <>
-      <PageHeader title={'Blog post'} />
       {contentfulEntries ? (
         <section>
           {contentfulEntries.items
@@ -58,12 +57,10 @@ export const PageBlog = React.memo(() => {
             ))}
         </section>
       ) : (
-        <div
-          style={{ display: 'grid', minHeight: '50vh', placeItems: 'center' }}
-        >
+        <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />
-        </div>
+        </LoaderWrapper>
       )}
     </>
   )
-})
+}

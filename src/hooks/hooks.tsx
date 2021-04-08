@@ -1,6 +1,5 @@
 // packages
 import { createClient, ContentfulClientApi, EntryCollection } from 'contentful'
-import { BLOCKS, Block } from '@contentful/rich-text-types'
 
 export const useCustomProp = (property: string) =>
   getComputedStyle(document.documentElement).getPropertyValue(property)

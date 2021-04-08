@@ -6,8 +6,8 @@ import axios, { CancelTokenSource } from 'axios'
 import styled from 'styled-components'
 
 // components
+import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 import { Loader } from '../../Loader/Loader'
-import { PageHeader } from '../../PageHeader/PageHeader'
 
 // styled
 const StyledShots__Grid = styled.div`
@@ -43,7 +43,7 @@ const CANCEL_FETCH_MSG = 'Component unmounted before completing request'
 const ERROR_FETCH_MSG = 'Unable to load Dribbble shots'
 const PROFILE_URL = 'https://dribbble.com/kamtr0n'
 
-export const PageDribbble = React.memo(() => {
+export const Dribbble = () => {
   const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
 
   const fetchDribbble = async (source: CancelTokenSource) => {
@@ -73,7 +73,6 @@ export const PageDribbble = React.memo(() => {
 
   return (
     <>
-      <PageHeader title={'Dribbble'} />
       {shots ? (
         <StyledShots__Grid>
           {shots.map(shot => (
@@ -88,12 +87,10 @@ export const PageDribbble = React.memo(() => {
           </StyledShots__ViewMore>
         </StyledShots__Grid>
       ) : (
-        <div
-          style={{ display: 'grid', minHeight: '50vh', placeItems: 'center' }}
-        >
+        <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />
-        </div>
+        </LoaderWrapper>
       )}
     </>
   )
-})
+}
