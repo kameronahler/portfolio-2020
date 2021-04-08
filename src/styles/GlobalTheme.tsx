@@ -3,7 +3,9 @@ export const THEME = {
     bg: '#f8f8f8',
     bgDark: '#eeeeee',
     primary: '#4c36d3',
+    primaryLight: '#9988ff',
     text: '#252427',
+    textLight: '#252427',
   },
   duration: {
     pageTransition: '500',
