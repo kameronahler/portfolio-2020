@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom'
 import { EntryCollection } from 'contentful'
 
 // hooks
-import { useFetchContentful, useFilterContentfulByTag } from '../../hooks/hooks'
+import {
+  useFetchContentful,
+  useFilterContentfulByTag,
+} from '../../../hooks/hooks'
 
 // components
-import { Loader } from '../Loader/Loader'
-import { PageHeader } from '../PageHeader/PageHeader'
+import { Loader } from '../../Loader/Loader'
+import { PageHeader } from '../../PageHeader/PageHeader'
 
 // constants
 const CONTENTFUL_ENTRY_TYPE = 'resumeItem'

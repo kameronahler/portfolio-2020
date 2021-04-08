@@ -1,10 +1,10 @@
-import { PageHome } from './components/Pages/PageHome'
-import { PageContact } from './components/Pages/PageContact'
-import { PageExperience } from './components/Pages/PageExperience'
-import { PageWork } from './components/Pages/PageWork'
-import { PageBlog } from './components/Pages/PageBlog'
-import { PageDribbble } from './components/Pages/PageDribbble'
-import { PageAbout } from './components/Pages/PageAbout'
+import { PageHome } from './components/Pages/Home/PageHome'
+import { PageContact } from './components/Pages/Contact/PageContact'
+import { PageExperience } from './components/Pages/Experience/PageExperience'
+import { PageWork } from './components/Pages/Work/PageWork'
+import { PageBlog } from './components/Pages/Blog/PageBlog'
+import { PageDribbble } from './components/Pages/Dribbble/PageDribbble'
+import { PageAbout } from './components/Pages/About/PageAbout'
 
 export const routes = [
   { name: 'home', component: PageHome, path: '/' },

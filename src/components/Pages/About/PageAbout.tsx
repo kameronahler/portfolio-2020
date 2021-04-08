@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // components
-import { PageHeader } from '../PageHeader/PageHeader'
+import { PageHeader } from '../../PageHeader/PageHeader'
 
 export const PageAbout = () => {
   return (

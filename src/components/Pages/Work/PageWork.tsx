@@ -7,11 +7,11 @@ import { EntryCollection } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // hooks
-import { useFetchContentful } from '../../hooks/hooks'
+import { useFetchContentful } from '../../../hooks/hooks'
 
 //components
-import { Loader } from '../Loader/Loader'
-import { PageHeader } from '../PageHeader/PageHeader'
+import { Loader } from '../../Loader/Loader'
+import { PageHeader } from '../../PageHeader/PageHeader'
 
 // constants
 const CONTENTFUL_ENTRY_TYPE = 'portfolioPost'

@@ -7,8 +7,8 @@ import axios, { CancelTokenSource } from 'axios'
 import styled from 'styled-components'
 
 // components
-import { Loader } from '../Loader/Loader'
-import { PageHeader } from '../PageHeader/PageHeader'
+import { Loader } from '../../Loader/Loader'
+import { PageHeader } from '../../PageHeader/PageHeader'
 
 // styled
 const StyledShots__Grid = styled.div`

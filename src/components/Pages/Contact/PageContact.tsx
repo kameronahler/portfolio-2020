@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import kwesforms from 'kwesforms'
 
 // components
-import { PageHeader } from '../PageHeader/PageHeader'
+import { PageHeader } from '../../PageHeader/PageHeader'
 
 export const PageContact = () => {
   useEffect(() => {
