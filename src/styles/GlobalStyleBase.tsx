@@ -16,6 +16,7 @@ export const GlobalStyleBase = createGlobalStyle`
   }
 
   body {
+    color: var(--color-text);
     font-family: var(--font-sans);
     font-size: 1em;
     height: 100%;
@@ -37,6 +38,7 @@ export const GlobalStyleBase = createGlobalStyle`
   }
 
   a {
+    color: var(--color-primary);
     text-decoration: unset;
 
     &:hover {

@@ -2,6 +2,8 @@ export const THEME = {
   color: {
     bg: '#f8f8f8',
     bgDark: '#eeeeee',
+    primary: '#4c36d3',
+    text: '#252427',
   },
   duration: {
     pageTransition: '500',
@@ -13,7 +15,7 @@ export const THEME = {
     'Segoe UI Symbol'`,
   },
   lineHeight: {
-    normal: '1.5',
+    normal: '1.625',
     heading: '1.2',
   },
   w: {
