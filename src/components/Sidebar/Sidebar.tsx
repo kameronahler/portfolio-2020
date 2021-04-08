@@ -14,6 +14,8 @@ import { THEME } from '../../styles/GlobalTheme'
 // styled
 const StyledSidebar = styled.nav`
   @media (min-width: ${THEME.w.screenSm}) {
+    align-items: flex-start;
+    display: flex;
     grid-column: 1 / 4;
     height: 100vh;
     padding: 2rem 0 2rem 2rem;

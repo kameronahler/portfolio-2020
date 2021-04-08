@@ -4,14 +4,14 @@ import React from 'react'
 // --- order matters here ---
 import { GlobalStyleVars } from './GlobalStyleVars'
 import { GlobalStyleNormalize } from './GlobalStyleNormalize'
-import { GlobalStyleBase } from './GlobalStyleBase'
+import { GlobalStyleHTML } from './GlobalStyleHTML'
 import { GlobalStyleHelpers } from './GlobalStyleHelpers'
 
 export const GlobalStyle = () => (
   <>
     <GlobalStyleVars />
     <GlobalStyleNormalize />
-    <GlobalStyleBase />
+    <GlobalStyleHTML />
     <GlobalStyleHelpers />
   </>
 )

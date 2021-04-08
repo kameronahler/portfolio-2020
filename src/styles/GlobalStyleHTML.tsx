@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyleBase = createGlobalStyle`
+export const GlobalStyleHTML = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
@@ -16,6 +16,7 @@ export const GlobalStyleBase = createGlobalStyle`
   }
 
   body {
+    background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
     font-size: 1em;

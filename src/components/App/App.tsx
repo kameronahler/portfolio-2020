@@ -16,6 +16,8 @@ import { THEME } from '../../styles/GlobalTheme'
 // styled
 const StyledGrid = styled.div`
   background-color: var(--color-bg);
+  margin: 0 auto;
+  max-width: var(--w-screen-xl);
 
   @media (min-width: ${THEME.w.screenSm}) {
     display: grid;
