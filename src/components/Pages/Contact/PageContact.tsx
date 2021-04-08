@@ -1,6 +1,5 @@
 // react
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 // packages
 import kwesforms from 'kwesforms'
@@ -38,7 +37,6 @@ export const PageContact = () => {
         </div>
         <button type='submit'>Submit</button>
       </form>
-      <Link to='/about'>Previous</Link>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 // react
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 // packages
 import axios, { CancelTokenSource } from 'axios'
@@ -95,9 +94,6 @@ export const PageDribbble = React.memo(() => {
           <Loader size={50} strokeWidth={6} />
         </div>
       )}
-
-      <Link to='/blog'>Previous </Link>
-      <Link to='/about'>Next</Link>
     </>
   )
 })

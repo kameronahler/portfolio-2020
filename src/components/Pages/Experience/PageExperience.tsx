@@ -1,6 +1,5 @@
 // react
 import React, { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 // packages
 import { EntryCollection } from 'contentful'
@@ -60,9 +59,6 @@ export const PageExperience = React.memo(() => {
           <Loader size={50} strokeWidth={6} />
         </div>
       )}
-
-      <Link to='/'>Previous </Link>
-      <Link to='/work'>Next</Link>
     </>
   )
 })

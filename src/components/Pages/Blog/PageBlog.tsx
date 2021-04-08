@@ -1,6 +1,5 @@
 // react
 import React, { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 // packages
 import { EntryCollection } from 'contentful'
@@ -65,9 +64,6 @@ export const PageBlog = React.memo(() => {
           <Loader size={50} strokeWidth={6} />
         </div>
       )}
-
-      <Link to='/work'>Previous </Link>
-      <Link to='/dribbble'>Next</Link>
     </>
   )
 })

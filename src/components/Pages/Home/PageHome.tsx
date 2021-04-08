@@ -1,6 +1,5 @@
 // react
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 // components
 import { PageHeader } from '../../PageHeader/PageHeader'
@@ -20,7 +19,6 @@ export const PageHome = () => {
           <h2>How can I help?</h2>
         </Header>
       </section>
-      <Link to='/experience'>Next</Link>
     </>
   )
 }

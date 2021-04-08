@@ -58,9 +58,6 @@ export const PageWork = React.memo(() => {
           <Loader size={50} strokeWidth={6} />
         </div>
       )}
-
-      <Link to='/experience'>Previous </Link>
-      <Link to='/blog'>Next</Link>
     </>
   )
 })
