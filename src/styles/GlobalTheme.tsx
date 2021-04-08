@@ -1,7 +1,7 @@
 export const THEME = {
   color: {
-    bg: '#aaa',
-    bgDark: '#666',
+    bg: '#f8f8f8',
+    bgDark: '#eeeeee',
   },
   duration: {
     pageTransition: '500',

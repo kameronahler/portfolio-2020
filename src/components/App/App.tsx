@@ -15,6 +15,8 @@ import { THEME } from '../../styles/GlobalTheme'
 
 // styled
 const StyledGrid = styled.div`
+  background-color: var(--color-bg);
+
   @media (min-width: ${THEME.w.screenSm}) {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));

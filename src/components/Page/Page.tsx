@@ -14,7 +14,6 @@ import { THEME } from '../../styles/GlobalTheme'
 
 // styled
 const StyledPage__Wrapper = styled.div`
-  background-color: var(--color-bg);
   height: 100vh;
   overflow-y: auto;
   padding: 2rem;
