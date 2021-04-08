@@ -4,6 +4,7 @@ import React from 'react'
 // components
 import { PageHeader } from '../../PageHeader/PageHeader'
 import { Header } from '../../Header/Header'
+import { RoleContent } from './RoleContent'
 
 export const PageHome = () => {
   return (
@@ -15,9 +16,10 @@ export const PageHome = () => {
       </PageHeader>
 
       <section>
-        <Header srOnly={true}>
+        <Header>
           <h2>How can I help?</h2>
         </Header>
+        <RoleContent />
       </section>
     </>
   )
