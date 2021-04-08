@@ -34,3 +34,8 @@ interface ILoaderSVG {
   size: number
   strokeWidth: number
 }
+
+interface IHeader {
+  children: React.ReactChild
+  srOnly?: boolean
+}

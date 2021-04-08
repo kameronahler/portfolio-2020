@@ -4,17 +4,22 @@ import { Link } from 'react-router-dom'
 
 // components
 import { PageHeader } from '../../PageHeader/PageHeader'
+import { Header } from '../../Header/Header'
 
 export const PageHome = () => {
   return (
     <>
-      <PageHeader title={'Home'} />
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
-        aliquam vel laudantium deleniti nobis reprehenderit eaque necessitatibus
-        itaque quasi, nisi voluptas quod ea, dolores quibusdam amet? Qui rem
-        fuga eligendi.
-      </p>
+      <PageHeader title={'Ahoy hoy 👋'}>
+        <p className='text-lead'>
+          Hello! I'm Kameron – thanks for stopping by.
+        </p>
+      </PageHeader>
+
+      <section>
+        <Header srOnly={true}>
+          <h2>How can I help?</h2>
+        </Header>
+      </section>
       <Link to='/experience'>Next</Link>
     </>
   )

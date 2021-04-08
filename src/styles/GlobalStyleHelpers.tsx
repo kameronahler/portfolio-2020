@@ -24,4 +24,8 @@ export const GlobalStyleHelpers = createGlobalStyle`
       -webkit-text-fill-color: transparent;
     }
   }
+
+  .text-lead {
+    font-size: 1.25rem;
+  }
 `
