@@ -45,7 +45,8 @@ export const Sidebar = () => {
       <StyledSidebar__Li key={name}>
         <NavLink
           activeStyle={{ fontWeight: 'bold' }}
-          activeClassName={null}
+          activeClassName={'link-gradient'}
+          className='link-gradient-hover'
           exact={true}
           onClick={
             location.pathname === path
