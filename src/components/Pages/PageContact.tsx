@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 // packages
 import kwesforms from 'kwesforms'
 
+// components
+import { PageHeader } from '../PageHeader/PageHeader'
+
 export const PageContact = () => {
   useEffect(() => {
     kwesforms.init()
@@ -12,7 +15,7 @@ export const PageContact = () => {
 
   return (
     <div>
-      <h1>Contact</h1>
+      <PageHeader title={'Contact'} />
       <form
         className='kwes-form'
         action='https://kwes.io/api/foreign/forms/3VyNJ6R5XfH0mSPKjrFW'

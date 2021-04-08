@@ -2,10 +2,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// components
+import { PageHeader } from '../PageHeader/PageHeader'
+
 export const PageHome = () => {
   return (
     <>
-      <h1>Home</h1>
+      <PageHeader title={'Home'} />
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
         aliquam vel laudantium deleniti nobis reprehenderit eaque necessitatibus

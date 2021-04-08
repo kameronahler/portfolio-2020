@@ -11,6 +11,7 @@ import { useFetchContentful } from '../../hooks/hooks'
 
 //components
 import { Loader } from '../Loader/Loader'
+import { PageHeader } from '../PageHeader/PageHeader'
 
 // constants
 const CONTENTFUL_ENTRY_TYPE = 'portfolioPost'
@@ -32,7 +33,7 @@ export const PageWork = React.memo(() => {
 
   return (
     <>
-      <h1>Portfolio Posts</h1>
+      <PageHeader title={'Portfolio post'} />
       {contentfulEntries ? (
         contentfulEntries.items
           .map(entry => {

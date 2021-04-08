@@ -10,6 +10,7 @@ import { useFetchContentful, useFilterContentfulByTag } from '../../hooks/hooks'
 
 // components
 import { Loader } from '../Loader/Loader'
+import { PageHeader } from '../PageHeader/PageHeader'
 
 // constants
 const CONTENTFUL_ENTRY_TYPE = 'resumeItem'
@@ -39,7 +40,7 @@ export const PageExperience = React.memo(() => {
 
   return (
     <>
-      <h1>Experience</h1>
+      <PageHeader title={'Experience'} />
       {contentfulEntries ? (
         <section>
           {filteredContentfulEntries.map(item => (

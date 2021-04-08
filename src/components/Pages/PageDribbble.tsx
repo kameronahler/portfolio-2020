@@ -8,6 +8,7 @@ import styled from 'styled-components'
 
 // components
 import { Loader } from '../Loader/Loader'
+import { PageHeader } from '../PageHeader/PageHeader'
 
 // styled
 const StyledShots__Grid = styled.div`
@@ -73,9 +74,7 @@ export const PageDribbble = React.memo(() => {
 
   return (
     <>
-      <div>
-        <h1>Dribbble</h1>
-      </div>
+      <PageHeader title={'Dribbble'} />
       {shots ? (
         <StyledShots__Grid>
           {shots.map(shot => (

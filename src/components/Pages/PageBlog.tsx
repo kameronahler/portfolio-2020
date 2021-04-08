@@ -12,6 +12,7 @@ import { useFetchContentful } from '../../hooks/hooks'
 // components
 import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../Contentful/RichText'
 import { Loader } from '../Loader/Loader'
+import { PageHeader } from '../PageHeader/PageHeader'
 
 // constants
 const CONTENTFUL_ENTRY_TYPE = 'blogPost'
@@ -34,7 +35,7 @@ export const PageBlog = React.memo(() => {
 
   return (
     <>
-      <h1>blogPost</h1>
+      <PageHeader title={'Blog post'} />
       {contentfulEntries ? (
         <section>
           {contentfulEntries.items
