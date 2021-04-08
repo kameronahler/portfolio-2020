@@ -31,7 +31,7 @@ export const GlobalStyleBase = createGlobalStyle`
   }
 
   ul {
-    list-style: unset;
+    list-style: none;
     margin: unset;
     padding-left: unset;
   }
