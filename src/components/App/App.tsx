@@ -2,22 +2,41 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+// package
+import styled from 'styled-components'
+
 // components
 import { GlobalStyle } from '../../styles/GlobalStyle'
 import { Sidebar } from '../Sidebar/Sidebar'
 import { Page } from '../Page/Page'
+
+// theme
+import { THEME } from '../../styles/GlobalTheme'
+
+// styled
+const StyledGrid = styled.div`
+  @media (min-width: ${THEME.w.screenSm}) {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+`
+const StyledMain = styled.main`
+  @media (min-width: ${THEME.w.screenSm}) {
+    grid-column: 4 / -1;
+  }
+`
 
 export const App = () => {
   return (
     <>
       <GlobalStyle />
       <Router>
-        <header>
+        <StyledGrid>
           <Sidebar />
-        </header>
-        <main>
-          <Page />
-        </main>
+          <StyledMain>
+            <Page />
+          </StyledMain>
+        </StyledGrid>
       </Router>
     </>
   )

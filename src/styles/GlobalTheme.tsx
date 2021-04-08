@@ -21,6 +21,5 @@ export const THEME = {
     screenMd: '62rem',
     screenLg: '75rem',
     screenXl: '90rem',
-    sidebar: '18.75rem',
   },
 }

@@ -15,17 +15,26 @@ import { THEME } from '../../styles/GlobalTheme'
 const StyledSidebar = styled.nav`
   @media (min-width: ${THEME.w.screenSm}) {
     background-color: var(--color-bg-dark);
+    grid-column: 1 / 4;
     height: 100vh;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: var(--w-sidebar);
+    padding: 2rem 0 2rem 2rem;
   } ;
 `
 
-const StyledObjNavLinkActive = {
-  fontWeight: 'bold',
-}
+const StyledSidebar__Ul = styled.ul`
+  @media (min-width: ${THEME.w.screenSm}) {
+    display: grid;
+    row-gap: 1rem;
+  }
+`
+
+const StyledSidebar__Li = styled.li`
+  a {
+    @media (min-width: ${THEME.w.screenSm}) {
+      display: inline-block;
+    }
+  }
+`
 
 export const Sidebar = () => {
   const location: ILocation = useLocation()
@@ -34,9 +43,9 @@ export const Sidebar = () => {
     const title = name.charAt(0).toUpperCase() + name.slice(1)
 
     return (
-      <li key={name}>
+      <StyledSidebar__Li key={name}>
         <NavLink
-          activeStyle={StyledObjNavLinkActive}
+          activeStyle={{ fontWeight: 'bold' }}
           activeClassName={null}
           exact={true}
           onClick={
@@ -50,13 +59,13 @@ export const Sidebar = () => {
         >
           {title}
         </NavLink>
-      </li>
+      </StyledSidebar__Li>
     )
   })
 
   return (
     <StyledSidebar>
-      <ul>{jsxListItems}</ul>
+      <StyledSidebar__Ul>{jsxListItems}</StyledSidebar__Ul>
     </StyledSidebar>
   )
 }
