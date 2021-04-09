@@ -5,7 +5,7 @@ export const THEME = {
     primary: '#4c36d3',
     primaryLight: '#9988ff',
     text: '#252427',
-    textLight: '#252427',
+    textLight: '#706D76',
   },
   duration: {
     pageTransition: '500',

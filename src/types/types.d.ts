@@ -42,7 +42,7 @@ interface IHeader {
 
 interface IButtonIcon {
   ariaLabel: string
-  targetBlank: boolean
+  targetBlank?: boolean
   children?: React.ReactChild
   href?: string
   onClick?: CallableFunction
