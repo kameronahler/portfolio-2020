@@ -53,4 +53,11 @@ export const GlobalStyleHTML = createGlobalStyle`
       outline-offset: 0.5rem;
     }
   }
+
+  button {
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    padding: unset;
+  }
 `

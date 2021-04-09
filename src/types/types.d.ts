@@ -39,3 +39,11 @@ interface IHeader {
   children: React.ReactChild
   srOnly?: boolean
 }
+
+interface IButtonIcon {
+  ariaLabel: string
+  targetBlank: boolean
+  children?: React.ReactChild
+  href?: string
+  onClick?: CallableFunction
+}

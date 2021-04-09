@@ -1,6 +1,20 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyleHelpers = createGlobalStyle`
+  .btn-icon {
+    align-items: center;
+    border-radius: 9999px;
+    display: flex;
+    height: 4rem;
+    justify-content: center;
+    line-height: 1;
+    width: 4rem;
+
+    svg {
+      width: 2rem;
+    }
+  }
+
   .link-gradient {
     background: var(--color-primary) -webkit-linear-gradient(
       45deg,
