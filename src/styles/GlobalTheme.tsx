@@ -21,9 +21,10 @@ export const THEME = {
     heading: '1.2',
   },
   w: {
-    screenSm: '36rem',
-    screenMd: '62rem',
-    screenLg: '75rem',
-    screenXl: '90rem',
+    screenSm: '36rem', // 576
+    screenMd: '64rem', // 1024
+    screenDesktop: '64rem',
+    screenLg: '75rem', // 1200
+    screenXl: '90rem', // 1440
   },
 }

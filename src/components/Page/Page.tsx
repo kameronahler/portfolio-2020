@@ -14,7 +14,6 @@ import { THEME } from '../../styles/GlobalTheme'
 
 // styled
 const StyledPage__Wrapper = styled.div`
-  height: 100vh;
   overflow-y: auto;
   padding: 2rem;
   position: relative;
@@ -23,28 +22,36 @@ const StyledPage__Wrapper = styled.div`
 const StyledPage__Transition = styled.div`
   &.enter-active,
   &.exit-active {
-    transition-duration: var(--duration-page-transition-ms);
-    transition-property: opacity, transform;
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      transition-duration: var(--duration-page-transition-ms);
+      transition-property: opacity, transform;
+    }
   }
 
   &.enter {
-    opacity: 0.01;
-    transform: translateX(2rem);
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      opacity: 0.01;
+      transform: translateX(2rem);
+    }
   }
 
   &.enter-active {
-    opacity: 1;
-    transform: translateX(0);
-    transition-delay: var(--duration-page-transition-ms);
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: var(--duration-page-transition-ms);
+    }
   }
 
   &.exit-active {
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    transform: translateX(2rem);
-    transition-timing-function: ease-in;
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transform: translateX(2rem);
+      transition-timing-function: ease-in;
+    }
   }
 `
 

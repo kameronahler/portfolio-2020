@@ -19,13 +19,13 @@ const StyledGrid = styled.div`
   margin: 0 auto;
   max-width: var(--w-screen-xl);
 
-  @media (min-width: ${THEME.w.screenSm}) {
+  @media (min-width: ${THEME.w.screenDesktop}) {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 `
 const StyledMain = styled.main`
-  @media (min-width: ${THEME.w.screenSm}) {
+  @media (min-width: ${THEME.w.screenDesktop}) {
     grid-column: 4 / -1;
   }
 `
