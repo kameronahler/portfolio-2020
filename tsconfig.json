@@ -12,5 +12,5 @@
     "types": ["node"],
     "target": "es2017"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "src/types/assets/parcel.d.ts"]
 }
