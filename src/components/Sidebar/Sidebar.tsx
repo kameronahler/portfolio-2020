@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import { routes } from '../../routes'
 
 // theme
-import { THEME } from '../../styles/GlobalTheme'
+import { THEME } from '../../styles/Theme'
 
 // components
 import { Social } from './Social'

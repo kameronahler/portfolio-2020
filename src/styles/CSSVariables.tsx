@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { THEME } from './GlobalTheme'
+import { THEME } from './Theme'
 
 const camelToDash = (string: string) =>
   string.replace(/([A-Z])/g, function ($1) {
@@ -21,7 +21,7 @@ const getVars = () => {
   return varsArr
 }
 
-export const GlobalStyleVars = createGlobalStyle`
+export const CSSVariables = createGlobalStyle`
   :root {
     ${getVars().join('')}
   }

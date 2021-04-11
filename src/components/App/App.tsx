@@ -6,12 +6,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import styled from 'styled-components'
 
 // components
-import { GlobalStyle } from '../../styles/GlobalStyle'
+import { Styles } from '../../styles/Styles'
 import { Sidebar } from '../Sidebar/Sidebar'
 import { Page } from '../Page/Page'
 
 // theme
-import { THEME } from '../../styles/GlobalTheme'
+import { THEME } from '../../styles/Theme'
 
 // styled
 const StyledGrid = styled.div`
@@ -33,7 +33,7 @@ const StyledMain = styled.main`
 export const App = () => {
   return (
     <>
-      <GlobalStyle />
+      <Styles />
       <Router>
         <StyledGrid>
           <Sidebar />

@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import { routes } from '../../routes'
 
 // theme
-import { THEME } from '../../styles/GlobalTheme'
+import { THEME } from '../../styles/Theme'
 
 // styled
 const StyledPage__Wrapper = styled.div`

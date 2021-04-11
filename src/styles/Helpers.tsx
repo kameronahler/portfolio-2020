@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyleHelpers = createGlobalStyle`
+export const Helpers = createGlobalStyle`
   .link-gradient {
     background: var(--color-primary) -webkit-linear-gradient(
       45deg,
