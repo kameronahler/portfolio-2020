@@ -33,6 +33,16 @@ export const THEME = {
     normal: '1.625',
     heading: '1.2',
   },
+  p: {
+    card: '2rem',
+  },
+  rounded: {
+    card: '0.125rem',
+  },
+  shadow: {
+    card:
+      '0 12px 32px -12px rgba(0, 0, 0, 0.1), 0 6px 32px -12px rgba(78, 55, 212, 0.2);',
+  },
   w: {
     screenSm: '36rem', // 576
     screenMd: '64rem', // 1024

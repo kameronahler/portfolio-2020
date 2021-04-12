@@ -63,17 +63,16 @@ const StyledUl = styled.ul`
 
   &::before {
     background-color: var(--color-overlay);
-    border-radius: 0.125rem;
-    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.1),
-      0 6px 32px -12px rgba(78, 55, 212, 0.2);
+    border-radius: var(--rounded-card);
+    box-shadow: var(--shadow-card);
     content: '';
-    height: calc(100% + 4rem);
-    left: -2rem;
+    height: calc(100% + (2 * var(--p-card)));
+    left: calc(-1 * var(--p-card));
     position: absolute;
-    top: -2rem;
+    top: calc(-1 * var(--p-card));
     transform: translateY(-2rem);
     transition: var(--duration-normal-ms) var(--easing-cubic) transform;
-    width: calc(100% + 4rem);
+    width: calc(100% + (2 * var(--p-card)));
     z-index: -1;
   }
 

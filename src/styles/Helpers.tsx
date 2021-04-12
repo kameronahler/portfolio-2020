@@ -5,8 +5,10 @@ export const Helpers = createGlobalStyle`
     font-weight: 700;
   }
 
-  .p {
-    font-size: var(--font-size-base);
+  .card {
+    border-radius: var(--rounded-card);
+    box-shadow: var(--shadow-card);
+    padding: 2rem;
   }
 
   .h1 {
@@ -27,6 +29,10 @@ export const Helpers = createGlobalStyle`
 
   .hidden {
     display: none;
+  }
+
+  .lead {
+    font-size: var(--font-size-h4);
   }
 
   .link-gradient {
@@ -54,8 +60,8 @@ export const Helpers = createGlobalStyle`
     }
   }
 
-  .lead {
-    font-size: var(--font-size-h4);
+  .p {
+    font-size: var(--font-size-base);
   }
 
   .relative {
