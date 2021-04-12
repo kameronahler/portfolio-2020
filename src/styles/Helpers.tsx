@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const Helpers = createGlobalStyle`
+  .bold {
+    font-weight: 700;
+  }
+
   .link-gradient {
     background: var(--color-primary) -webkit-linear-gradient(
       45deg,
@@ -11,6 +15,7 @@ export const Helpers = createGlobalStyle`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
 
   .link-gradient-hover {
     &:hover {

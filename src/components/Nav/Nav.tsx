@@ -5,14 +5,13 @@ import { NavLink, useLocation } from 'react-router-dom'
 // packages
 import styled from 'styled-components'
 
-// routes
-import { routes } from '../../routes'
-
 // theme
 import { THEME } from '../../styles/Theme'
 
 // components
-import { Social } from './Social'
+import { SocialItems } from './Socialtems'
+import { PageItems } from './PageItems'
+import { Separator } from './Separator'
 
 // styled
 const StyledNav = styled.nav`
@@ -33,17 +32,6 @@ const StyledNav = styled.nav`
     grid-column: 1 / 4;
     position: static;
     width: unset;
-  }
-`
-
-const StyledUl = styled.ul`
-  display: grid;
-  row-gap: 1rem;
-`
-
-const StyledLi = styled.li`
-  a {
-    display: inline-block;
   }
 `
 
@@ -72,33 +60,27 @@ const StyledMobileButton = styled.button`
   }
 `
 
-export const Sidebar = () => {
+const StyledUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
+
+const StyledLiHome = styled.li`
+  a {
+    align-items: center;
+    border-radius: 9999px;
+    color: var(--color-text);
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    width: 3rem;
+  }
+`
+
+export const Nav = () => {
   const location: ILocation = useLocation()
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
-
-  const jsxListItems = routes.map(({ name, path }: IRoutes) => {
-    const title = name.charAt(0).toUpperCase() + name.slice(1)
-
-    return (
-      <StyledLi key={name}>
-        <NavLink
-          activeStyle={{ fontWeight: 'bold' }}
-          activeClassName={'link-gradient'}
-          className='link-gradient-hover'
-          exact={true}
-          onClick={(e: Event) => {
-            if (location.pathname === path) {
-              e.preventDefault()
-            }
-            setMobileNavOpen(false)
-          }}
-          to={path}
-        >
-          {title}
-        </NavLink>
-      </StyledLi>
-    )
-  })
 
   return (
     <>
@@ -120,8 +102,31 @@ export const Sidebar = () => {
         id='nav'
         mobileNavOpen={mobileNavOpen}
       >
-        <StyledUl>{jsxListItems}</StyledUl>
-        <Social />
+        <StyledUl>
+          <StyledLiHome>
+            <NavLink
+              activeClassName={'link-gradient'}
+              className='bold'
+              exact={true}
+              onClick={(e: Event) => {
+                if (location.pathname === '/') {
+                  e.preventDefault()
+                }
+                setMobileNavOpen(false)
+              }}
+              to={'/'}
+            >
+              KA
+            </NavLink>
+          </StyledLiHome>
+          <Separator />
+
+          <PageItems setMobileNavOpen={setMobileNavOpen} location={location} />
+
+          <Separator />
+
+          <SocialItems />
+        </StyledUl>
       </StyledNav>
     </>
   )

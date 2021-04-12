@@ -6,6 +6,7 @@ export const THEME = {
     primaryLight: '#9988ff',
     text: '#252427',
     textLight: '#706D76',
+    textWhite: 'rgba(255,255,255,.9)',
   },
   duration: {
     pageTransition: '500',

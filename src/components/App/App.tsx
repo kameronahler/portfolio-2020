@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 // components
 import { Styles } from '../../styles/Styles'
-import { Sidebar } from '../Sidebar/Sidebar'
+import { Nav } from '../Nav/Nav'
 import { Page } from '../Page/Page'
 
 // theme
@@ -36,7 +36,7 @@ export const App = () => {
       <Styles />
       <Router>
         <StyledGrid>
-          <Sidebar />
+          <Nav />
           <StyledMain>
             <Page />
           </StyledMain>
