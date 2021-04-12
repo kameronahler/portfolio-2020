@@ -1,6 +1,9 @@
 // react
 import React from 'react'
 
+// packages
+import styled from 'styled-components'
+
 export const PageHeader = ({
   title,
   children,

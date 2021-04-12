@@ -21,12 +21,12 @@ const StyledGrid = styled.div`
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: 16rem repeat(12, minmax(0, 1fr));
   }
 `
 const StyledMain = styled.main`
   @media (min-width: ${THEME.w.screenDesktop}) {
-    grid-column: 4 / -1;
+    grid-column: 2 / -1;
   }
 `
 
@@ -35,7 +35,7 @@ export const App = () => {
     <>
       <Styles />
       <Router>
-        <StyledGrid>
+        <StyledGrid id='app'>
           <Nav />
           <StyledMain>
             <Page />

@@ -24,34 +24,35 @@ export const Base = createGlobalStyle`
     line-height: var(--line-height-normal);
   }
 
+  p {
+    margin-bottom: var(--font-size-base);
+    margin-top: unset;
+  }
+
   h1,
   h2,
   h3,
-  h4,
-  h5 {
+  h4 {
     line-height: var(--line-height-heading);
     margin-bottom: 1rem;
     margin-top: unset;
   }
 
   h1 {
-    font-size: 5.625rem;
+    font-size: var(--font-size-h1);
+    margin-bottom: 2rem;
   }
 
   h2 {
-    font-size: 4rem;
+    font-size: var(--font-size-h2);
   }
 
   h3 {
-    font-size: 2.8125rem;
+    font-size: var(--font-size-h3);
   }
 
   h4 {
-    font-size: 2rem;
-  }
-
-  h5 {
-    font-size: 1.375rem;
+    font-size: var(--font-size-h4);
   }
 
   ul {
@@ -80,6 +81,7 @@ export const Base = createGlobalStyle`
     background-color: unset;
     border: unset;
     cursor: pointer;
+    line-height: var(--line-height-heading);
     padding: unset;
   }
 `

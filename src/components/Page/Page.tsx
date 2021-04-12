@@ -14,9 +14,7 @@ import { THEME } from '../../styles/Theme'
 
 // styled
 const StyledPage__Wrapper = styled.div`
-  overflow-y: auto;
   padding: 2rem;
-  position: relative;
 `
 
 const StyledPage__Transition = styled.div`
@@ -25,6 +23,7 @@ const StyledPage__Transition = styled.div`
     @media (min-width: ${THEME.w.screenDesktop}) {
       transition-duration: var(--duration-page-transition-ms);
       transition-property: opacity, transform;
+      transition-animation-timing-function: var(--easing-cubic);
     }
   }
 
@@ -63,7 +62,7 @@ export const Page = () => {
 
   return (
     <StyledPage__Wrapper>
-      <TransitionGroup style={{ position: 'relative' }}>
+      <TransitionGroup className='relative'>
         <CSSTransition key={location.key} timeout={PAGE_TRANSITION_DURATION}>
           <StyledPage__Transition>
             <Switch location={location}>

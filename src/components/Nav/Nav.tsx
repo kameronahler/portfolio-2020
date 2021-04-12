@@ -29,7 +29,7 @@ const StyledNav = styled.nav`
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: flex;
-    grid-column: 1 / 4;
+    grid-column: 1 / 2;
     position: static;
     width: unset;
   }
@@ -75,6 +75,11 @@ const StyledLiHome = styled.li`
     height: 3rem;
     justify-content: center;
     width: 3rem;
+
+    &.active {
+      transition: var(--easing-cubic) var(--duration-normal-ms) transform;
+      transform: scale(1.2);
+    }
   }
 `
 
@@ -106,8 +111,8 @@ export const Nav = () => {
         <StyledUl>
           <StyledLiHome>
             <NavLink
-              activeClassName={'link-gradient'}
-              className='bold'
+              activeClassName={'link-gradient active'}
+              className='bold link-gradient-hover'
               exact={true}
               onClick={(e: Event) => {
                 if (location.pathname === '/') {

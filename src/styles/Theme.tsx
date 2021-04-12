@@ -2,20 +2,32 @@ export const THEME = {
   color: {
     bg: '#f8f8f8',
     bgDark: '#eeeeee',
+    overlay: '#ffffff',
     primary: '#4c36d3',
     primaryLight: '#9988ff',
     text: '#252427',
     textLight: '#706D76',
-    textWhite: 'rgba(255,255,255,.9)',
   },
   duration: {
+    normal: '250',
+    normalMs: '250ms',
     pageTransition: '500',
     pageTransitionMs: '500ms',
+  },
+  easing: {
+    cubic: 'cubic-bezier(.47,.12,.27,.83)',
   },
   font: {
     sans: `'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol'`,
+  },
+  fontSize: {
+    base: '1rem',
+    h1: '4rem',
+    h2: '2.8125rem',
+    h3: '2rem',
+    h4: '1.375rem',
   },
   lineHeight: {
     normal: '1.625',

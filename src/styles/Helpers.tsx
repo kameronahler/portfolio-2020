@@ -5,24 +5,28 @@ export const Helpers = createGlobalStyle`
     font-weight: 700;
   }
 
+  .p {
+    font-size: var(--font-size-base);
+  }
+
   .h1 {
-    font-size: 5.625rem;
+    font-size: var(--font-size-h1);
   }
 
   .h2 {
-    font-size: 4rem;
+    font-size: var(--font-size-h2);
   }
 
   .h3 {
-    font-size: 2.8125rem;
+    font-size: var(--font-size-h3);
   }
 
   .h4 {
-    font-size: 2rem;
+    font-size: var(--font-size-h4);
   }
 
-  .h5 {
-    font-size: 1.375rem;
+  .hidden {
+    display: none;
   }
 
   .link-gradient {
@@ -51,6 +55,10 @@ export const Helpers = createGlobalStyle`
   }
 
   .lead {
-    font-size: 1.25rem;
+    font-size: var(--font-size-h4);
+  }
+
+  .relative {
+    position: relative;
   }
 `

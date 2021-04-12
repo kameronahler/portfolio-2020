@@ -4,10 +4,15 @@ import { routes } from '../../routes'
 import styled from 'styled-components'
 
 const StyledLi = styled.li`
-  margin: 0.5rem 0;
-
   a {
     display: inline-block;
+    padding: 0.5rem 0.75rem;
+    transform-origin: 0 50%;
+
+    &.active {
+      transition: var(--easing-cubic) var(--duration-normal-ms) transform;
+      transform: scale(1.2) translateX(-0.1875rem);
+    }
   }
 `
 
@@ -18,7 +23,7 @@ export const PageItems = ({ location, setMobileNavOpen }) => {
     return path !== '/' ? (
       <StyledLi key={name}>
         <NavLink
-          activeClassName={'bold link-gradient'}
+          activeClassName={'active bold link-gradient'}
           className='link-gradient-hover'
           exact={true}
           onClick={(e: Event) => {

@@ -47,3 +47,8 @@ interface IButtonIcon {
   href?: string
   onClick?: CallableFunction
 }
+
+interface IHomeMenuOverlay {
+  dropdownExpanded: boolean
+  setDropdownExpanded: React.SetStateAction<any>
+}
