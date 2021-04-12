@@ -27,9 +27,31 @@ export const Base = createGlobalStyle`
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5 {
     line-height: var(--line-height-heading);
+    margin-bottom: 1rem;
     margin-top: unset;
+  }
+
+  h1 {
+    font-size: 5.625rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  h3 {
+    font-size: 2.8125rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+  }
+
+  h5 {
+    font-size: 1.375rem;
   }
 
   ul {

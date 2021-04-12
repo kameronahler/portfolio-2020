@@ -10,9 +10,7 @@ export const PageHome = () => {
   return (
     <>
       <PageHeader title={'Ahoy hoy 👋'}>
-        <p className='text-lead'>
-          Hello! I'm Kameron – thanks for stopping by.
-        </p>
+        <p className='h5'>Hello! I'm Kameron – thanks for stopping by.</p>
       </PageHeader>
 
       <section>

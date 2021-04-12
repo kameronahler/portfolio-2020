@@ -96,6 +96,7 @@ export const Nav = () => {
           <path fill='var(--color-text)' d='M0 32L32 0H0v32z' />
         </svg>
       </StyledMobileButton>
+
       <StyledNav
         aria-expanded={mobileNavOpen}
         aria-hidden={mobileNavOpen}

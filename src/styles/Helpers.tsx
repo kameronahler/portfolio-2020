@@ -5,6 +5,26 @@ export const Helpers = createGlobalStyle`
     font-weight: 700;
   }
 
+  .h1 {
+    font-size: 5.625rem;
+  }
+
+  .h2 {
+    font-size: 4rem;
+  }
+
+  .h3 {
+    font-size: 2.8125rem;
+  }
+
+  .h4 {
+    font-size: 2rem;
+  }
+
+  .h5 {
+    font-size: 1.375rem;
+  }
+
   .link-gradient {
     background: var(--color-primary) -webkit-linear-gradient(
       45deg,
@@ -30,7 +50,7 @@ export const Helpers = createGlobalStyle`
     }
   }
 
-  .text-lead {
+  .lead {
     font-size: 1.25rem;
   }
 `
