@@ -15,7 +15,6 @@ import { THEME } from '../../styles/Theme'
 
 // styled
 const StyledAppGrid = styled.div`
-  background-color: var(--color-bg);
   margin: 0 auto;
   max-width: var(--w-screen-xl);
   padding: var(--p-card);
