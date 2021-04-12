@@ -5,6 +5,7 @@ export const THEME = {
     overlay: '#ffffff',
     primary: '#4c36d3',
     primaryLight: '#9988ff',
+    accent: '#3DD8F0',
     text: '#252427',
     textLight: '#706D76',
   },

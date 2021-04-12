@@ -26,12 +26,10 @@ const KeyframeLoading = (circumference: number) =>
   `
 
 const KeyframeLoadingColors = keyframes`
-  0% { stroke: pink }
-  20% { stroke: gold }
-  40% { stroke: lime }
-  60% { stroke: aqua }
-  80% { stroke: cyan }
-  100% { stroke: violet }
+  0% { stroke: var(--color-primary) }
+  25% { stroke: var(--color-accent) }
+  50% { stroke: var(--color-primary-light) }
+  100% { stroke: var(--color-primary) }
 `
 
 const StyledSVG = styled.svg.attrs(props => ({
@@ -53,9 +51,9 @@ const StyledCircle = styled.circle.attrs(props => ({
   strokeWidth: props.strokeWidth,
   strokeLinecap: 'round',
 }))`
-  animation: ${props => KeyframeLoading(props.r * 2 * Math.PI)} 2s infinite
+  animation: ${props => KeyframeLoading(props.r * 2 * Math.PI)} 1.5s infinite
       linear,
-    ${KeyframeLoadingColors} 6s infinite linear;
+    ${KeyframeLoadingColors} 4s infinite linear;
 
   transform-origin: 50% 50%;
 `
