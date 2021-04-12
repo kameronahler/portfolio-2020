@@ -29,6 +29,12 @@ export const THEME = {
     h3: '2rem',
     h4: '1.375rem',
   },
+  gap: {
+    default: '1rem',
+  },
+  grid: {
+    default: 'repeat(12, minmax(0, 1fr))',
+  },
   lineHeight: {
     normal: '1.625',
     heading: '1.2',
