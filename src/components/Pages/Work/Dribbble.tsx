@@ -43,7 +43,7 @@ const CANCEL_FETCH_MSG = 'Component unmounted before completing request'
 const ERROR_FETCH_MSG = 'Unable to load Dribbble shots'
 const PROFILE_URL = 'https://dribbble.com/kamtr0n'
 
-export const Dribbble = () => {
+export const Dribbble = ({ ariaControls }: { ariaControls: string }) => {
   const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
 
   const fetchDribbble = async (source: CancelTokenSource) => {
@@ -74,7 +74,7 @@ export const Dribbble = () => {
   return (
     <>
       {shots ? (
-        <StyledShots__Grid>
+        <StyledShots__Grid id={ariaControls}>
           {shots.map(shot => (
             <a key={shot.id} href={shot.html_url} target='_blank'>
               <StyledShots__ImgWrapper>

@@ -15,7 +15,7 @@ import { Loader } from '../../Loader/Loader'
 // constants
 const CONTENTFUL_TYPE = 'portfolioPost'
 
-export const Work = () => {
+export const Work = ({ ariaControls }: { ariaControls: string }) => {
   const [
     contentfulEntries,
     setContentfulEntries,
@@ -48,7 +48,9 @@ export const Work = () => {
             }
           })
           .map(entry => (
-            <section key={entry.sys.id}>{entry.fields.body.content}</section>
+            <section id={ariaControls} key={entry.sys.id}>
+              {entry.fields.body.content}
+            </section>
           ))
       ) : (
         <LoaderWrapper>

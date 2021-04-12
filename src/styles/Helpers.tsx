@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 export const Helpers = createGlobalStyle`
   .bold {
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 
   .card {

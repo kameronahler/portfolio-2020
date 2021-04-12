@@ -17,7 +17,7 @@ import { Overlay } from './Overlay'
 // styled
 const StyledP = styled.p`
   font-size: var(--font-size-h3);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
   margin-bottom: 4rem;
   width: 100%;
@@ -51,7 +51,7 @@ const StyledButton = styled.button`
 
 const StyledUl = styled.ul`
   font-size: var(--font-size-h3);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   position: fixed;
   visibility: ${({ dropdownExpanded }) =>
     dropdownExpanded ? 'visible' : 'hidden'};

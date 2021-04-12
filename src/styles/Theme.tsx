@@ -22,6 +22,9 @@ export const THEME = {
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol'`,
   },
+  fontWeight: {
+    bold: 700,
+  },
   fontSize: {
     base: '1rem',
     h1: '4rem',

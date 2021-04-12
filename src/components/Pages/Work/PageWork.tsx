@@ -2,10 +2,11 @@
 import React, { useState } from 'react'
 
 //components
-import { PageHeader } from '../../PageHeader/PageHeader'
-import { Work } from './Work'
-import { Recent } from './Recent'
 import { Dribbble } from './Dribbble'
+import { PageHeader } from '../../PageHeader/PageHeader'
+import { Recent } from './Recent'
+import { Tabs } from './Tabs'
+import { Work } from './Work'
 
 // constants
 export const PageWork = () => {
@@ -13,36 +14,11 @@ export const PageWork = () => {
 
   return (
     <>
-      <PageHeader title={'Portfolio post'} />
-      <ul role='tablist' aria-label='Select which kind of work'>
-        <li>
-          <button
-            onClick={() => setCurrentTab('portfolioPost')}
-            aria-controls=''
-            aria-selected='true'
-            role='tab'
-          >
-            Work
-          </button>
-          <button
-            onClick={() => setCurrentTab('blogPost')}
-            aria-controls=''
-            role='tab'
-          >
-            Recent
-          </button>
-          <button
-            onClick={() => setCurrentTab('dribbble')}
-            aria-controls=''
-            role='tab'
-          >
-            Dribbble
-          </button>
-        </li>
-      </ul>
-      {currentTab === 'portfolioPost' && <Work />}
-      {currentTab === 'blogPost' && <Recent />}
-      {currentTab === 'dribbble' && <Dribbble />}
+      <PageHeader title={'Work'} />
+      <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      {currentTab === 'portfolioPost' && <Work ariaControls={currentTab} />}
+      {currentTab === 'blogPost' && <Recent ariaControls={currentTab} />}
+      {currentTab === 'dribbble' && <Dribbble ariaControls={currentTab} />}
     </>
   )
 }
