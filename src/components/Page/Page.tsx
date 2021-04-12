@@ -13,11 +13,11 @@ import { routes } from '../../routes'
 import { THEME } from '../../styles/Theme'
 
 // styled
-const StyledPage__Wrapper = styled.div`
-  padding: 2rem;
+const StyledPageWrapper = styled.div`
+  grid-column: 1 / -1;
 `
 
-const StyledPage__Transition = styled.div`
+const StyledTransitionInner = styled.div`
   &.enter-active,
   &.exit-active {
     @media (min-width: ${THEME.w.screenDesktop}) {
@@ -61,10 +61,10 @@ export const Page = () => {
   const location = useLocation()
 
   return (
-    <StyledPage__Wrapper>
+    <StyledPageWrapper>
       <TransitionGroup className='relative'>
         <CSSTransition key={location.key} timeout={PAGE_TRANSITION_DURATION}>
-          <StyledPage__Transition>
+          <StyledTransitionInner>
             <Switch location={location}>
               {routes.map(({ name, component, path }) => {
                 return (
@@ -72,9 +72,9 @@ export const Page = () => {
                 )
               })}
             </Switch>
-          </StyledPage__Transition>
+          </StyledTransitionInner>
         </CSSTransition>
       </TransitionGroup>
-    </StyledPage__Wrapper>
+    </StyledPageWrapper>
   )
 }

@@ -9,28 +9,27 @@ import styled from 'styled-components'
 import { THEME } from '../../styles/Theme'
 
 // components
-import { SocialItems } from './Socialtems'
 import { PageItems } from './PageItems'
 import { Separator } from './Separator'
+import { SocialItems } from './Socialtems'
 
 // styled
 const StyledNav = styled.nav`
   align-items: flex-start;
   background-color: var(--color-bg);
-  display: ${props => (props.mobileNavOpen ? 'flex' : 'none')};
+  display: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? 'flex' : 'none'};
   flex-direction: column;
-  height: 100vh;
-  left: 0;
-  padding: 2rem;
+  height: calc(100vh - (2 * var(--p-card)));
+  left: var(--p-card);
   position: fixed;
-  top: 0;
+  top: var(--p-card);
   width: 100vw;
   z-index: 1;
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: flex;
     grid-column: 1 / 2;
-    position: static;
     width: unset;
   }
 `
@@ -41,22 +40,15 @@ const StyledMobileButton = styled.button`
   display: flex;
   height: 3rem;
   justify-content: center;
+  left: 0;
   line-height: 1;
-  position: ${props => props.mobileNavOpen && 'absolute'};
-  right: ${props => props.mobileNavOpen && '0'};
-  top: ${props => props.mobileNavOpen && '0'};
-  transform: ${props => props.mobileNavOpen && 'rotate(90deg)'};
+  position: fixed;
+  top: 0;
   width: 3rem;
   z-index: 2;
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: none;
-    margin-left: unset;
-
-    right: unset;
-    top: unset;
-    transform: unset;
-    z-index: unset;
   }
 `
 
