@@ -27,6 +27,10 @@ export const Base = createGlobalStyle`
   p {
     margin-bottom: var(--font-size-base);
     margin-top: unset;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   h1,

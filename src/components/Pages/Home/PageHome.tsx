@@ -9,7 +9,6 @@ export const PageHome = () => {
   return (
     <>
       <PageHeader title={'Kameron Ahler 👋'}></PageHeader>
-
       <Content />
     </>
   )
