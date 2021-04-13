@@ -40,14 +40,6 @@ interface IHeader {
   srOnly?: boolean
 }
 
-interface IButtonIcon {
-  ariaLabel: string
-  targetBlank?: boolean
-  children?: React.ReactChild
-  href?: string
-  onClick?: CallableFunction
-}
-
 interface IHomeMenuOverlay {
   dropdownExpanded: boolean
   setDropdownExpanded: React.SetStateAction<any>
