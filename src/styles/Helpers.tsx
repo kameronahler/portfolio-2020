@@ -11,6 +11,17 @@ export const Helpers = createGlobalStyle`
     padding: 2rem;
   }
 
+  .card-flat {
+    border-radius: var(--rounded-card);
+    transition-duration: var(--duration-default-ms);
+    transition-timing-function: var(--easing-cubic);
+    padding: 2rem;
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-card);
+  }
+
   .h1 {
     font-size: var(--font-size-h1);
   }

@@ -44,3 +44,10 @@ interface IHomeMenuOverlay {
   dropdownExpanded: boolean
   setDropdownExpanded: React.SetStateAction<any>
 }
+
+interface IExperienceCard {
+  description: React.ReactNode
+  href?: string
+  srOnlyTitle?: string
+  visual: React.ReactNode
+}

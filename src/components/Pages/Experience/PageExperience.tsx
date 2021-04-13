@@ -9,78 +9,122 @@ import { PageHeader } from '../../PageHeader/PageHeader'
 
 // theme
 import { THEME } from '../../../styles/Theme'
-import { Header } from '../../Header/Header'
 
 // assets
 import uis from 'url:../../../assets/uis.png'
-import { SVGZaarly } from '../../../assets/SVGZaarly'
 import { SVGCision } from '../../../assets/SVGCision'
+import { SVGProdpi } from '../../../assets/SVGProdpi'
+import { SVGResume } from '../../../assets/SVGResume'
+import { SVGZaarly } from '../../../assets/SVGZaarly'
+import { ExperienceCard } from './ExperienceCard'
 
 // styled
-const StyledCardWrapper = styled.section`
+const StyledCardsWrapper = styled.section`
+  display: grid;
+  row-gap: 2rem;
+
   @media (min-width: ${THEME.w.screenDesktop}) {
-    display: grid;
     gap: 2rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `
 
-const StyledCard = styled.div`
-  @media (min-width: ${THEME.w.screenDesktop}) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  h2 {
-    font-size: var(--font-size-h4);
-    min-height: 4.875rem;
-
-    @media (min-width: ${THEME.w.screenLg}) {
-      min-height: 7.125rem;
-      font-size: var(--font-size-h3);
-    }
-  }
+const StyledStrong = styled.strong`
+  color: ${({ color }: { color: string }) => color};
 `
 
-export const PageExperience = React.memo(() => {
-  return (
-    <>
-      <PageHeader title={'Experience'} />
-      <StyledCardWrapper>
-        <StyledCard className='card'>
-          <p>Designing and coding since 2015</p>
-        </StyledCard>
-        <StyledCard className='card'>
-          <Header srOnly={true}>
-            <h2>Zaarly</h2>
-          </Header>
-          {SVGZaarly}
-          <p>
-            Senior product designer & frontend developer for a hybrid Rails app
-            serving homeowners, service providers, and B2B real estate agents.
-          </p>
-        </StyledCard>
-        <StyledCard className='card'>
-          {SVGCision}
-          <Header srOnly={true}>
-            <h2>Cision</h2>
-          </Header>
-          <p>
-            UX manager & senior UX designer for an enterprise marcomm SAAS
-            platform.
-          </p>
-        </StyledCard>
-        <StyledCard className='card'>
-          <Header srOnly={true}>
-            <h2>Urban Interactive Studio</h2>
-          </Header>
-          <img src={uis} alt='Urban Interactive Studio logo' />
-          <p>
-            UI designer & developer for an agency focused on government, public
-            planning, and documentation sites and apps.
-          </p>
-        </StyledCard>
-      </StyledCardWrapper>
-    </>
-  )
-})
+// constants
+const CARD_DATA: IExperienceCard[] = [
+  {
+    description: (
+      <>Years designing and developing front end thingies (and counting).</>
+    ),
+    visual: <h3>6+</h3>,
+  },
+  {
+    description: (
+      <>
+        <StyledStrong color={'var(--color-primary)'}>
+          Looking for a resume?
+        </StyledStrong>
+        &nbsp;Head on over here.
+      </>
+    ),
+    href: 'https://kamerons-resume.netlify.app',
+    srOnlyTitle: 'Visit interactive resume',
+    visual: SVGResume,
+  },
+  {
+    description: (
+      <>
+        <StyledStrong color='#02A678'>
+          Senior product designer & frontend developer
+        </StyledStrong>
+        &nbsp;for a hybrid Rails app serving homeowners, service providers, and
+        B2B real estate agents.
+      </>
+    ),
+    href: 'https://zaarly.com',
+    visual: SVGZaarly,
+    srOnlyTitle: 'Visit Zaarly website',
+  },
+  {
+    description: (
+      <>
+        <StyledStrong color='#1399A4'>
+          UX manager & senior UX designer
+        </StyledStrong>
+        &nbsp;for an enterprise marcomm SAAS platform.
+      </>
+    ),
+    href: 'https://cision.com',
+    visual: SVGCision,
+    srOnlyTitle: 'Visit Cision website',
+  },
+  {
+    description: (
+      <>
+        <StyledStrong color='#29ADCE'>UI designer & developer</StyledStrong>
+        &nbsp;for an agency focused on government, public planning, and
+        documentation sites and apps.
+      </>
+    ),
+    href: 'https://konve.io/uis-is-now-konveio-landing',
+    srOnlyTitle: 'Visit Urban Interactive Studio website',
+    visual: (
+      <img
+        alt='Urban Interactive Studio logo'
+        height='72'
+        src={uis}
+        width='347.5'
+      />
+    ),
+  },
+  {
+    description: (
+      <>
+        <StyledStrong color='#8FC0A8'>Operations manager</StyledStrong>
+        &nbsp;for an online photo printing company.
+      </>
+    ),
+    href: 'https://prodpi.com',
+    visual: SVGProdpi,
+    srOnlyTitle: 'Visit ProDPI website',
+  },
+]
+
+export const PageExperience = () => (
+  <>
+    <PageHeader title={'Experience'} />
+    <StyledCardsWrapper>
+      {CARD_DATA.map(card => (
+        <ExperienceCard
+          description={card.description}
+          href={card.href}
+          srOnlyTitle={card.srOnlyTitle}
+          visual={card.visual}
+        />
+      ))}
+    </StyledCardsWrapper>
+  </>
+)

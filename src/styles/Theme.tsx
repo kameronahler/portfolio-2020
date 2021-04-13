@@ -1,7 +1,8 @@
 export const THEME = {
   color: {
     bg: '#f8f8f8',
-    bgDark: '#eeeeee',
+    bgDark: '#f0f0f0',
+    bgCard: '#ffffff',
     overlay: '#ffffff',
     primary: '#4c36d3',
     primaryLight: '#9988ff',
@@ -10,8 +11,8 @@ export const THEME = {
     textLight: '#706D76',
   },
   duration: {
-    normal: '250',
-    normalMs: '250ms',
+    default: '250',
+    defaultMs: '250ms',
     pageTransition: '500',
     pageTransitionMs: '500ms',
   },

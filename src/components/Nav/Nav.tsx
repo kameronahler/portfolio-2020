@@ -70,7 +70,7 @@ const StyledLiHome = styled.li`
     width: 3rem;
 
     &.active {
-      transition: var(--easing-cubic) var(--duration-normal-ms) transform;
+      transition: var(--easing-cubic) var(--duration-default-ms) transform;
       transform: scale(1.2);
     }
   }

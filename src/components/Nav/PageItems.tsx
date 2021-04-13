@@ -10,7 +10,7 @@ const StyledLi = styled.li`
     transform-origin: 0 50%;
 
     &.active {
-      transition: var(--easing-cubic) var(--duration-normal-ms) transform;
+      transition: var(--easing-cubic) var(--duration-default-ms) transform;
       transform: scale(1.2) translateX(-0.1875rem);
     }
   }
