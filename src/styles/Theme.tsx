@@ -35,6 +35,10 @@ export const THEME = {
     h2: '2.8125rem',
     h3: '2rem',
     h4: '1.375rem',
+    h1Clamp: 'clamp(var(--font-size-h2), 15vw, var(--font-size-h1));',
+    h2Clamp: 'clamp(var(--font-size-h3), 15vw, var(--font-size-h2));',
+    h3Clamp: 'clamp(var(--font-size-h4), 15vw, var(--font-size-h3));',
+    h4Clamp: 'clamp(var(--font-size-default), 15vw, var(--font-size-h4));',
   },
   gap: {
     default: '1rem',

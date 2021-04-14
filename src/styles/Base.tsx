@@ -39,25 +39,27 @@ export const Base = createGlobalStyle`
   h4 {
     line-height: var(--line-height-heading);
     margin-top: unset;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   h1 {
-    font-size: var(--font-size-h1);
+    font-size: var(--font-size-h1-clamp);
     margin-bottom: 3rem;
   }
 
   h2 {
-    font-size: var(--font-size-h2);
+    font-size: var(--font-size-h2-clamp);
     margin-bottom: 1rem;
   }
 
   h3 {
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-h3-clamp);
     margin-bottom: 1rem;
   }
 
   h4 {
-    font-size: var(--font-size-h4);
+    font-size: var(--font-size-h4-clamp);
     margin-bottom: 1rem;
   }
 
