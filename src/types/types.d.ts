@@ -19,6 +19,7 @@ interface IContentfulBlogEntry {
 
 interface IContentfulPortfolioEntry {
   body: Document
+  order: number
 }
 
 interface IDribbbleShot {

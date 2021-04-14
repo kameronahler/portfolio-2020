@@ -6,7 +6,7 @@ import { Dribbble } from './Dribbble'
 import { Header } from '../../Page/Header'
 import { Recent } from './Recent'
 import { Tabs } from './Tabs'
-import { Work } from './Work'
+import { Portfolio } from './Portfolio'
 
 // constants
 export const PageWork = () => {
@@ -16,7 +16,9 @@ export const PageWork = () => {
     <>
       <Header title={'Work'} />
       <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
-      {currentTab === 'portfolioPost' && <Work ariaControls={currentTab} />}
+      {currentTab === 'portfolioPost' && (
+        <Portfolio ariaControls={currentTab} />
+      )}
       {currentTab === 'blogPost' && <Recent ariaControls={currentTab} />}
       {currentTab === 'dribbble' && <Dribbble ariaControls={currentTab} />}
     </>

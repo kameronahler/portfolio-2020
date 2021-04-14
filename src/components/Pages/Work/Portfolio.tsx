@@ -15,13 +15,12 @@ import { Loader } from '../../Loader/Loader'
 // constants
 const CONTENTFUL_TYPE = 'portfolioPost'
 
-export const Work = ({ ariaControls }: { ariaControls: string }) => {
+export const Portfolio = ({ ariaControls }: { ariaControls: string }) => {
+  const mounted = useRef<Boolean>(true)
   const [
     contentfulEntries,
     setContentfulEntries,
   ] = useState<EntryCollection<any> | null>(null)
-
-  const mounted = useRef<Boolean>(true)
 
   useEffect(() => {
     useFetchContentful<IContentfulPortfolioEntry>({
@@ -30,6 +29,12 @@ export const Work = ({ ariaControls }: { ariaControls: string }) => {
       setState: setContentfulEntries,
     })
   }, [])
+
+  if (contentfulEntries) {
+    contentfulEntries.items.sort((a, b) =>
+      a.fields.order > b.fields.order ? 1 : -1
+    )
+  }
 
   return (
     <>
@@ -48,9 +53,9 @@ export const Work = ({ ariaControls }: { ariaControls: string }) => {
             }
           })
           .map(entry => (
-            <section id={ariaControls} key={entry.sys.id}>
+            <article id={ariaControls} key={entry.sys.id}>
               {entry.fields.body.content}
-            </section>
+            </article>
           ))
       ) : (
         <LoaderWrapper>
