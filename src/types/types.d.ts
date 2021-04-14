@@ -41,6 +41,7 @@ interface IHomeMenuOverlay {
 }
 
 interface IExperienceCard {
+  arrowColor?: string
   description: React.ReactNode
   href?: string
   srOnlyTitle?: string

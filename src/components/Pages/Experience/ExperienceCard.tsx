@@ -17,14 +17,18 @@ const StyledCardLink = styled.a`
   display: flex;
   flex-direction: column;
   position: relative;
-  transition-property: box-shadow, background-color;
+  transition-property: box-shadow, transform;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+  }
 `
 
 const StyledCardStatic = styled.div`
-  display: flex;
   align-items: flex-start;
+  border: 0.0625rem solid var(--color-bg-dark);
+  display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-dark);
   box-shadow: none;
 
   h3 {
@@ -58,7 +62,6 @@ const StyledHoverSVGWrapper = styled.span`
   right: 3rem;
   top: 3rem;
   visibility: hidden;
-  transition-delay: var(--duration-250ms);
 
   ${StyledCardLink}:hover & {
     opacity: 1;
@@ -66,21 +69,22 @@ const StyledHoverSVGWrapper = styled.span`
     transition-timing-function: var(--easing-default);
     transition-duration: var(--duration-250ms);
     transition-property: opacity, transform;
-    transform: translate(1rem, -1rem);
+    transform: translate(1.25rem, -1.25rem);
     visibility: visible;
   }
 
   svg {
     height: 1.5rem;
     width: 1.5rem;
+  }
 
-    path {
-      fill: var(--color-primary);
-    }
+  path {
+    fill: ${({ arrowColor }: { arrowColor: string }) => arrowColor};
   }
 `
 
 export const ExperienceCard = ({
+  arrowColor,
   description,
   href,
   srOnlyTitle,
@@ -98,7 +102,9 @@ export const ExperienceCard = ({
       </SRHeader>
       <StyledCardLogoWrapper>{visual}</StyledCardLogoWrapper>
       <StyledCardDescription>{description}</StyledCardDescription>
-      <StyledHoverSVGWrapper>{SVGArrowTopRight}</StyledHoverSVGWrapper>
+      <StyledHoverSVGWrapper arrowColor={arrowColor}>
+        {SVGArrowTopRight}
+      </StyledHoverSVGWrapper>
     </StyledCardLink>
   ) : (
     <StyledCardStatic className='card-flat'>

@@ -1,7 +1,7 @@
 export const THEME = {
   color: {
     bg: '#f8f8f8',
-    bgDark: '#f0f0f0',
+    bgDark: '#e8e8e8',
     bgCard: '#ffffff',
     overlay: '#ffffff',
     primary: '#4c36d3',

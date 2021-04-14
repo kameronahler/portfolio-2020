@@ -34,15 +34,10 @@ const StyledStrong = styled.strong`
 `
 
 // constants
+const DATA_RESIZE_PARENT = 'resize-parent'
 const CARD_DATA = [
   {
-    description: (
-      <>Years designing and developing front end thingies (and counting).</>
-    ),
-    id: 0,
-    visual: <h3>6+</h3>,
-  },
-  {
+    arrowColor: 'var(--color-primary)',
     description: (
       <>
         <StyledStrong color={'var(--color-primary)'}>
@@ -52,11 +47,19 @@ const CARD_DATA = [
       </>
     ),
     href: 'https://kamerons-resume.netlify.app',
-    id: 1,
+    id: 0,
     srOnlyTitle: 'Visit interactive resume',
     visual: SVGResume,
   },
   {
+    description: (
+      <>Years designing and developing front end thingies (and counting).</>
+    ),
+    id: 1,
+    visual: <h3>6+</h3>,
+  },
+  {
+    arrowColor: '#02A678',
     description: (
       <>
         <StyledStrong color='#02A678'>
@@ -72,6 +75,7 @@ const CARD_DATA = [
     srOnlyTitle: 'Visit Zaarly website',
   },
   {
+    arrowColor: '#1399A4',
     description: (
       <>
         <StyledStrong color='#1399A4'>
@@ -86,6 +90,7 @@ const CARD_DATA = [
     srOnlyTitle: 'Visit Cision website',
   },
   {
+    arrowColor: '#29ADCE',
     description: (
       <>
         <StyledStrong color='#29ADCE'>UI designer & developer</StyledStrong>
@@ -106,6 +111,7 @@ const CARD_DATA = [
     ),
   },
   {
+    arrowColor: '#8FC0A8',
     description: (
       <>
         <StyledStrong color='#8FC0A8'>Operations manager</StyledStrong>
@@ -118,7 +124,6 @@ const CARD_DATA = [
     srOnlyTitle: 'Visit ProDPI website',
   },
 ]
-const DATA_RESIZE_PARENT = 'resize-parent'
 
 export const PageExperience = () => {
   const handleSizingOnMount = () => {
@@ -155,6 +160,7 @@ export const PageExperience = () => {
       <StyledCardsWrapper data-id={DATA_RESIZE_PARENT}>
         {CARD_DATA.map(card => (
           <ExperienceCard
+            arrowColor={card.arrowColor}
             data-resize='true'
             description={card.description}
             key={card.id}
