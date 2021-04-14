@@ -3,10 +3,21 @@ import React, { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 // packages
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 // styled
+const KeyframeOverlayFadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 95%;
+  }
+`
+
 const StyledOverlay = styled.div`
+  animation: ${KeyframeOverlayFadeIn} var(--easing-default)
+    var(--duration-500ms) forwards;
   background-color: var(--color-overlay);
   height: 100vh;
   left: 0;

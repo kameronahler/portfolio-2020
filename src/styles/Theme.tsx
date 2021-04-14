@@ -14,6 +14,8 @@ export const THEME = {
   duration: {
     ['250']: '250',
     ['250ms']: '250ms',
+    ['500']: '500',
+    ['500ms']: '500ms',
     pageTransition: '500',
     pageTransitionMs: '500ms',
   },

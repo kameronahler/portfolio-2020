@@ -15,15 +15,20 @@ import { Development } from './Development'
 import { Overlay } from './Overlay'
 
 // styled
+const StyledDropdownWrapper = styled.div`
+  position: relative;
+`
 const StyledP = styled.p`
-  font-size: var(--font-size-h3);
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-h3-clamp);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
   margin-bottom: 4rem;
-  width: 100%;
 
   @media (min-width: ${THEME.w.screenDesktop}) {
-    font-size: var(--font-size-h2);
+    font-size: var(--font-size-h2-clamp);
   }
 `
 
@@ -32,14 +37,14 @@ const StyledButton = styled.button`
   display: inline-flex;
   font-size: inherit;
   font-weight: inherit;
+  margin-top: 0.5rem;
   position: ${({ dropdownExpanded }) => (dropdownExpanded ? 'relative' : '')};
   text-align: left;
-  width: 100%;
   z-index: ${({ dropdownExpanded }) => (dropdownExpanded ? '1000' : '')};
 
   span {
     border-bottom: ${({ dropdownExpanded }) =>
-      dropdownExpanded ? 'unset' : '1px dashed var(--color-text-light)'};
+      dropdownExpanded ? 'unset' : '1px dashed var(--color-primary)'};
   }
 
   &:hover {
@@ -50,9 +55,12 @@ const StyledButton = styled.button`
 `
 
 const StyledUl = styled.ul`
+  display: grid;
   font-size: var(--font-size-h3);
   font-weight: var(--font-weight-bold);
-  position: fixed;
+  position: absolute;
+  row-gap: 1rem;
+  top: 0;
   visibility: ${({ dropdownExpanded }) =>
     dropdownExpanded ? 'visible' : 'hidden'};
   z-index: ${({ dropdownExpanded }) => (dropdownExpanded ? '1000' : '')};
@@ -70,7 +78,8 @@ const StyledUl = styled.ul`
     left: calc(-1 * var(--p-card));
     position: absolute;
     top: calc(-1 * var(--p-card));
-    transform: translateY(-2rem);
+    transform-origin: 0% 0%;
+    transform: scale(0);
     transition: var(--duration-250ms) var(--easing-default) transform;
     width: calc(100% + (2 * var(--p-card)));
     z-index: -1;
@@ -79,7 +88,7 @@ const StyledUl = styled.ul`
   &.enter,
   &.enter-done {
     &::before {
-      transform: translateY(0);
+      transform: scale(1);
     }
   }
 `
@@ -87,17 +96,24 @@ const StyledUl = styled.ul`
 const StyledLi = styled.li`
   cursor: pointer;
   line-height: var(--line-height-heading);
-  opacity: 0;
-  transform: translateY(1rem);
+  opacity: 0.75;
+  position: relative;
+
+  &.active::before {
+    background-color: var(--color-primary);
+    border-radius: 9999px;
+    content: '';
+    height: 0.5rem;
+    left: -1rem;
+    position: absolute;
+    top: 0.5em;
+    width: 0.5rem;
+  }
 
   .enter > &,
   .enter-done > & {
     opacity: 1;
-    transform: translateY(0);
-    transition-duration: var(--duration-250ms);
-    transition-delay: var(--duration-250ms);
-    transition-timing-function: var(--easing-default);
-    transition-property: opacity;
+    transition: var(--duration-250ms) var(--easing-default) opacity;
   }
 `
 
@@ -114,11 +130,7 @@ export const Content = () => {
   const listRef = useRef<HTMLElement>()
 
   const handleDropdown = (e: React.MouseEvent<HTMLElement>) => {
-    const buttonCoords = e.currentTarget.getBoundingClientRect()
-    listRef.current.style.left = `${buttonCoords.left}px`
-    listRef.current.style.top = `${buttonCoords.top}px`
-    listRef.current.style.width = `${buttonCoords.width}px`
-
+    listRef.current.style.top = `${e.currentTarget.offsetTop}px`
     setDropdownExpanded(!dropdownExpanded)
   }
 
@@ -128,9 +140,9 @@ export const Content = () => {
   }
 
   return (
-    <div>
+    <StyledDropdownWrapper>
       <StyledP id='im-a'>
-        What can I help with?
+        What can I help&nbsp;with?
         <StyledButton
           aria-label='Select one of my skills'
           aria-haspopup='listbox'
@@ -158,7 +170,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.all ? true : false}
                 className={
                   role === ROLE.all
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.all)}
@@ -170,7 +182,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.design ? true : false}
                 className={
                   role === ROLE.design
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.design)}
@@ -182,7 +194,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.development ? true : false}
                 className={
                   role === ROLE.development
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.development)}
@@ -198,7 +210,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.design ? true : false}
                 className={
                   role === ROLE.design
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.design)}
@@ -210,7 +222,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.all ? true : false}
                 className={
                   role === ROLE.all
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.all)}
@@ -222,7 +234,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.development ? true : false}
                 className={
                   role === ROLE.development
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.development)}
@@ -238,7 +250,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.development ? true : false}
                 className={
                   role === ROLE.development
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.development)}
@@ -250,7 +262,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.design ? true : false}
                 className={
                   role === ROLE.design
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.design)}
@@ -262,7 +274,7 @@ export const Content = () => {
                 aria-selected={role === ROLE.all ? true : false}
                 className={
                   role === ROLE.all
-                    ? 'link-gradient link-gradient-hover'
+                    ? 'active link-gradient link-gradient-hover'
                     : 'link-gradient-hover'
                 }
                 onClick={() => handleRoleChange(ROLE.all)}
@@ -283,6 +295,6 @@ export const Content = () => {
         dropdownExpanded={dropdownExpanded}
         setDropdownExpanded={setDropdownExpanded}
       />
-    </div>
+    </StyledDropdownWrapper>
   )
 }
