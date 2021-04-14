@@ -21,11 +21,11 @@ export const Base = createGlobalStyle`
     font-family: var(--font-sans);
     font-size: 1em;
     height: 100%;
-    line-height: var(--line-height-normal);
+    line-height: var(--line-height-default);
   }
 
   p {
-    margin-bottom: var(--font-size-base);
+    margin-bottom: var(--font-size-default);
     margin-top: unset;
 
     &:last-child {

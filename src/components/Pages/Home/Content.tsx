@@ -71,7 +71,7 @@ const StyledUl = styled.ul`
     position: absolute;
     top: calc(-1 * var(--p-card));
     transform: translateY(-2rem);
-    transition: var(--duration-default-ms) var(--easing-cubic) transform;
+    transition: var(--duration-250ms) var(--easing-default) transform;
     width: calc(100% + (2 * var(--p-card)));
     z-index: -1;
   }
@@ -94,9 +94,9 @@ const StyledLi = styled.li`
   .enter-done > & {
     opacity: 1;
     transform: translateY(0);
-    transition-duration: var(--duration-default-ms);
-    transition-delay: var(--duration-default-ms);
-    transition-timing-function: var(--easing-cubic);
+    transition-duration: var(--duration-250ms);
+    transition-delay: var(--duration-250ms);
+    transition-timing-function: var(--easing-default);
     transition-property: opacity;
   }
 `
@@ -145,7 +145,7 @@ export const Content = () => {
           <span>{role}</span>
         </StyledButton>
       </StyledP>
-      <CSSTransition in={dropdownExpanded} timeout={+THEME.duration.default}>
+      <CSSTransition in={dropdownExpanded} timeout={+THEME.duration['250']}>
         <StyledUl
           aria-expanded={dropdownExpanded ? 'true' : 'false'}
           aria-labelledby='im-a'

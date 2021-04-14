@@ -23,7 +23,7 @@ const StyledTransitionInner = styled.div`
     @media (min-width: ${THEME.w.screenDesktop}) {
       transition-duration: var(--duration-page-transition-ms);
       transition-property: opacity, transform;
-      transition-animation-timing-function: var(--easing-cubic);
+      transition-animation-timing-function: var(--easing-default);
     }
   }
 

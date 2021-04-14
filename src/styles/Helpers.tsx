@@ -13,8 +13,8 @@ export const Helpers = createGlobalStyle`
 
   .card-flat {
     border-radius: var(--rounded-card);
-    transition-duration: var(--duration-default-ms);
-    transition-timing-function: var(--easing-cubic);
+    transition-duration: var(--duration-250ms);
+    transition-timing-function: var(--easing-default);
     padding: 2rem;
   }
 
@@ -72,7 +72,7 @@ export const Helpers = createGlobalStyle`
   }
 
   .p {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-default);
   }
 
   .relative {

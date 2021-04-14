@@ -61,7 +61,7 @@ const StyledLi = styled.li`
     left: 50%;
     position: absolute;
     bottom: -0.5rem;
-    transition: var(--easing-cubic) var(--duration-default-ms) transform;
+    transition: var(--easing-default) var(--duration-250ms) transform;
     transform: translateX(-50%)
       ${({ currentTab }: { currentTab: boolean }) =>
         currentTab ? 'scale(1)' : 'scale(0)'};

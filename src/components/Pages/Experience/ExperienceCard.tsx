@@ -58,13 +58,13 @@ const StyledHoverSVGWrapper = styled.span`
   right: 3rem;
   top: 3rem;
   visibility: hidden;
-  transition-delay: var(--duration-default-ms);
+  transition-delay: var(--duration-250ms);
 
   ${StyledCardLink}:hover & {
     opacity: 1;
     z-index: 1;
-    transition-timing-function: var(--easing-cubic);
-    transition-duration: var(--duration-default-ms);
+    transition-timing-function: var(--easing-default);
+    transition-duration: var(--duration-250ms);
     transition-property: opacity, transform;
     transform: translate(1rem, -1rem);
     visibility: visible;

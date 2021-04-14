@@ -17,7 +17,7 @@ const StyledLi = styled.li`
       height: 0.5rem;
       margin-left: 1rem;
       transform: scale(0);
-      transition: var(--easing-cubic) var(--duration-default-ms) transform;
+      transition: var(--easing-default) var(--duration-250ms) transform;
       width: 0.5rem;
     }
 

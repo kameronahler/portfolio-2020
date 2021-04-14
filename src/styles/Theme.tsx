@@ -9,15 +9,16 @@ export const THEME = {
     accent: '#3DD8F0',
     text: '#252427',
     textLight: '#706D76',
+    textInverse: 'rgba(255, 255, 255, .95)',
   },
   duration: {
-    default: '250',
-    defaultMs: '250ms',
+    ['250']: '250',
+    ['250ms']: '250ms',
     pageTransition: '500',
     pageTransitionMs: '500ms',
   },
   easing: {
-    cubic: 'cubic-bezier(.47,.12,.27,.83)',
+    default: 'cubic-bezier(.47,.12,.27,.83)',
   },
   font: {
     sans: `'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -29,7 +30,7 @@ export const THEME = {
     bold: 700,
   },
   fontSize: {
-    base: '1rem',
+    default: '1rem',
     h1: '4rem',
     h2: '2.8125rem',
     h3: '2rem',
@@ -42,7 +43,7 @@ export const THEME = {
     default: 'repeat(12, minmax(0, 1fr))',
   },
   lineHeight: {
-    normal: '1.625',
+    default: '1.625',
     heading: '1.2',
   },
   p: {
