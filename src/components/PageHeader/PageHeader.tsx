@@ -6,7 +6,7 @@ export const PageHeader = ({
   title,
 }: {
   children?: React.ReactChild
-  title: string
+  title: string | React.ReactNode
 }) => {
   return (
     <header>
