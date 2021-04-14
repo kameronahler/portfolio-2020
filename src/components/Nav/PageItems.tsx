@@ -5,13 +5,26 @@ import styled from 'styled-components'
 
 const StyledLi = styled.li`
   a {
-    display: inline-block;
+    display: inline-flex;
     padding: 0.5rem 0.75rem;
-    transform-origin: 0 50%;
+    position: relative;
+
+    &::after {
+      align-self: center;
+      background-color: var(--color-primary);
+      border-radius: 999px;
+      content: '';
+      height: 0.5rem;
+      margin-left: 1rem;
+      transform: scale(0);
+      transition: var(--easing-cubic) var(--duration-default-ms) transform;
+      width: 0.5rem;
+    }
 
     &.active {
-      transition: var(--easing-cubic) var(--duration-default-ms) transform;
-      transform: scale(1.2) translateX(-0.1875rem);
+      &::after {
+        transform: scale(1);
+      }
     }
   }
 `

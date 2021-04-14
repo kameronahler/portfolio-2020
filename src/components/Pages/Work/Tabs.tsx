@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { THEME } from '../../../styles/theme'
 
 // constants
-const OVERFLOW_GRADIENT = '1rem'
+const OVERFLOW_GRADIENT = '2rem'
 const OVERFLOW_GRADIENT_SM = '8rem'
 
 // styled
@@ -20,8 +20,9 @@ const StyledNav = styled.nav`
     content: '';
     height: 100%;
     position: absolute;
-    right: 0;
+    right: -1px;
     top: 0;
+    z-index: 1;
     width: ${OVERFLOW_GRADIENT};
 
     @media (min-width: ${THEME.w.screenSm}) {
@@ -34,43 +35,58 @@ const StyledNav = styled.nav`
 `
 
 const StyledUl = styled.ul`
-  column-gap: 3rem;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: auto;
-  justify-content: flex-start;
+  display: flex;
   overflow-x: scroll;
-  overflow-y: hidden;
   padding-bottom: 2rem;
-  width: 100%;
+  padding-top: 0.5rem;
 `
 
 const StyledLi = styled.li`
+  margin-right: 2rem;
+  position: relative;
+
   &:last-of-type {
-    padding-right: ${OVERFLOW_GRADIENT};
+    border-right: ${OVERFLOW_GRADIENT} solid transparent;
 
     @media (min-width: ${THEME.w.screenSm}) {
-      padding-right: ${OVERFLOW_GRADIENT_SM};
-    }
-
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      padding-right: ${OVERFLOW_GRADIENT_SM};
+      border-right-width: ${OVERFLOW_GRADIENT_SM};
     }
   }
 
-  button {
-    display: block;
-    padding: 0.5rem 0;
-    transform-origin: 0% 50%;
+  &::before {
+    background-color: var(--color-primary);
+    border-radius: 999px;
+    content: '';
+    height: 0.5rem;
+    left: 50%;
+    position: absolute;
+    bottom: -0.5rem;
+    transition: var(--easing-cubic) var(--duration-default-ms) transform;
+    transform: translateX(-50%)
+      ${({ currentTab }: { currentTab: boolean }) =>
+        currentTab ? 'scale(1)' : 'scale(0)'};
+    width: 0.5rem;
+  }
 
-    ${({ currentTab }: { currentTab: boolean }) =>
-      currentTab
-        ? `
-        font-weight: var(--font-weight-bold);
-        transform: scale(1.2);
-        transition: var(--easing-cubic) 0.2s transform;
-        `
-        : ''};
+  button {
+    color: transparent;
+    display: block;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    position: relative;
+    transform-origin: 50% 50%;
+
+    &::after {
+      color: var(--color-text);
+      content: attr(data-tab);
+      font-weight: ${({ currentTab }: { currentTab: boolean }) =>
+        currentTab ? 'var(--font-weight-bold)' : 'var(--font-weight-default)'};
+      left: 0;
+      padding: 0.5rem 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
   }
 `
 
@@ -87,6 +103,7 @@ export const Tabs = ({ currentTab, setCurrentTab }) => {
                 ? 'link-gradient link-gradient'
                 : 'link-gradient-hover'
             }
+            data-tab='Portfolio'
             onClick={() => setCurrentTab('portfolioPost')}
             role='tab'
           >
@@ -102,6 +119,7 @@ export const Tabs = ({ currentTab, setCurrentTab }) => {
                 ? 'link-gradient link-gradient'
                 : 'link-gradient-hover'
             }
+            data-tab='Recent'
             onClick={() => setCurrentTab('blogPost')}
             role='tab'
           >
@@ -117,6 +135,7 @@ export const Tabs = ({ currentTab, setCurrentTab }) => {
                 ? 'link-gradient link-gradient'
                 : 'link-gradient-hover'
             }
+            data-tab='Dribbble'
             onClick={() => setCurrentTab('dribbble')}
             role='tab'
           >

@@ -79,7 +79,7 @@ export const Base = createGlobalStyle`
     }
     &:focus-visible {
       outline: 1px dashed var(--color-text);
-      outline-offset: 0.5rem;
+      outline-offset: 0.25rem;
     }
   }
 

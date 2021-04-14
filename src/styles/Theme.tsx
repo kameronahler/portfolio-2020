@@ -25,6 +25,7 @@ export const THEME = {
     'Segoe UI Symbol'`,
   },
   fontWeight: {
+    default: 400,
     bold: 700,
   },
   fontSize: {

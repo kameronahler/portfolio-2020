@@ -65,13 +65,24 @@ const StyledLiHome = styled.li`
     border-radius: 9999px;
     color: var(--color-text);
     display: flex;
-    height: 3rem;
-    justify-content: center;
-    width: 3rem;
+    padding: 0.5rem 0.75rem;
+
+    &::after {
+      align-self: center;
+      background-color: var(--color-primary);
+      border-radius: 999px;
+      content: '';
+      margin-left: 1rem;
+      height: 0.5rem;
+      transform: scale(0);
+      transition: var(--easing-cubic) var(--duration-default-ms) transform;
+      width: 0.5rem;
+    }
 
     &.active {
-      transition: var(--easing-cubic) var(--duration-default-ms) transform;
-      transform: scale(1.2);
+      &::after {
+        transform: scale(1);
+      }
     }
   }
 `
@@ -116,11 +127,8 @@ export const Nav = () => {
             </NavLink>
           </StyledLiHome>
           <Separator />
-
           <PageItems setMobileNavOpen={setMobileNavOpen} location={location} />
-
           <Separator />
-
           <SocialItems />
         </StyledUl>
       </StyledNav>
