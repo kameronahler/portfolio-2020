@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 //components
 import { Dribbble } from './Dribbble'
-import { PageHeader } from '../../PageHeader/PageHeader'
+import { Header } from '../../Page/Header'
 import { Recent } from './Recent'
 import { Tabs } from './Tabs'
 import { Work } from './Work'
@@ -14,7 +14,7 @@ export const PageWork = () => {
 
   return (
     <>
-      <PageHeader title={'Work'} />
+      <Header title={'Work'} />
       <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
       {currentTab === 'portfolioPost' && <Work ariaControls={currentTab} />}
       {currentTab === 'blogPost' && <Recent ariaControls={currentTab} />}

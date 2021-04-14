@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // components
-import { PageHeader } from '../../PageHeader/PageHeader'
+import { Header } from '../../Page/Header'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -115,7 +115,7 @@ const CARD_DATA: IExperienceCard[] = [
 
 export const PageExperience = () => (
   <>
-    <PageHeader title={'Experience'} />
+    <Header title={'Experience'} />
     <StyledCardsWrapper>
       {CARD_DATA.map(card => (
         <ExperienceCard

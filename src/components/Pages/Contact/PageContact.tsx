@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import kwesforms from 'kwesforms'
 
 // components
-import { PageHeader } from '../../PageHeader/PageHeader'
+import { Header } from '../../Page/Header'
 
 export const PageContact = () => {
   useEffect(() => {
@@ -14,7 +14,7 @@ export const PageContact = () => {
 
   return (
     <div>
-      <PageHeader title={'Contact'} />
+      <Header title={'Contact'} />
       <form
         className='kwes-form'
         action='https://kwes.io/api/foreign/forms/3VyNJ6R5XfH0mSPKjrFW'

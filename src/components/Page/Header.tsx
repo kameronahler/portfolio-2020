@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
   }
 `
 
-export const PageHeader = ({
+export const Header = ({
   children,
   title,
 }: {
