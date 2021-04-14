@@ -4,7 +4,6 @@ import { NavLink, useLocation } from 'react-router-dom'
 
 // packages
 import styled from 'styled-components'
-import { SVGHamburger } from '../../assets/SVGHamburger'
 
 // theme
 import { THEME } from '../../styles/Theme'
@@ -14,42 +13,112 @@ import { PageItems } from './PageItems'
 import { Separator } from './Separator'
 import { SocialItems } from './Socialtems'
 
+// assets
+import { SVGHamburger } from '../../assets/SVGHamburger'
+import { SVGClose } from '../../assets/SVGClose'
+
+// constant
+const BUTTON_SIZE = '3rem'
+
 // styled
 const StyledNav = styled.nav`
   align-items: flex-start;
   background-color: var(--color-bg);
-  display: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen ? 'flex' : 'none'};
+  display: flex;
   flex-direction: column;
-  height: calc(100vh - (2 * var(--p-card)));
-  left: var(--p-card);
+  height: 100vh;
+  left: 0;
+  opacity: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? '1' : '0'};
+  padding: var(--p-card);
   position: fixed;
-  top: var(--p-card);
+  top: 0;
+  transition: var(--duration-250ms) opacity var(--duration-250ms);
+  visibility: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? 'visible' : 'hidden'};
   width: 100vw;
-  z-index: 1;
+  z-index: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? '8000' : '-1'};
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: flex;
     grid-column: 1 / 2;
+    height: calc(100vh - (2 * var(--p-card)));
+    left: var(--p-card);
+    opacity: 1;
+    position: static;
+    padding: unset;
+    top: var(--p-card);
+    visibility: visible;
     width: unset;
+    z-index: auto;
   }
 `
 
 const StyledMobileButton = styled.button`
+  --button-size: ${BUTTON_SIZE};
+  --border-size: calc(var(--button-size) / 2);
+
   align-items: center;
-  border-radius: 9999px;
+  border-color: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen
+      ? 'var(--color-primary)'
+      : 'var(--color-primary) transparent transparent var(--color-primary)'};
+  border-style: solid;
+  border-width: var(--border-size) var(--border-size) var(--border-size)
+    var(--border-size);
   display: flex;
-  height: 3rem;
+  height: var(--button-size);
   justify-content: center;
   left: 0;
   line-height: 1;
   position: fixed;
   top: 0;
-  width: 3rem;
-  z-index: 2;
+  transform: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen && `translateX(calc(100vw - var(--button-size)))`};
+  transform-origin: 50% 50%;
+  transition: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen && 'var(--duration-250ms) var(--easing-default) transform'};
+  width: var(--button-size);
+  z-index: 9000;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--color-primary);
+    transition-property: border transform;
+  }
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: none;
+  }
+`
+
+const StyledMobileButtonSVGWrapper = styled.span`
+  --button-size: ${BUTTON_SIZE};
+
+  align-items: center;
+  display: flex;
+  height: calc(-1 * var(--button-size) / 2);
+  justify-content: center;
+  left: calc(-1 * var(--button-size) / 2);
+  opacity: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? '1' : '0'};
+  position: absolute;
+  width: var(--button-size);
+
+  ${StyledMobileButton}:hover & {
+    opacity: 1;
+    transition: var(--duration-250ms) var(--easing-default) opacity;
+  }
+
+  svg {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+
+    rect {
+      fill: var(--color-text-inverse);
+    }
   }
 `
 
@@ -75,7 +144,7 @@ const StyledLiHome = styled.li`
       margin-left: 1rem;
       height: 0.5rem;
       transform: scale(0);
-      transition: var(--easing-cubic) var(--duration-default-ms) transform;
+      transition: var(--easing-default) var(--duration-250ms) transform;
       width: 0.5rem;
     }
 
@@ -100,7 +169,9 @@ export const Nav = () => {
         mobileNavOpen={mobileNavOpen}
         onClick={() => setMobileNavOpen(!mobileNavOpen)}
       >
-        {SVGHamburger}
+        <StyledMobileButtonSVGWrapper mobileNavOpen={mobileNavOpen}>
+          {mobileNavOpen ? SVGClose : SVGHamburger}
+        </StyledMobileButtonSVGWrapper>
       </StyledMobileButton>
 
       <StyledNav
