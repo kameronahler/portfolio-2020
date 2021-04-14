@@ -1,5 +1,5 @@
 // react
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // packages
 import styled from 'styled-components'
@@ -34,11 +34,12 @@ const StyledStrong = styled.strong`
 `
 
 // constants
-const CARD_DATA: IExperienceCard[] = [
+const CARD_DATA = [
   {
     description: (
       <>Years designing and developing front end thingies (and counting).</>
     ),
+    id: 0,
     visual: <h3>6+</h3>,
   },
   {
@@ -51,6 +52,7 @@ const CARD_DATA: IExperienceCard[] = [
       </>
     ),
     href: 'https://kamerons-resume.netlify.app',
+    id: 1,
     srOnlyTitle: 'Visit interactive resume',
     visual: SVGResume,
   },
@@ -65,6 +67,7 @@ const CARD_DATA: IExperienceCard[] = [
       </>
     ),
     href: 'https://zaarly.com',
+    id: 2,
     visual: SVGZaarly,
     srOnlyTitle: 'Visit Zaarly website',
   },
@@ -78,6 +81,7 @@ const CARD_DATA: IExperienceCard[] = [
       </>
     ),
     href: 'https://cision.com',
+    id: 3,
     visual: SVGCision,
     srOnlyTitle: 'Visit Cision website',
   },
@@ -90,6 +94,7 @@ const CARD_DATA: IExperienceCard[] = [
       </>
     ),
     href: 'https://konve.io/uis-is-now-konveio-landing',
+    id: 4,
     srOnlyTitle: 'Visit Urban Interactive Studio website',
     visual: (
       <img
@@ -108,23 +113,57 @@ const CARD_DATA: IExperienceCard[] = [
       </>
     ),
     href: 'https://prodpi.com',
+    id: 5,
     visual: SVGProdpi,
     srOnlyTitle: 'Visit ProDPI website',
   },
 ]
+const DATA_RESIZE_PARENT = 'resize-parent'
 
-export const PageExperience = () => (
-  <>
-    <Header title={'Experience'} />
-    <StyledCardsWrapper>
-      {CARD_DATA.map(card => (
-        <ExperienceCard
-          description={card.description}
-          href={card.href}
-          srOnlyTitle={card.srOnlyTitle}
-          visual={card.visual}
-        />
-      ))}
-    </StyledCardsWrapper>
-  </>
-)
+export const PageExperience = () => {
+  const handleSizingOnMount = () => {
+    const nodes = document
+      .querySelector(`[data-id='${DATA_RESIZE_PARENT}'`)
+      .querySelectorAll('[data-resize="true"]')
+
+    const maxHeight = () => {
+      let currentMaxHeight: number = 0
+
+      nodes.forEach(card => {
+        const cardHeight = card.getBoundingClientRect().height
+
+        if (currentMaxHeight > cardHeight) {
+          return
+        }
+
+        currentMaxHeight = cardHeight
+      })
+
+      return currentMaxHeight
+    }
+
+    nodes.forEach((card: HTMLElement) => {
+      card.style.minHeight = `${maxHeight()}px`
+    })
+  }
+
+  useEffect(() => handleSizingOnMount(), [])
+
+  return (
+    <>
+      <Header title={'Experience'} />
+      <StyledCardsWrapper data-id={DATA_RESIZE_PARENT}>
+        {CARD_DATA.map(card => (
+          <ExperienceCard
+            data-resize='true'
+            description={card.description}
+            key={card.id}
+            href={card.href}
+            srOnlyTitle={card.srOnlyTitle}
+            visual={card.visual}
+          />
+        ))}
+      </StyledCardsWrapper>
+    </>
+  )
+}

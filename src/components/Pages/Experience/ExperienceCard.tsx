@@ -89,6 +89,7 @@ export const ExperienceCard = ({
   return href ? (
     <StyledCardLink
       className='card-flat card-hover'
+      data-resize='true'
       href={href}
       target='_blank'
     >

@@ -20,37 +20,29 @@ const StyledPageWrapper = styled.div`
 const StyledTransitionInner = styled.div`
   &.enter-active,
   &.exit-active {
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      transition-duration: var(--duration-page-transition-ms);
-      transition-property: opacity, transform;
-      transition-animation-timing-function: var(--easing-default);
-    }
+    transition-duration: var(--duration-page-transition-ms);
+    transition-property: opacity, transform;
+    transition-timing-function: var(--easing-default);
   }
 
   &.enter {
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      opacity: 0.01;
-      transform: translateX(2rem);
-    }
+    opacity: 0.01;
+    transform: translate3d(0, -1rem, 0);
   }
 
   &.enter-active {
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      opacity: 1;
-      transform: translateX(0);
-      transition-delay: var(--duration-page-transition-ms);
-    }
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition-delay: var(--duration-page-transition-ms);
   }
 
   &.exit-active {
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      left: 0;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      transform: translateX(2rem);
-      transition-timing-function: ease-in;
-    }
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translate3d(0, 2rem, 0);
+    transition-timing-function: ease-in;
   }
 `
 
