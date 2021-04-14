@@ -2,7 +2,7 @@
 import React from 'react'
 
 // components
-import { Header } from '../../Header/Header'
+import { SRHeader } from '../../SRHeader/SRHeader'
 import { ContentInnerWrapper } from './ContentInnerWrapper'
 import { ContentDescriptionWrapper } from './ContentDescriptionWrapper'
 import { ContentCardsWrapper } from './ContentCardsWrapper'
@@ -15,9 +15,9 @@ export const All = () => {
   return (
     <ContentInnerWrapper>
       <ContentDescriptionWrapper>
-        <Header srOnly={true}>
+        <SRHeader>
           <h3>Description</h3>
-        </Header>
+        </SRHeader>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia rem,
           vero laborum temporibus cumque consequuntur, odit, similique quos et
@@ -27,9 +27,9 @@ export const All = () => {
       </ContentDescriptionWrapper>
 
       <ContentCardsWrapper>
-        <Header srOnly={true}>
+        <SRHeader>
           <h3>What I can help with</h3>
-        </Header>
+        </SRHeader>
         <ContentCard alt='' title='unicorny thing' src={favicon} />
         <ContentCard alt='' title='unicorny thing' src={favicon} />
         <ContentCard alt='' title='unicorny thing' src={favicon} />

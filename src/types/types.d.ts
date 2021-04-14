@@ -35,11 +35,6 @@ interface ILoaderSVG {
   strokeWidth: number
 }
 
-interface IHeader {
-  children: React.ReactChild
-  srOnly?: boolean
-}
-
 interface IHomeMenuOverlay {
   dropdownExpanded: boolean
   setDropdownExpanded: React.SetStateAction<any>

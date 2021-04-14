@@ -19,6 +19,6 @@ const StyledHeader = styled.header`
   `}
 `
 
-export const Header = ({ children, srOnly }: IHeader) => {
-  return <StyledHeader srOnly={srOnly ? true : null}>{children}</StyledHeader>
+export const SRHeader = ({ children }: { children: React.ReactChild }) => {
+  return <StyledHeader srOnly={true}>{children}</StyledHeader>
 }

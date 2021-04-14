@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // components
-import { Header } from '../../Header/Header'
+import { SRHeader } from '../../SRHeader/SRHeader'
 
 // assets
 import { SVGArrowTopRight } from '../../../assets/SVGArrowTopRight'
@@ -92,9 +92,9 @@ export const ExperienceCard = ({
       href={href}
       target='_blank'
     >
-      <Header srOnly={true}>
+      <SRHeader>
         <h2>{srOnlyTitle}</h2>
-      </Header>
+      </SRHeader>
       <StyledCardLogoWrapper>{visual}</StyledCardLogoWrapper>
       <StyledCardDescription>{description}</StyledCardDescription>
       <StyledHoverSVGWrapper>{SVGArrowTopRight}</StyledHoverSVGWrapper>
