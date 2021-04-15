@@ -71,7 +71,7 @@ const StyledLi = styled.li`
   button {
     color: transparent;
     display: block;
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     padding: 0.5rem 0;
     position: relative;
     transform-origin: 50% 50%;
@@ -86,6 +86,30 @@ const StyledLi = styled.li`
       position: absolute;
       top: 0;
       width: 100%;
+
+      ${({ currentTab }: { currentTab: boolean }) =>
+        currentTab &&
+        `
+        background-image: linear-gradient(
+          45deg,
+          var(--color-primary),
+          var(--color-primary-light)
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      `}
+    }
+
+    &:hover::after {
+      background-image: linear-gradient(
+        45deg,
+        var(--color-primary),
+        var(--color-primary-light)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 `
@@ -98,11 +122,7 @@ export const Tabs = ({ currentTab, setCurrentTab }) => {
           <button
             aria-controls='portfolioPost'
             aria-selected={currentTab === 'portfolioPost' ? true : false}
-            className={
-              currentTab === 'portfolioPost'
-                ? 'link-gradient link-gradient'
-                : 'link-gradient-hover'
-            }
+            className='link-uppercase'
             data-tab='Portfolio'
             onClick={() => setCurrentTab('portfolioPost')}
             role='tab'
@@ -114,11 +134,7 @@ export const Tabs = ({ currentTab, setCurrentTab }) => {
           <button
             aria-controls='blogPost'
             aria-selected={currentTab === 'blogPost' ? true : false}
-            className={
-              currentTab === 'blogPost'
-                ? 'link-gradient link-gradient'
-                : 'link-gradient-hover'
-            }
+            className='link-uppercase'
             data-tab='Recent'
             onClick={() => setCurrentTab('blogPost')}
             role='tab'
@@ -130,11 +146,7 @@ export const Tabs = ({ currentTab, setCurrentTab }) => {
           <button
             aria-controls='dribbble'
             aria-selected={currentTab === 'dribbble' ? true : false}
-            className={
-              currentTab === 'dribbble'
-                ? 'link-gradient link-gradient'
-                : 'link-gradient-hover'
-            }
+            className='link-uppercase'
             data-tab='Dribbble'
             onClick={() => setCurrentTab('dribbble')}
             role='tab'

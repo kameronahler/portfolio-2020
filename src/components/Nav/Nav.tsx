@@ -184,8 +184,8 @@ export const Nav = () => {
         <StyledUl>
           <StyledLiHome>
             <NavLink
-              activeClassName={'link-gradient active'}
-              className='bold link-gradient-hover'
+              activeClassName={'active link-gradient'}
+              className='bold link-uppercase link-gradient-hover'
               exact={true}
               onClick={(e: Event) => {
                 if (location.pathname === '/') {

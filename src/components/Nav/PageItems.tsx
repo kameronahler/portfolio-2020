@@ -37,7 +37,7 @@ export const PageItems = ({ location, setMobileNavOpen }) => {
       <StyledLi key={name}>
         <NavLink
           activeClassName={'active bold link-gradient'}
-          className='link-gradient-hover'
+          className='link-gradient-hover link-uppercase'
           exact={true}
           onClick={(e: Event) => {
             if (location.pathname === path) {

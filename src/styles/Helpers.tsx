@@ -46,6 +46,11 @@ export const Helpers = createGlobalStyle`
     font-size: var(--font-size-h4);
   }
 
+  .link-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
   .link-gradient {
     background-image: linear-gradient(
       45deg,
@@ -56,7 +61,6 @@ export const Helpers = createGlobalStyle`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
 
   .link-gradient-hover {
     &:hover {
