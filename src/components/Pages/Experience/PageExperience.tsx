@@ -43,7 +43,7 @@ const CARD_DATA = [
         <StyledStrong color={'var(--color-primary)'}>
           Looking for a resume?
         </StyledStrong>
-        &nbsp;Head on over here.
+        &nbsp;Head on over to this interactive resume, fren.
       </>
     ),
     href: 'https://kamerons-resume.netlify.app',
