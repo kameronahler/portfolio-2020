@@ -78,7 +78,7 @@ const StyledUl = styled.ul`
     left: calc(-1 * var(--p-card));
     position: absolute;
     top: calc(-1 * var(--p-card));
-    transform-origin: 0% 0%;
+    transform-origin: 25% 0%;
     transform: scale(0);
     transition: var(--duration-250ms) var(--easing-default) transform;
     width: calc(100% + (2 * var(--p-card)));
@@ -96,8 +96,22 @@ const StyledUl = styled.ul`
 const StyledLi = styled.li`
   cursor: pointer;
   line-height: var(--line-height-heading);
-  opacity: 0.75;
   position: relative;
+  transition-property: opacity transform;
+  transition-timing-function: var(--easing-default);
+
+  ${StyledUl}.enter &:nth-of-type(n+2) {
+    transform: translate3d(0, -1rem, 0);
+    opacity: 0;
+  }
+
+  ${StyledUl}.enter-active &:nth-of-type(n+2),
+  ${StyledUl}.enter-done & {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition-delay: var(--duration-250ms);
+    transition-duration: var(--duration-250ms);
+  }
 
   &.active::before {
     background-color: var(--color-primary);
@@ -108,12 +122,6 @@ const StyledLi = styled.li`
     position: absolute;
     top: 0.5em;
     width: 0.5rem;
-  }
-
-  .enter > &,
-  .enter-done > & {
-    opacity: 1;
-    transition: var(--duration-250ms) var(--easing-default) opacity;
   }
 `
 
