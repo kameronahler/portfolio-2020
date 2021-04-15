@@ -9,9 +9,6 @@ import styled from 'styled-components'
 // components
 import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichText'
 
-// theme
-import { THEME } from '../../../styles/Theme'
-
 // styled
 const StyledUl = styled.ul`
   background-color: var(--color-bg-dark);
