@@ -47,7 +47,7 @@ export const Helpers = createGlobalStyle`
   }
 
   .link-gradient {
-    background: var(--color-primary) -webkit-linear-gradient(
+    background-image: linear-gradient(
       45deg,
       var(--color-primary),
       var(--color-primary-light)
@@ -60,7 +60,7 @@ export const Helpers = createGlobalStyle`
 
   .link-gradient-hover {
     &:hover {
-      background: var(--color-primary) -webkit-linear-gradient(
+      background-image: linear-gradient(
         45deg,
         var(--color-primary),
         var(--color-primary-light)
