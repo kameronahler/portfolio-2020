@@ -9,35 +9,104 @@ import styled from 'styled-components'
 import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 import { Loader } from '../../Loader/Loader'
 
+// theme
+import { THEME } from '../../../styles/Theme'
+
+// assets
+import { SVGDribbble } from '../../../assets/SVGDribbble'
+
 // styled
-const StyledShots__Grid = styled.div`
+const StyledGrid = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    gap: 2rem;
+  }
 `
 
-const StyledShots__ImgWrapper = styled.div`
-  padding-top: 75%;
+const StyledThumbLink = styled.a`
+  background-color: var(--color-text);
+  overflow: hidden;
   position: relative;
-  background-color: var(--color-white);
 `
 
-const StyledShots__Img = styled.img`
-  position: absolute;
+const StyledArrowWrapper = styled.span`
   display: block;
-  max-width: 100%;
-  top: 0;
-  left: 0;
+  height: 2rem;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition-duration: var(--duration-250ms);
+  transition-property: opacity;
+  transition-timing-function: var(--easing-default);
+  width: 2rem;
+
+  ${StyledThumbLink}:hover & {
+    opacity: 1;
+  }
+
+  path {
+    fill: var(--color-text-inverse);
+  }
 `
 
-const StyledShots__ViewMore = styled.a`
+const StyledImg = styled.img`
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transition-duration: var(--duration-250ms);
+  transition-timing-function: opacity, transform;
+  transition-timing-function: var(--easing-default);
+  width: 100%;
+
+  ${StyledThumbLink}:hover & {
+    opacity: 0.2;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`
+
+const StyledViewMoreLink = styled.a`
   display: grid;
+  overflow: hidden;
+  position: relative;
   place-items: center;
+
+  svg {
+    bottom: 0;
+    object-fit: cover;
+    opacity: 0.1;
+    position: absolute;
+    right: 0;
+    transition: var(--duration-250ms) var(--easing-default) transform;
+    z-index: -1;
+  }
+
+  path {
+    fill: var(--color-text-light);
+    transition: var(--duration-250ms) var(--easing-default) fill;
+  }
+
+  &:hover {
+    svg {
+      transform: scale(1.05);
+    }
+
+    path {
+      fill: var(--color-primary-light);
+    }
+  }
 `
 
 // constants
 const API_URL =
-  'https://api.dribbble.com/v2/user/shots?per_page=9&access_token=' +
+  'https://api.dribbble.com/v2/user/shots?per_page=5&access_token=' +
   process.env.DRIBBBLE_API_KEY
 const CANCEL_FETCH_MSG = 'Component unmounted before completing request'
 const ERROR_FETCH_MSG = 'Unable to load Dribbble shots'
@@ -78,18 +147,22 @@ export const Dribbble = ({
   return (
     <>
       {shots ? (
-        <StyledShots__Grid id={ariaControlledBy}>
+        <StyledGrid id={ariaControlledBy}>
           {shots.map(shot => (
-            <a key={shot.id} href={shot.html_url} target='_blank'>
-              <StyledShots__ImgWrapper>
-                <StyledShots__Img alt={shot.title} src={shot.images.hidpi} />
-              </StyledShots__ImgWrapper>
-            </a>
+            <StyledThumbLink href={shot.html_url} key={shot.id} target='_blank'>
+              <StyledImg alt={shot.title} src={shot.images.hidpi} />
+              <StyledArrowWrapper>{SVGDribbble}</StyledArrowWrapper>
+            </StyledThumbLink>
           ))}
-          <StyledShots__ViewMore href={PROFILE_URL}>
-            View more
-          </StyledShots__ViewMore>
-        </StyledShots__Grid>
+          <StyledViewMoreLink
+            className='link-gradient-hover'
+            href={PROFILE_URL}
+            target='_blank'
+          >
+            {SVGDribbble}
+            <span>View more</span>
+          </StyledViewMoreLink>
+        </StyledGrid>
       ) : (
         <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />
