@@ -18,31 +18,32 @@ const StyledPageWrapper = styled.div`
 `
 
 const StyledTransitionInner = styled.div`
-  &.enter-active,
-  &.exit-active {
-    transition-duration: var(--duration-page-transition-ms);
+  &.enter,
+  &.exit {
     transition-property: opacity, transform;
     transition-timing-function: var(--easing-default);
   }
 
   &.enter {
-    opacity: 0.01;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
     transform: translate3d(0, -1rem, 0);
+    width: 100%;
   }
 
   &.enter-active {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     transition-delay: var(--duration-page-transition-ms);
+    transition-duration: var(--duration-page-transition-ms);
   }
 
   &.exit-active {
-    left: 0;
     opacity: 0;
-    position: absolute;
-    top: 0;
+    transition-duration: var(--duration-page-transition-ms);
     transform: translate3d(0, 2rem, 0);
-    transition-timing-function: ease-in;
   }
 `
 
@@ -55,7 +56,22 @@ export const Page = () => {
   return (
     <StyledPageWrapper>
       <TransitionGroup className='relative'>
-        <CSSTransition key={location.key} timeout={PAGE_TRANSITION_DURATION}>
+        <CSSTransition
+          key={location.key}
+          onExiting={() => {
+            document.body.style.height = '100vh'
+            document.body.style.overflow = 'hidden'
+            setTimeout(
+              () => window.scroll(0, 0),
+              +THEME.duration.pageTransition - 50
+            )
+          }}
+          onEntered={() => {
+            document.body.style.height = null
+            document.body.style.overflow = null
+          }}
+          timeout={PAGE_TRANSITION_DURATION}
+        >
           <StyledTransitionInner>
             <Switch location={location}>
               {routes.map(({ name, component, path }) => {
