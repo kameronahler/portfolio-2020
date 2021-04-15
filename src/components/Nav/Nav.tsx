@@ -44,9 +44,9 @@ const StyledNav = styled.nav`
     display: flex;
     grid-column: 1 / 2;
     height: calc(100vh - (2 * var(--p-card)));
-    left: var(--p-card);
+    left: unset;
     opacity: 1;
-    position: static;
+    position: fixed;
     padding: unset;
     top: var(--p-card);
     visibility: visible;
