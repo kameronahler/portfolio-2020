@@ -1,5 +1,5 @@
 // react
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // packages
 import axios, { CancelTokenSource } from 'axios'
@@ -16,7 +16,7 @@ import { THEME } from '../../../styles/Theme'
 import { SVGDribbble } from '../../../assets/SVGDribbble'
 
 // styled
-const StyledGrid = styled.div`
+const StyledSection = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -117,6 +117,7 @@ export const Dribbble = ({
 }: {
   ariaControlledBy: string
 }) => {
+  const transitionRef = useRef<HTMLDivElement>()
   const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
 
   const fetchDribbble = async (source: CancelTokenSource) => {
@@ -144,10 +145,23 @@ export const Dribbble = ({
     }
   }, [])
 
+  useEffect(() => {
+    if (shots) {
+      setTimeout(
+        () => transitionRef.current.classList.add('mounted'),
+        +THEME.duration[250]
+      )
+    }
+  })
+
   return (
     <>
       {shots ? (
-        <StyledGrid id={ariaControlledBy}>
+        <StyledSection
+          className='animate-fade-in'
+          id={ariaControlledBy}
+          ref={transitionRef}
+        >
           {shots.map(shot => (
             <StyledThumbLink href={shot.html_url} key={shot.id} target='_blank'>
               <StyledImg alt={shot.title} src={shot.images.hidpi} />
@@ -162,7 +176,7 @@ export const Dribbble = ({
             {SVGDribbble}
             <span>View more</span>
           </StyledViewMoreLink>
-        </StyledGrid>
+        </StyledSection>
       ) : (
         <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />

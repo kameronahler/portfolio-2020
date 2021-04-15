@@ -1,5 +1,5 @@
 // react
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 // packages
 import { EntryCollection } from 'contentful'
@@ -8,6 +8,9 @@ import styled from 'styled-components'
 
 // components
 import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichText'
+
+// theme
+import { THEME } from '../../../styles/Theme'
 
 // styled
 const StyledUl = styled.ul`
@@ -22,6 +25,7 @@ export const PortfolioContent = ({
 }: {
   contentfulEntries: EntryCollection<any>
 }) => {
+  const transitionRef = useRef<HTMLDivElement>()
   const [currentArticle, setCurrentArticle] = useState<number>(0)
 
   const handleArticleChange = (
@@ -30,8 +34,17 @@ export const PortfolioContent = ({
     setCurrentArticle(parseInt(e.currentTarget.dataset.article))
   }
 
+  useEffect(() => {
+    if (contentfulEntries) {
+      setTimeout(
+        () => transitionRef.current.classList.add('mounted'),
+        +THEME.duration[250]
+      )
+    }
+  })
+
   return (
-    <>
+    <section className='animate-fade-in' ref={transitionRef}>
       <nav>
         <StyledUl>
           <li>
@@ -66,6 +79,6 @@ export const PortfolioContent = ({
           CONTENTFUL_RICH_TEXT_OPTIONS
         )}
       </article>
-    </>
+    </section>
   )
 }

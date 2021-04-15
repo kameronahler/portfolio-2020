@@ -13,16 +13,20 @@ import { useFetchContentful } from '../../../hooks/hooks'
 import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 import { Loader } from '../../Loader/Loader'
 
+// theme
+import { THEME } from '../../../styles/Theme'
+
 // constants
 const CONTENTFUL_TYPE = 'blogPost'
 
 export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
+  const mounted = useRef<Boolean>(true)
+  const transitionRef = useRef<HTMLDivElement>()
+
   const [
     contentfulEntries,
     setContentfulEntries,
   ] = useState<EntryCollection<any> | null>(null)
-
-  const mounted = useRef<Boolean>(true)
 
   useEffect(() => {
     useFetchContentful<IContentfulPortfolioEntry>({
@@ -32,10 +36,19 @@ export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
     })
   }, [])
 
+  useEffect(() => {
+    if (contentfulEntries) {
+      setTimeout(
+        () => transitionRef.current.classList.add('mounted'),
+        +THEME.duration[250]
+      )
+    }
+  })
+
   return (
     <>
       {contentfulEntries ? (
-        <section>
+        <section className='animate-fade-in' ref={transitionRef}>
           {contentfulEntries.items
             .map(entry => {
               return {
