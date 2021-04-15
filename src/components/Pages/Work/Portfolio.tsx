@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from 'react'
 
 // packages
 import { EntryCollection } from 'contentful'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // hooks
 import { useFetchContentful } from '../../../hooks/hooks'
@@ -11,16 +10,21 @@ import { useFetchContentful } from '../../../hooks/hooks'
 // components
 import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 import { Loader } from '../../Loader/Loader'
+import { PortfolioContent } from './PortfolioContent'
 
 // constants
 const CONTENTFUL_TYPE = 'portfolioPost'
 
-export const Portfolio = ({ ariaControls }: { ariaControls: string }) => {
-  const mounted = useRef<Boolean>(true)
+export const Portfolio = ({
+  ariaControlledBy,
+}: {
+  ariaControlledBy: string
+}) => {
   const [
     contentfulEntries,
     setContentfulEntries,
   ] = useState<EntryCollection<any> | null>(null)
+  const mounted = useRef<Boolean>(true)
 
   useEffect(() => {
     useFetchContentful<IContentfulPortfolioEntry>({
@@ -37,31 +41,14 @@ export const Portfolio = ({ ariaControls }: { ariaControls: string }) => {
   }
 
   return (
-    <>
+    <div id={ariaControlledBy}>
       {contentfulEntries ? (
-        contentfulEntries.items
-          .map(entry => {
-            return {
-              ...entry,
-              fields: {
-                ...entry.fields,
-                body: {
-                  ...entry.fields.body,
-                  content: documentToReactComponents(entry.fields.body),
-                },
-              },
-            }
-          })
-          .map(entry => (
-            <article id={ariaControls} key={entry.sys.id}>
-              {entry.fields.body.content}
-            </article>
-          ))
+        <PortfolioContent contentfulEntries={contentfulEntries} />
       ) : (
         <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />
         </LoaderWrapper>
       )}
-    </>
+    </div>
   )
 }

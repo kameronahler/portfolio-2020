@@ -16,7 +16,7 @@ import { Loader } from '../../Loader/Loader'
 // constants
 const CONTENTFUL_TYPE = 'blogPost'
 
-export const Recent = ({ ariaControls }: { ariaControls: string }) => {
+export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
   const [
     contentfulEntries,
     setContentfulEntries,
@@ -53,7 +53,7 @@ export const Recent = ({ ariaControls }: { ariaControls: string }) => {
               }
             })
             .map(entry => (
-              <section id={ariaControls} key={entry.sys.id}>
+              <section id={ariaControlledBy} key={entry.sys.id}>
                 {entry.fields.body.content}
               </section>
             ))}
