@@ -34,8 +34,8 @@ export const Overlay = ({
 }: IHomeMenuOverlay) => {
   useEffect(() => {
     window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        setDropdownExpanded(!dropdownExpanded)
+      if (e.key === 'Escape' && dropdownExpanded) {
+        setDropdownExpanded(false)
       }
     })
   })
