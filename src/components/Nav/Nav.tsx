@@ -77,15 +77,16 @@ const StyledMobileButton = styled.button`
   transform: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
     mobileNavOpen && `translateX(calc(100vw - var(--button-size)))`};
   transform-origin: 50% 50%;
-  transition: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen && 'var(--duration-250ms) var(--easing-default) transform'};
+  transition-duration: var(--duration-250ms);
+  transition-property: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? 'transform' : 'transform border'};
+  transition-timing-function: var(--easing-default);
   width: var(--button-size);
   z-index: 9000;
 
   &:hover,
   &:focus-visible {
     border-color: var(--color-primary);
-    transition-property: border transform;
   }
 
   @media (min-width: ${THEME.w.screenDesktop}) {
