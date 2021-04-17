@@ -91,5 +91,10 @@ export const Base = createGlobalStyle`
     cursor: pointer;
     line-height: var(--line-height-heading);
     padding: unset;
+
+    &:disabled {
+      opacity: .25;
+      cursor: not-allowed;
+    }
   }
 `

@@ -15,7 +15,7 @@ import { Development } from './Development'
 import { Overlay } from './Overlay'
 
 // styled
-const StyledDropdownWrapper = styled.div`
+const StyledDropdownWrapper = styled.section`
   position: relative;
 `
 const StyledP = styled.p`

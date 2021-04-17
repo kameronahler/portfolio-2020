@@ -93,7 +93,7 @@ export const PortfolioContent = ({
   })
 
   return (
-    <section className='animate-fade-in' ref={transitionRef}>
+    <div className='animate-fade-in' ref={transitionRef}>
       <StyledNav>
         <StyledHeader>
           <h2>{contentfulEntries.items[currentArticle].fields.title}</h2>
@@ -134,6 +134,6 @@ export const PortfolioContent = ({
           CONTENTFUL_RICH_TEXT_OPTIONS
         )}
       </article>
-    </section>
+    </div>
   )
 }

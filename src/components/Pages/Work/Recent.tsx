@@ -48,7 +48,7 @@ export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
   return (
     <>
       {contentfulEntries ? (
-        <section className='animate-fade-in' ref={transitionRef}>
+        <div className='animate-fade-in' ref={transitionRef}>
           {contentfulEntries.items
             .map(entry => {
               return {
@@ -66,11 +66,11 @@ export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
               }
             })
             .map(entry => (
-              <section id={ariaControlledBy} key={entry.sys.id}>
+              <div id={ariaControlledBy} key={entry.sys.id}>
                 {entry.fields.body.content}
-              </section>
+              </div>
             ))}
-        </section>
+        </div>
       ) : (
         <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />

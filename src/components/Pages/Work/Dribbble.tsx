@@ -16,7 +16,7 @@ import { THEME } from '../../../styles/Theme'
 import { SVGDribbble } from '../../../assets/SVGDribbble'
 
 // styled
-const StyledSection = styled.div`
+const StyledWrapper = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -157,7 +157,7 @@ export const Dribbble = ({
   return (
     <>
       {shots ? (
-        <StyledSection
+        <StyledWrapper
           className='animate-fade-in'
           id={ariaControlledBy}
           ref={transitionRef}
@@ -176,7 +176,7 @@ export const Dribbble = ({
             {SVGDribbble}
             <span>View more</span>
           </StyledViewMoreLink>
-        </StyledSection>
+        </StyledWrapper>
       ) : (
         <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />

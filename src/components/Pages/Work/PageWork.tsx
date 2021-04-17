@@ -16,11 +16,15 @@ export const PageWork = () => {
     <>
       <Header title={'Work'} />
       <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
-      {currentTab === 'portfolioPost' && (
-        <Portfolio ariaControlledBy={currentTab} />
-      )}
-      {currentTab === 'blogPost' && <Recent ariaControlledBy={currentTab} />}
-      {currentTab === 'dribbble' && <Dribbble ariaControlledBy={currentTab} />}
+      <section>
+        {currentTab === 'portfolioPost' && (
+          <Portfolio ariaControlledBy={currentTab} />
+        )}
+        {currentTab === 'blogPost' && <Recent ariaControlledBy={currentTab} />}
+        {currentTab === 'dribbble' && (
+          <Dribbble ariaControlledBy={currentTab} />
+        )}
+      </section>
     </>
   )
 }
