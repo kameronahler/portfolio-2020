@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 // packages
 import { EntryCollection } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import styled from 'styled-components'
 
 // hooks
 import { useFetchContentful } from '../../../hooks/hooks'
@@ -16,6 +17,38 @@ import { Loader } from '../../Loader/Loader'
 
 // theme
 import { THEME } from '../../../styles/Theme'
+
+// styled
+const StyledArticle = styled.article`
+  @media (min-width: ${THEME.w.screenMd}) {
+    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 1fr);
+  }
+
+  header {
+    @media (min-width: ${THEME.w.screenMd}) {
+      grid-column: 1/3;
+    }
+  }
+
+  h1 {
+    font-size: var(--font-size-h3-clamp);
+    margin-bottom: unset;
+  }
+
+  img {
+    display: block;
+    margin-top: 2rem;
+    width: 100%;
+  }
+`
+
+const StyledHr = styled.hr`
+  border-top: unset;
+  border-bottom: 0.0625rem solid var(--color-bg-dark);
+  margin: 4rem 0;
+`
 
 // constants
 const CONTENTFUL_TYPE = 'blogPost'
@@ -50,31 +83,32 @@ export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
     <>
       {contentfulEntries ? (
         <div className='animate-fade-in' ref={transitionRef}>
-          {contentfulEntries.items
-            .map(entry => {
-              return {
-                ...entry,
-                fields: {
-                  ...entry.fields,
-                  body: {
-                    ...entry.fields.body,
-                    content: (
-                      <RichTextWrapper>
-                        {documentToReactComponents(
-                          entry.fields.body,
-                          CONTENTFUL_RICH_TEXT_OPTIONS
-                        )}
-                      </RichTextWrapper>
-                    ),
-                  },
-                },
-              }
-            })
-            .map(entry => (
-              <div id={ariaControlledBy} key={entry.sys.id}>
-                {entry.fields.body.content}
-              </div>
-            ))}
+          {contentfulEntries.items.map(entry => (
+            <>
+              <StyledArticle id={ariaControlledBy} key={entry.sys.id}>
+                <header>
+                  <h1>{entry.fields.title}</h1>
+                </header>
+                <div>
+                  <RichTextWrapper>
+                    {documentToReactComponents(
+                      entry.fields.body,
+                      CONTENTFUL_RICH_TEXT_OPTIONS
+                    )}
+                  </RichTextWrapper>
+                </div>
+                <div>
+                  {entry.fields.hero && (
+                    <img
+                      alt={entry.fields.hero.fields.description || ''}
+                      src={entry.fields.hero.fields.file.url}
+                    />
+                  )}
+                </div>
+              </StyledArticle>
+              <StyledHr />
+            </>
+          ))}
         </div>
       ) : (
         <LoaderWrapper>
