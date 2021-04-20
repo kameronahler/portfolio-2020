@@ -10,7 +10,7 @@ import { useFetchContentful } from '../../../hooks/hooks'
 // components
 import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 import { Loader } from '../../Loader/Loader'
-import { PortfolioContent } from './PortfolioContent'
+import { PortfolioArticles } from './PortfolioArticles'
 
 // constants
 const CONTENTFUL_TYPE = 'portfolioPost'
@@ -43,7 +43,7 @@ export const Portfolio = ({
   return (
     <div id={ariaControlledBy}>
       {contentfulEntries ? (
-        <PortfolioContent contentfulEntries={contentfulEntries} />
+        <PortfolioArticles contentfulEntries={contentfulEntries} />
       ) : (
         <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />

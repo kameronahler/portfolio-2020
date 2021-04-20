@@ -19,31 +19,60 @@ import { SRHeader } from '../../SRHeader/SRHeader'
 
 // styled
 const StyledNav = styled.nav`
-  align-items: flex-start;
-  column-gap: 1rem;
   display: grid;
-  grid-template-columns: 1fr auto;
-  justify-content: start;
   margin-bottom: 1rem;
+  padding: 0 3rem;
+  position: relative;
+
+  @media (min-width: ${THEME.w.screenSm}) {
+    align-items: flex-start;
+    column-gap: 1rem;
+    grid-template-columns: 1fr auto;
+    justify-content: start;
+    padding: unset;
+    position: static;
+  }
 `
 
 const StyledUl = styled.ul`
   display: flex;
-  margin-top: 0.625rem;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+
+  @media (min-width: ${THEME.w.screenSm}) {
+    justify-content: unset;
+    position: static;
+    top: unset;
+    transform: unset;
+  }
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    margin-top: 0.5rem;
+  }
 `
 
 const StyledHeader = styled.header`
   h2 {
+    font-size: var(--font-size-h3-clamp);
     margin-bottom: 0;
+
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      font-size: var(--font-size-h2);
+    }
   }
 `
 
 const StyledNavButton = styled.button`
   display: block;
   line-height: 1;
-  transition-duration: var(--duration-250ms);
-  transition-property: transform;
-  transition-timing-function: var(--easing-default);
+
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    transition-duration: var(--duration-250ms);
+    transition-property: transform;
+    transition-timing-function: var(--easing-default);
+  }
 
   &:disabled {
     opacity: 0.1;
@@ -56,10 +85,14 @@ const StyledNavButton = styled.button`
   }
 
   ${StyledNav}:hover li:first-of-type & {
-    transform: translateX(-0.25rem);
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      transform: translateX(-0.25rem);
+    }
   }
   ${StyledNav}:hover li:last-of-type & {
-    transform: translateX(0.25rem);
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      transform: translateX(0.25rem);
+    }
   }
 
   svg {
@@ -69,7 +102,7 @@ const StyledNavButton = styled.button`
   }
 `
 
-export const PortfolioContent = ({
+export const PortfolioArticles = ({
   contentfulEntries,
 }: {
   contentfulEntries: EntryCollection<any>
