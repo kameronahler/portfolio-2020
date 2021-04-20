@@ -119,14 +119,6 @@ const StyledNavButton = styled.button`
   }
 `
 
-const StyledArticle = styled.article`
-  @media (min-width: ${THEME.w.screenLg}) {
-    border-left: 0.125rem solid var(--color-bg-dark);
-    border-image: linear-gradient(var(--color-bg-dark), transparent) 1;
-    padding: 1rem 3rem;
-  }
-`
-
 export const PortfolioArticles = ({
   contentfulEntries,
 }: {
@@ -191,7 +183,7 @@ export const PortfolioArticles = ({
       )}
 
       {/* article */}
-      <StyledArticle>
+      <article>
         <SRHeader>
           <h1>{contentfulEntries.items[currentArticle].fields.title}</h1>
         </SRHeader>
@@ -201,7 +193,7 @@ export const PortfolioArticles = ({
             CONTENTFUL_RICH_TEXT_OPTIONS
           )}
         </RichTextWrapper>
-      </StyledArticle>
+      </article>
     </div>
   )
 }
