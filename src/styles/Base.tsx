@@ -63,6 +63,20 @@ export const Base = createGlobalStyle`
     margin-bottom: 1rem;
   }
 
+  ol {
+    margin: unset;
+    padding-left: unset;
+
+    li {
+      margin-left: 1.125rem;
+      padding-left: .25rem;
+      p {
+        display: inline-block;
+      }
+
+    }
+  }
+
   ul {
     list-style: none;
     margin: unset;
@@ -75,7 +89,8 @@ export const Base = createGlobalStyle`
   }
 
   a,
-  button {
+  button,
+  img {
     &:focus {
       outline: none;
     }

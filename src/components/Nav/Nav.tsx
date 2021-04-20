@@ -38,7 +38,7 @@ const StyledNav = styled.nav`
     mobileNavOpen ? 'visible' : 'hidden'};
   width: 100vw;
   z-index: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen ? '8000' : '-1'};
+    mobileNavOpen ? 'var(--z-nav)' : '-1'};
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: flex;
@@ -82,7 +82,7 @@ const StyledMobileButton = styled.button`
     mobileNavOpen ? 'transform' : 'transform border'};
   transition-timing-function: var(--easing-default);
   width: var(--button-size);
-  z-index: 9000;
+  z-index: var(--z-above-nav);
 
   &:hover,
   &:focus-visible {

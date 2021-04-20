@@ -1,8 +1,9 @@
 export const THEME = {
   color: {
     bg: '#f8f8f8',
-    bgDark: '#e8e8e8',
     bgCard: '#ffffff',
+    bgDark: '#e8e8e8',
+    bgInverse: '#000000',
     overlay: '#ffffff',
     primary: '#4c36d3',
     primaryLight: '#9988ff',
@@ -50,6 +51,7 @@ export const THEME = {
   },
   lineHeight: {
     default: '1.625',
+    markdown: '1.75',
     heading: '1.2',
   },
   p: {
@@ -68,5 +70,11 @@ export const THEME = {
     screenDesktop: '64rem',
     screenLg: '75rem', // 1200
     screenXl: '90rem', // 1440
+  },
+  z: {
+    nav: '1000',
+    aboveNav: '2000',
+    overlay: '3000',
+    aboveOverlay: '4000',
   },
 }

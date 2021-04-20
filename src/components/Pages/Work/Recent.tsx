@@ -4,12 +4,13 @@ import React, { useState, useRef, useEffect } from 'react'
 // packages
 import { EntryCollection } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichText'
 
 // hooks
 import { useFetchContentful } from '../../../hooks/hooks'
 
 // components
+import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichTextResponsiveImg'
+import { RichTextWrapper } from '../../../components/Contentful/RichTextWrapper'
 import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 import { Loader } from '../../Loader/Loader'
 
@@ -57,9 +58,13 @@ export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
                   ...entry.fields,
                   body: {
                     ...entry.fields.body,
-                    content: documentToReactComponents(
-                      entry.fields.body,
-                      CONTENTFUL_RICH_TEXT_OPTIONS
+                    content: (
+                      <RichTextWrapper>
+                        {documentToReactComponents(
+                          entry.fields.body,
+                          CONTENTFUL_RICH_TEXT_OPTIONS
+                        )}
+                      </RichTextWrapper>
                     ),
                   },
                 },

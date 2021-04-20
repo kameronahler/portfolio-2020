@@ -7,7 +7,9 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import styled from 'styled-components'
 
 // components
-import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichText'
+import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichTextResponsiveImg'
+import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
+import { HeroImg } from '../../../components/Contentful/HeroImg'
 
 // assets
 import { SVGChevronLeft } from '../../../assets/SVGChevronLeft'
@@ -19,18 +21,37 @@ import { SRHeader } from '../../SRHeader/SRHeader'
 
 // styled
 const StyledNav = styled.nav`
+  background-color: var(--color-bg);
   display: grid;
+  padding-left: 3rem;
+  padding-right: 3rem;
   margin-bottom: 1rem;
-  padding: 0 3rem;
   position: relative;
 
   @media (min-width: ${THEME.w.screenSm}) {
     align-items: flex-start;
+    background-color: var(--color-bg);
     column-gap: 1rem;
     grid-template-columns: 1fr auto;
     justify-content: start;
-    padding: unset;
-    position: static;
+    margin-bottom: unset;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+  }
+`
+
+const StyledHeader = styled.header`
+  h2 {
+    font-size: var(--font-size-h4-clamp);
+    margin-bottom: 0;
+    @media (min-width: ${THEME.w.screenSm}) {
+      font-size: var(--font-size-h3-clamp);
+    }
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      font-size: var(--font-size-h2);
+    }
   }
 `
 
@@ -48,18 +69,14 @@ const StyledUl = styled.ul`
     top: unset;
     transform: unset;
   }
+
   @media (min-width: ${THEME.w.screenDesktop}) {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
   }
-`
 
-const StyledHeader = styled.header`
-  h2 {
-    font-size: var(--font-size-h3-clamp);
-    margin-bottom: 0;
-
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      font-size: var(--font-size-h2);
+  li:first-of-type {
+    @media (min-width: ${THEME.w.screenSm}) {
+      margin-right: 1rem;
     }
   }
 `
@@ -102,6 +119,14 @@ const StyledNavButton = styled.button`
   }
 `
 
+const StyledArticle = styled.article`
+  @media (min-width: ${THEME.w.screenLg}) {
+    border-left: 0.125rem solid var(--color-bg-dark);
+    border-image: linear-gradient(var(--color-bg-dark), transparent) 1;
+    padding: 1rem 3rem;
+  }
+`
+
 export const PortfolioArticles = ({
   contentfulEntries,
 }: {
@@ -127,6 +152,7 @@ export const PortfolioArticles = ({
 
   return (
     <div className='animate-fade-in' ref={transitionRef}>
+      {/* nav */}
       <StyledNav>
         <StyledHeader>
           <h2>{contentfulEntries.items[currentArticle].fields.title}</h2>
@@ -158,15 +184,24 @@ export const PortfolioArticles = ({
           </li>
         </StyledUl>
       </StyledNav>
-      <article className='card'>
+
+      {/* hero */}
+      {contentfulEntries.items[currentArticle].fields.hero && (
+        <HeroImg hero={contentfulEntries.items[currentArticle].fields.hero} />
+      )}
+
+      {/* article */}
+      <StyledArticle>
         <SRHeader>
           <h1>{contentfulEntries.items[currentArticle].fields.title}</h1>
         </SRHeader>
-        {documentToReactComponents(
-          contentfulEntries.items[currentArticle].fields.body,
-          CONTENTFUL_RICH_TEXT_OPTIONS
-        )}
-      </article>
+        <RichTextWrapper>
+          {documentToReactComponents(
+            contentfulEntries.items[currentArticle].fields.body,
+            CONTENTFUL_RICH_TEXT_OPTIONS
+          )}
+        </RichTextWrapper>
+      </StyledArticle>
     </div>
   )
 }

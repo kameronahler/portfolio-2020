@@ -40,7 +40,8 @@ const StyledButton = styled.button`
   margin-top: 0.5rem;
   position: ${({ dropdownExpanded }) => (dropdownExpanded ? 'relative' : '')};
   text-align: left;
-  z-index: ${({ dropdownExpanded }) => (dropdownExpanded ? '1000' : '')};
+  z-index: ${({ dropdownExpanded }) =>
+    dropdownExpanded ? 'var(--z-above-overlay)' : ''};
 
   span {
     border-bottom: ${({ dropdownExpanded }) =>
@@ -63,7 +64,8 @@ const StyledUl = styled.ul`
   top: 0;
   visibility: ${({ dropdownExpanded }) =>
     dropdownExpanded ? 'visible' : 'hidden'};
-  z-index: ${({ dropdownExpanded }) => (dropdownExpanded ? '1000' : '')};
+  z-index: ${({ dropdownExpanded }) =>
+    dropdownExpanded ? 'var(--z-above-overlay)' : ''};
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     font-size: var(--font-size-h2);

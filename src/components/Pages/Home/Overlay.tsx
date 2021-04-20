@@ -25,7 +25,7 @@ const StyledOverlay = styled.div`
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 900;
+  z-index: var(--z-overlay);
 `
 
 export const Overlay = ({
