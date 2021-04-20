@@ -77,38 +77,42 @@ export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
         +THEME.duration[250]
       )
     }
-  })
+  }, [contentfulEntries])
 
   return (
     <>
       {contentfulEntries ? (
         <div className='animate-fade-in' ref={transitionRef}>
-          {contentfulEntries.items.map(entry => (
-            <>
-              <StyledArticle id={ariaControlledBy} key={entry.sys.id}>
-                <header>
-                  <h1>{entry.fields.title}</h1>
-                </header>
-                <div>
-                  <RichTextWrapper>
-                    {documentToReactComponents(
-                      entry.fields.body,
-                      CONTENTFUL_RICH_TEXT_OPTIONS
-                    )}
-                  </RichTextWrapper>
+          {contentfulEntries.items
+            .sort((a, b) => (a.sys.createdAt < b.sys.createdAt ? 1 : -1))
+            .map(entry => {
+              return (
+                <div key={entry.sys.id}>
+                  <StyledArticle id={ariaControlledBy}>
+                    <header>
+                      <h1>{entry.fields.title}</h1>
+                    </header>
+                    <div>
+                      <RichTextWrapper>
+                        {documentToReactComponents(
+                          entry.fields.body,
+                          CONTENTFUL_RICH_TEXT_OPTIONS
+                        )}
+                      </RichTextWrapper>
+                    </div>
+                    <div>
+                      {entry.fields.hero && (
+                        <img
+                          alt={entry.fields.hero.fields.description || ''}
+                          src={entry.fields.hero.fields.file.url}
+                        />
+                      )}
+                    </div>
+                  </StyledArticle>
+                  <StyledHr />
                 </div>
-                <div>
-                  {entry.fields.hero && (
-                    <img
-                      alt={entry.fields.hero.fields.description || ''}
-                      src={entry.fields.hero.fields.file.url}
-                    />
-                  )}
-                </div>
-              </StyledArticle>
-              <StyledHr />
-            </>
-          ))}
+              )
+            })}
         </div>
       ) : (
         <LoaderWrapper>
