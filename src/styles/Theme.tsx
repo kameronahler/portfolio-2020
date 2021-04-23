@@ -1,6 +1,7 @@
 export const THEME = {
   color: {
     bg: '#f8f8f8',
+    bgAccent: '#ecebf5',
     bgCard: '#ffffff',
     bgDark: '#e8e8e8',
     bgInverse: '#000000',
@@ -11,6 +12,7 @@ export const THEME = {
     text: '#252427',
     textLight: '#706D76',
     textInverse: 'rgba(255, 255, 255, .95)',
+    white: '#ffffff',
   },
   duration: {
     ['250']: '250',
@@ -70,6 +72,7 @@ export const THEME = {
     screenDesktop: '64rem',
     screenLg: '75rem', // 1200
     screenXl: '90rem', // 1440
+    navDesktop: '16rem',
   },
   z: {
     nav: '1000',

@@ -19,6 +19,13 @@ const StyledLink = styled.a`
     display: block;
     height: 1.5rem;
     width: 1.5rem;
+
+    path {
+      fill: var(--color-text);
+      transition-duration: var(--duration-250ms);
+      transition-property: fill;
+      transition-timing-function: var(--easing-default);
+    }
   }
 
   &:hover {

@@ -72,7 +72,7 @@ const StyledUl = styled.ul`
   }
 
   &::before {
-    background-color: var(--color-overlay);
+    background-color: var(--color-bg-card);
     border-radius: var(--rounded-card);
     box-shadow: var(--shadow-card);
     content: '';

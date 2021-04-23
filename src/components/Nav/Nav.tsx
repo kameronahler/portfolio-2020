@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import { THEME } from '../../styles/Theme'
 
 // components
+import { Darkmode } from './Darkmode'
 import { PageItems } from './PageItems'
 import { Separator } from './Separator'
 import { SocialItems } from './Socialtems'
@@ -45,6 +46,7 @@ const StyledNav = styled.nav`
     grid-column: 1 / 2;
     height: calc(100vh - (2 * var(--p-card)));
     left: unset;
+    min-width: 11rem;
     opacity: 1;
     position: fixed;
     padding: unset;
@@ -118,7 +120,7 @@ const StyledMobileButtonSVGWrapper = styled.span`
     width: 2rem;
 
     rect {
-      fill: var(--color-text-inverse);
+      fill: var(--color-white);
     }
   }
 `
@@ -181,6 +183,8 @@ export const Nav = () => {
         id='nav'
         mobileNavOpen={mobileNavOpen}
       >
+        <Darkmode />
+
         <StyledUl>
           <StyledLiHome>
             <NavLink

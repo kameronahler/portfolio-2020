@@ -22,7 +22,7 @@ const StyledAppGrid = styled.div`
   @media (min-width: ${THEME.w.screenDesktop}) {
     column-gap: 1rem;
     display: grid;
-    grid-template-columns: 16rem 1fr;
+    grid-template-columns: var(--w-nav-desktop) 1fr;
   }
 `
 const StyledMain = styled.main`

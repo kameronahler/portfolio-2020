@@ -17,6 +17,7 @@ export const Helpers = createGlobalStyle`
   }
 
   .card {
+    background-color: var(--color-bg-card);
     border-radius: var(--rounded-card);
     box-shadow: var(--shadow-card);
     padding: 2rem;
