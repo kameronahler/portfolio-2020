@@ -51,7 +51,7 @@ export const All = () => {
     <CSSTransition appear={true} in={true} timeout={THEME.duration[500]}>
       <ContentCardsWrapper>
         <SRHeader>
-          <h3>What I can help with</h3>
+          <h3>How I can help with design and development</h3>
         </SRHeader>
 
         <ContentCard>
@@ -68,22 +68,25 @@ export const All = () => {
         <ContentCard>
           <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
           <h4>Design</h4>
-          <p>Design to meet user, business, and development goals.</p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
-          <h4>Contribute</h4>
           <p>
-            Utilizing HTML, CSS, and Javascript to help build our features how
-            we want them to work, feel, and behave.
+            Design to meet user, business, and development goals, with an eye on
+            scalability and consistency.
           </p>
         </ContentCard>
         <ContentCard>
           <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
           <h4>Collaborate</h4>
           <p>
-            Team with developers, uncover the tricky parts of implementation,
-            and plan our execution together.
+            Support other developers, uncover the tricky parts of our UX/UI, and
+            balance our design goals with development goals.
+          </p>
+        </ContentCard>
+        <ContentCard>
+          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <h4>Front end</h4>
+          <p>
+            Utilize HTML, CSS, and JS to help build our features how we want
+            them to work, feel, and behave.
           </p>
         </ContentCard>
       </ContentCardsWrapper>

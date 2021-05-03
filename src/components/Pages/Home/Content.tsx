@@ -1,6 +1,6 @@
 // react
 import React, { useState, useRef } from 'react'
-import { Transition, CSSTransition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 // packages
 import styled from 'styled-components'
@@ -129,9 +129,9 @@ const StyledLi = styled.li`
 
 // constants
 const ROLE = {
-  all: 'Product design + development',
+  all: 'Design and development',
   design: 'Product design',
-  development: 'Frontend development',
+  development: 'UI development',
 }
 
 export const Content = () => {
@@ -152,7 +152,7 @@ export const Content = () => {
   return (
     <StyledDropdownWrapper>
       <StyledP id='im-a'>
-        What can I help&nbsp;with?
+        How can I&nbsp;help?
         <StyledButton
           aria-label='Select one of my skills'
           aria-haspopup='listbox'
