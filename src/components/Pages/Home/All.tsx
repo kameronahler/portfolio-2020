@@ -13,23 +13,12 @@ import { ContentCard } from './ContentCard'
 import { SVGQuote } from '../../../assets/SVGQuote'
 import { SVGDribbble } from '../../../assets/SVGDribbble'
 
+// theme
+import { THEME } from '../../../styles/Theme'
+
 // styled
 const StyledBlockquote = styled.blockquote`
-  margin: 0;
-
-  svg {
-    height: 4rem;
-    left: -2rem;
-    opacity: 0.2;
-    position: absolute;
-    top: -2rem;
-    width: 4rem;
-    z-index: -1;
-
-    path {
-      fill: var(--color-primary);
-    }
-  }
+  margin: unset;
 
   cite {
     display: block;
@@ -41,6 +30,10 @@ const StyledBlockquote = styled.blockquote`
 
 const StyledSVGWrapper = styled.div`
   margin-bottom: 1rem;
+
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    margin-bottom: 2rem;
+  }
   svg {
     display: block;
     height: 2rem;
