@@ -1,6 +1,6 @@
 // react
 import React, { useState, useRef } from 'react'
-import { CSSTransition } from 'react-transition-group'
+import { Transition, CSSTransition } from 'react-transition-group'
 
 // packages
 import styled from 'styled-components'
