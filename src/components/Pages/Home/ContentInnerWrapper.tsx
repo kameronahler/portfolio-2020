@@ -5,9 +5,9 @@ import styled from 'styled-components'
 import { THEME } from '../../../styles/Theme'
 
 // styled
-export const ContentInnerWrapper = styled.div`
+export const ContentInnerWrapper = styled.section`
   @media (min-width: ${THEME.w.screenDesktop}) {
-    column-gap: var(--gap-default);
+    gap: var(--gap-default);
     display: grid;
     grid-template-columns: var(--grid-default);
   }

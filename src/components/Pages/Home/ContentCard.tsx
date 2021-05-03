@@ -9,18 +9,26 @@ import { THEME } from '../../../styles/Theme'
 
 // styled
 const StyledCard = styled.div`
-  &:nth-of-type(odd) {
+  &:nth-of-type(1) {
     @media (min-width: ${THEME.w.screenDesktop}) {
-      grid-column: 1 / 5;
+      grid-column: 1 / 9;
     }
   }
-
-  &:nth-of-type(even) {
+  &:nth-of-type(2) {
     @media (min-width: ${THEME.w.screenDesktop}) {
-      grid-column: 2 / 6;
+      grid-column: 9 / 13;
     }
   }
-
+  &:nth-of-type(3) {
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      grid-column: 1 / 9;
+    }
+  }
+  &:nth-of-type(4) {
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      grid-column: 9 / 13;
+    }
+  }
   @media (min-width: ${THEME.w.screenDesktop}) {
     display: inline-block;
   }
@@ -39,17 +47,20 @@ const StyledH4 = styled.h4`
 
 export const ContentCard = ({
   alt,
+  children,
   src,
   title,
 }: {
-  alt: string
-  src: string
-  title: string
+  alt?: string
+  children?: React.ReactNode
+  src?: string
+  title?: string
 }) => {
   return (
     <StyledCard className='card'>
-      <StyledIcon src={src} alt={alt} />
-      <StyledH4>{title}</StyledH4>
+      {src && <StyledIcon src={src} alt={alt} />}
+      {title && <StyledH4>{title}</StyledH4>}
+      {children}
     </StyledCard>
   )
 }

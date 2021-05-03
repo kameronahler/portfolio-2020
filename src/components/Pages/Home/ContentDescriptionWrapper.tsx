@@ -4,9 +4,9 @@ import styled from 'styled-components'
 // theme
 import { THEME } from '../../../styles/Theme'
 
-export const ContentDescriptionWrapper = styled.section`
+export const ContentDescriptionWrapper = styled.div`
   @media (min-width: ${THEME.w.screenDesktop}) {
-    grid-column: 6 / -1;
-    order: 2;
+    grid-column: 1 / 8;
+    grid-row: 1 / 2;
   }
 `

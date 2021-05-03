@@ -5,7 +5,6 @@ import React from 'react'
 import { SRHeader } from '../../SRHeader/SRHeader'
 import { ContentInnerWrapper } from './ContentInnerWrapper'
 import { ContentDescriptionWrapper } from './ContentDescriptionWrapper'
-import { ContentCardsWrapper } from './ContentCardsWrapper'
 import { ContentCard } from './ContentCard'
 
 // assets
@@ -14,10 +13,10 @@ import favicon from 'url:../../../assets/favicon.svg'
 export const Design = () => {
   return (
     <ContentInnerWrapper>
+      <SRHeader>
+        <h3>What I can help with</h3>
+      </SRHeader>
       <ContentDescriptionWrapper>
-        <SRHeader>
-          <h3>Description</h3>
-        </SRHeader>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quae
           quas perferendis, consequatur aperiam eveniet quo similique doloribus.
@@ -26,14 +25,9 @@ export const Design = () => {
         </p>
       </ContentDescriptionWrapper>
 
-      <ContentCardsWrapper>
-        <SRHeader>
-          <h3>What I can help with</h3>
-        </SRHeader>
-        <ContentCard alt='' title='design thing' src={favicon} />
-        <ContentCard alt='' title='design thing' src={favicon} />
-        <ContentCard alt='' title='design thing' src={favicon} />
-      </ContentCardsWrapper>
+      <ContentCard alt='' title='design thing' src={favicon} />
+      <ContentCard alt='' title='design thing' src={favicon} />
+      <ContentCard alt='' title='design thing' src={favicon} />
     </ContentInnerWrapper>
   )
 }
