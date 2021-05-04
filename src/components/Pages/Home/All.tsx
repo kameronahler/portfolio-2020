@@ -12,7 +12,9 @@ import { ContentCard } from './ContentCard'
 
 // assets
 import { SVGQuote } from '../../../assets/SVGQuote'
-import { SVGDribbble } from '../../../assets/SVGDribbble'
+import { SVGDesign } from '../../../assets/SVGDesign'
+import { SVGCollaborate } from '../../../assets/SVGCollaborate'
+import { SVGFrontEnd } from '../../../assets/SVGFrontEnd'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -35,14 +37,19 @@ const StyledSVGWrapper = styled.div`
   @media (min-width: ${THEME.w.screenDesktop}) {
     margin-bottom: 2rem;
   }
+
   svg {
     display: block;
     height: 2rem;
     width: 2rem;
-  }
 
-  path {
-    fill: var(--color-primary);
+    [stroke] {
+      stroke: var(--color-primary);
+    }
+
+    [fill] {
+      fill: var(--color-primary);
+    }
   }
 `
 
@@ -66,7 +73,7 @@ export const All = () => {
           </StyledBlockquote>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGDesign}</StyledSVGWrapper>
           <h4>Design</h4>
           <p>
             Design to meet user, business, and development goals, with an eye on
@@ -74,7 +81,7 @@ export const All = () => {
           </p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGCollaborate}</StyledSVGWrapper>
           <h4>Collaborate</h4>
           <p>
             Support other developers, uncover the tricky parts of our UX/UI, and
@@ -82,7 +89,7 @@ export const All = () => {
           </p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGFrontEnd}</StyledSVGWrapper>
           <h4>Front end</h4>
           <p>
             Utilize HTML, CSS, and JS to help build our features how we want

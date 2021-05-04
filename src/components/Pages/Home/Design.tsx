@@ -14,7 +14,10 @@ import { ContentCard } from './ContentCard'
 import { THEME } from '../../../styles/Theme'
 
 // assets
-import { SVGDribbble } from '../../../assets/SVGDribbble'
+import { SVGDiscovery } from '../../../assets/SVGDiscovery'
+import { SVGUX } from '../../../assets/SVGUX'
+import { SVGUI } from '../../../assets/SVGUI'
+import { SVGDesignSystem } from '../../../assets/SVGDesignSystem'
 
 // styled
 const StyledSVGWrapper = styled.div`
@@ -23,14 +26,19 @@ const StyledSVGWrapper = styled.div`
   @media (min-width: ${THEME.w.screenDesktop}) {
     margin-bottom: 2rem;
   }
+
   svg {
     display: block;
     height: 2rem;
     width: 2rem;
-  }
 
-  path {
-    fill: var(--color-primary);
+    [stroke] {
+      stroke: var(--color-primary);
+    }
+
+    [fill] {
+      fill: var(--color-primary);
+    }
   }
 `
 
@@ -42,7 +50,7 @@ export const Design = () => {
           <h3>How I can help with design</h3>
         </SRHeader>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGDiscovery}</StyledSVGWrapper>
           <h4>Discovery</h4>
           <p>
             Utilize stakeholders, user research, competitive reviews, and
@@ -50,7 +58,7 @@ export const Design = () => {
           </p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGUX}</StyledSVGWrapper>
           <h4>UX</h4>
           <p>
             Focus on information architecture, user flow/system design, and
@@ -58,7 +66,7 @@ export const Design = () => {
           </p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGUI}</StyledSVGWrapper>
           <h4>UI</h4>
           <p>
             Design UI while keeping accessibility, reusability, and scalability
@@ -66,7 +74,7 @@ export const Design = () => {
           </p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGDesignSystem}</StyledSVGWrapper>
           <h4>Design systems</h4>
           <p>
             Build, maintain, and contribute to design systems in design or code,

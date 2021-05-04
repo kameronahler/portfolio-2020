@@ -14,7 +14,10 @@ import { ContentCard } from './ContentCard'
 import { THEME } from '../../../styles/Theme'
 
 // assets
-import { SVGDribbble } from '../../../assets/SVGDribbble'
+import { SVGHTML } from '../../../assets/SVGHTML'
+import { SVGCSS } from '../../../assets/SVGCSS'
+import { SVGJS } from '../../../assets/SVGJS'
+import { SVGAdvocate } from '../../../assets/SVGAdvocate'
 
 // styled
 const StyledSVGWrapper = styled.div`
@@ -23,14 +26,19 @@ const StyledSVGWrapper = styled.div`
   @media (min-width: ${THEME.w.screenDesktop}) {
     margin-bottom: 2rem;
   }
+
   svg {
     display: block;
     height: 2rem;
     width: 2rem;
-  }
 
-  path {
-    fill: var(--color-primary);
+    [stroke] {
+      stroke: var(--color-primary);
+    }
+
+    [fill] {
+      fill: var(--color-primary);
+    }
   }
 `
 
@@ -42,12 +50,12 @@ export const Development = () => {
           <h3>How I can help with development</h3>
         </SRHeader>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGHTML}</StyledSVGWrapper>
           <h4>HTML</h4>
           <p>Write semantic, reusable, and accessible markup.</p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGCSS}</StyledSVGWrapper>
           <h4>CSS</h4>
           <p>
             Style, style, and keep styling. Hone our solutions across browsers,
@@ -55,7 +63,7 @@ export const Development = () => {
           </p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
+          <StyledSVGWrapper>{SVGJS}</StyledSVGWrapper>
           <h4>JS</h4>
           <p>
             Utilize JS for presentational/interactional interfaces. Manage state
@@ -63,11 +71,11 @@ export const Development = () => {
           </p>
         </ContentCard>
         <ContentCard>
-          <StyledSVGWrapper>{SVGDribbble}</StyledSVGWrapper>
-          <h4>Collaborate</h4>
+          <StyledSVGWrapper>{SVGAdvocate}</StyledSVGWrapper>
+          <h4>Advocate</h4>
           <p>
             Provide guidance on styling and UX in front end code. Advocate for
-            our users during incremental, agile development.
+            UX in incremental, agile development.
           </p>
         </ContentCard>
       </ContentCardsWrapper>
