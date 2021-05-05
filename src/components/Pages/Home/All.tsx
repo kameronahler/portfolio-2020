@@ -25,31 +25,9 @@ const StyledBlockquote = styled.blockquote`
 
   cite {
     display: block;
-    font-weight: var(--font-weight-bold);
     font-style: normal;
+    font-weight: var(--font-weight-bold);
     text-align: right;
-  }
-`
-
-const StyledSVGWrapper = styled.div`
-  margin-bottom: 1rem;
-
-  @media (min-width: ${THEME.w.screenDesktop}) {
-    margin-bottom: 2rem;
-  }
-
-  svg {
-    display: block;
-    height: 2rem;
-    width: 2rem;
-
-    [stroke] {
-      stroke: var(--color-primary);
-    }
-
-    [fill] {
-      fill: var(--color-primary);
-    }
   }
 `
 
@@ -61,8 +39,7 @@ export const All = () => {
           <h3>How I can help with design and development</h3>
         </SRHeader>
 
-        <ContentCard>
-          <StyledSVGWrapper>{SVGQuote}</StyledSVGWrapper>
+        <ContentCard svg={SVGQuote}>
           <StyledBlockquote>
             <p>
               Somewhere between design – a world of personas, pixels, and polish
@@ -72,30 +49,27 @@ export const All = () => {
             <cite>– Brad Frost</cite>
           </StyledBlockquote>
         </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGDesign}</StyledSVGWrapper>
-          <h4>Design</h4>
-          <p>
-            Design to meet user, business, and development goals, with an eye on
-            scalability and consistency.
-          </p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGCollaborate}</StyledSVGWrapper>
-          <h4>Collaborate</h4>
-          <p>
-            Support other developers, uncover the tricky parts of our UX/UI, and
-            balance our design goals with development goals.
-          </p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGFrontEnd}</StyledSVGWrapper>
-          <h4>Front end</h4>
-          <p>
-            Utilize HTML, CSS, and JS to help build our features how we want
-            them to work, feel, and behave.
-          </p>
-        </ContentCard>
+        <ContentCard
+          svg={SVGDesign}
+          title={'Design'}
+          description={
+            'Design to meet user, business, and development goals, with an eye on scalability and consistency.'
+          }
+        />
+        <ContentCard
+          svg={SVGCollaborate}
+          title={'Collaborate'}
+          description={
+            'Support other developers, uncover the tricky parts of our UX/UI, and balance our design goals with development goals.'
+          }
+        />
+        <ContentCard
+          svg={SVGFrontEnd}
+          title={'Front end'}
+          description={
+            'Utilize HTML, CSS, and JS to help build our features how we want them to work, feel, and behave.'
+          }
+        />
       </ContentCardsWrapper>
     </CSSTransition>
   )

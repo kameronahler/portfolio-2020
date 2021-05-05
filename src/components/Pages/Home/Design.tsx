@@ -2,9 +2,6 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 
-// packages
-import styled from 'styled-components'
-
 // components
 import { SRHeader } from '../../SRHeader/SRHeader'
 import { ContentCardsWrapper } from './ContentCardsWrapper'
@@ -19,29 +16,6 @@ import { SVGUX } from '../../../assets/SVGUX'
 import { SVGUI } from '../../../assets/SVGUI'
 import { SVGDesignSystem } from '../../../assets/SVGDesignSystem'
 
-// styled
-const StyledSVGWrapper = styled.div`
-  margin-bottom: 1rem;
-
-  @media (min-width: ${THEME.w.screenDesktop}) {
-    margin-bottom: 2rem;
-  }
-
-  svg {
-    display: block;
-    height: 2rem;
-    width: 2rem;
-
-    [stroke] {
-      stroke: var(--color-primary);
-    }
-
-    [fill] {
-      fill: var(--color-primary);
-    }
-  }
-`
-
 export const Design = () => {
   return (
     <CSSTransition appear={true} in={true} timeout={THEME.duration[500]}>
@@ -49,39 +23,34 @@ export const Design = () => {
         <SRHeader>
           <h3>How I can help with design</h3>
         </SRHeader>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGDiscovery}</StyledSVGWrapper>
-          <h4>Discovery</h4>
-          <p>
-            Utilize stakeholders, user research, competitive reviews, and
-            moodboarding to focus and frame our solutions.
-          </p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGUX}</StyledSVGWrapper>
-          <h4>UX</h4>
-          <p>
-            Focus on information architecture, user flow/system design, and
-            wireframing MVP concepts.
-          </p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGUI}</StyledSVGWrapper>
-          <h4>UI</h4>
-          <p>
-            Design UI while keeping accessibility, reusability, and scalability
-            in mind.
-          </p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGDesignSystem}</StyledSVGWrapper>
-          <h4>Design systems</h4>
-          <p>
-            Build, maintain, and contribute to design systems in design or code,
-            permanently working toward consistency, flexibility, and
-            predicatability.
-          </p>
-        </ContentCard>
+        <ContentCard
+          svg={SVGDiscovery}
+          title={'Discovery'}
+          description={
+            'Utilize stakeholders, user research, competitive reviews, and moodboarding to focus and frame our solutions.'
+          }
+        />
+        <ContentCard
+          svg={SVGUX}
+          title={'UX'}
+          description={
+            'Focus on information architecture, user flow/system design, and wireframing MVP concepts.'
+          }
+        />
+        <ContentCard
+          svg={SVGUI}
+          title={'UI'}
+          description={
+            'Design UI while keeping accessibility, reusability, and scalability in mind.'
+          }
+        />
+        <ContentCard
+          svg={SVGDesignSystem}
+          title={'Design systems'}
+          description={
+            'Build, maintain, and contribute to design systems in design or code, permanently working toward  consistency, flexibility, and predicatability.'
+          }
+        />
       </ContentCardsWrapper>
     </CSSTransition>
   )

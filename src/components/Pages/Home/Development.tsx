@@ -49,35 +49,33 @@ export const Development = () => {
         <SRHeader>
           <h3>How I can help with development</h3>
         </SRHeader>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGHTML}</StyledSVGWrapper>
-          <h4>HTML</h4>
-          <p>Write semantic, reusable, and accessible markup.</p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGCSS}</StyledSVGWrapper>
-          <h4>CSS</h4>
-          <p>
-            Style, style, and keep styling. Hone our solutions across browsers,
-            and devices. In CSS/SCSS, JS, or via a framework.
-          </p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGJS}</StyledSVGWrapper>
-          <h4>JS</h4>
-          <p>
-            Utilize JS for presentational/interactional interfaces. Manage state
-            and scenarios in Vanilla or a framework like React.
-          </p>
-        </ContentCard>
-        <ContentCard>
-          <StyledSVGWrapper>{SVGAdvocate}</StyledSVGWrapper>
-          <h4>Advocate</h4>
-          <p>
-            Provide guidance on styling and UX in front end code. Advocate for
-            UX in incremental, agile development.
-          </p>
-        </ContentCard>
+
+        <ContentCard
+          svg={SVGHTML}
+          title={'HTML'}
+          description={'Write semantic, reusable, and accessible markup.'}
+        />
+        <ContentCard
+          svg={SVGCSS}
+          title={'CSS'}
+          description={
+            'Style, style, and keep styling. Hone our solutions across browsers, and devices. In CSS/SCSS, JS, or via a framework.'
+          }
+        />
+        <ContentCard
+          svg={SVGJS}
+          title={'JS'}
+          description={
+            'Utilize JS for presentational/interactional interfaces. Manage state and scenarios in Vanilla or a library like React.'
+          }
+        />
+        <ContentCard
+          svg={SVGAdvocate}
+          title={'Advocate'}
+          description={
+            'Provide guidance on styling and UX in front end code. Advocate for UX in incremental, agile development.'
+          }
+        />
       </ContentCardsWrapper>
     </CSSTransition>
   )
