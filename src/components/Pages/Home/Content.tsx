@@ -45,7 +45,9 @@ const StyledButton = styled.button`
 
   span {
     border-bottom: ${({ dropdownExpanded }) =>
-      dropdownExpanded ? 'unset' : '1px dashed var(--color-primary)'};
+      dropdownExpanded
+        ? '1px dashed transparent'
+        : '1px dashed var(--color-primary)'};
   }
 
   &:hover {
