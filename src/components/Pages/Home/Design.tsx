@@ -1,39 +1,57 @@
 // react
 import React from 'react'
+import { CSSTransition } from 'react-transition-group'
 
 // components
 import { SRHeader } from '../../SRHeader/SRHeader'
-import { ContentInnerWrapper } from './ContentInnerWrapper'
-import { ContentDescriptionWrapper } from './ContentDescriptionWrapper'
 import { ContentCardsWrapper } from './ContentCardsWrapper'
 import { ContentCard } from './ContentCard'
 
+// theme
+import { THEME } from '../../../styles/Theme'
+
 // assets
-import favicon from 'url:../../../assets/favicon.svg'
+import { SVGDiscovery } from '../../../assets/SVGDiscovery'
+import { SVGUX } from '../../../assets/SVGUX'
+import { SVGUI } from '../../../assets/SVGUI'
+import { SVGDesignSystem } from '../../../assets/SVGDesignSystem'
 
 export const Design = () => {
   return (
-    <ContentInnerWrapper>
-      <ContentDescriptionWrapper>
-        <SRHeader>
-          <h3>Description</h3>
-        </SRHeader>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quae
-          quas perferendis, consequatur aperiam eveniet quo similique doloribus.
-          Minima id voluptatem, ex veniam voluptatibus nemo dolorem unde
-          assumenda odio hic?
-        </p>
-      </ContentDescriptionWrapper>
-
+    <CSSTransition appear={true} in={true} timeout={THEME.duration[500]}>
       <ContentCardsWrapper>
         <SRHeader>
-          <h3>What I can help with</h3>
+          <h3>How I can help with design</h3>
         </SRHeader>
-        <ContentCard alt='' title='design thing' src={favicon} />
-        <ContentCard alt='' title='design thing' src={favicon} />
-        <ContentCard alt='' title='design thing' src={favicon} />
+        <ContentCard
+          svg={SVGDiscovery}
+          title={'Discovery'}
+          description={
+            'Utilize stakeholders, user research, competitive reviews, and moodboarding to focus and frame our solutions.'
+          }
+        />
+        <ContentCard
+          svg={SVGUX}
+          title={'UX'}
+          description={
+            'Focus on information architecture, user flow/system design, and wireframing MVP concepts.'
+          }
+        />
+        <ContentCard
+          svg={SVGUI}
+          title={'UI'}
+          description={
+            'Design UI while keeping accessibility, reusability, and scalability in mind.'
+          }
+        />
+        <ContentCard
+          svg={SVGDesignSystem}
+          title={'Design systems'}
+          description={
+            'Build, maintain, and contribute to design systems in design or code, permanently working toward  consistency, flexibility, and predicatability.'
+          }
+        />
       </ContentCardsWrapper>
-    </ContentInnerWrapper>
+    </CSSTransition>
   )
 }

@@ -47,6 +47,7 @@ export const THEME = {
   },
   gap: {
     default: '1rem',
+    lg: '2rem',
   },
   grid: {
     default: 'repeat(12, minmax(0, 1fr))',

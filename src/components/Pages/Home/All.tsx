@@ -1,39 +1,76 @@
 // react
 import React from 'react'
+import { CSSTransition } from 'react-transition-group'
+
+// packages
+import styled from 'styled-components'
 
 // components
 import { SRHeader } from '../../SRHeader/SRHeader'
-import { ContentInnerWrapper } from './ContentInnerWrapper'
-import { ContentDescriptionWrapper } from './ContentDescriptionWrapper'
 import { ContentCardsWrapper } from './ContentCardsWrapper'
 import { ContentCard } from './ContentCard'
 
 // assets
-import favicon from 'url:../../../assets/favicon.svg'
+import { SVGQuote } from '../../../assets/SVGQuote'
+import { SVGDesign } from '../../../assets/SVGDesign'
+import { SVGCollaborate } from '../../../assets/SVGCollaborate'
+import { SVGFrontEnd } from '../../../assets/SVGFrontEnd'
+
+// theme
+import { THEME } from '../../../styles/Theme'
+
+// styled
+const StyledBlockquote = styled.blockquote`
+  margin: unset;
+
+  cite {
+    display: block;
+    font-style: normal;
+    font-weight: var(--font-weight-bold);
+    text-align: right;
+  }
+`
 
 export const All = () => {
   return (
-    <ContentInnerWrapper>
-      <ContentDescriptionWrapper>
-        <SRHeader>
-          <h3>Description</h3>
-        </SRHeader>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia rem,
-          vero laborum temporibus cumque consequuntur, odit, similique quos et
-          provident illum eligendi minima. Dolores praesentium veritatis fuga
-          rem voluptas! Id?
-        </p>
-      </ContentDescriptionWrapper>
-
+    <CSSTransition appear={true} in={true} timeout={THEME.duration[500]}>
       <ContentCardsWrapper>
         <SRHeader>
-          <h3>What I can help with</h3>
+          <h3>How I can help with design and development</h3>
         </SRHeader>
-        <ContentCard alt='' title='unicorny thing' src={favicon} />
-        <ContentCard alt='' title='unicorny thing' src={favicon} />
-        <ContentCard alt='' title='unicorny thing' src={favicon} />
+
+        <ContentCard svg={SVGQuote}>
+          <StyledBlockquote>
+            <p>
+              Somewhere between design – a world of personas, pixels, and polish
+              – and engineering – a world of logic, loops, and linux – lies
+              frontend design.
+            </p>
+            <cite>– Brad Frost</cite>
+          </StyledBlockquote>
+        </ContentCard>
+        <ContentCard
+          svg={SVGDesign}
+          title={'Design'}
+          description={
+            'Design to meet user, business, and development goals, with an eye on scalability and consistency.'
+          }
+        />
+        <ContentCard
+          svg={SVGCollaborate}
+          title={'Collaborate'}
+          description={
+            'Support other developers, uncover the tricky parts of our UX/UI, and balance our design goals with development goals.'
+          }
+        />
+        <ContentCard
+          svg={SVGFrontEnd}
+          title={'Front end'}
+          description={
+            'Utilize HTML, CSS, and JS to help build our features how we want them to work, feel, and behave.'
+          }
+        />
       </ContentCardsWrapper>
-    </ContentInnerWrapper>
+    </CSSTransition>
   )
 }

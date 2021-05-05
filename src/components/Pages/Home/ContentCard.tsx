@@ -9,47 +9,71 @@ import { THEME } from '../../../styles/Theme'
 
 // styled
 const StyledCard = styled.div`
-  &:nth-of-type(odd) {
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      grid-column: 1 / 5;
-    }
-  }
-
-  &:nth-of-type(even) {
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      grid-column: 2 / 6;
-    }
-  }
+  grid-column: span 12;
 
   @media (min-width: ${THEME.w.screenDesktop}) {
-    display: inline-block;
+    grid-column: span 6;
+    padding: 4rem;
+    transition-duration: var(--duration-500ms);
+    transition-property: opacity, transform;
+    transition-timing-function: var(--easing-default);
+  }
+
+  .appear > & {
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      opacity: 0.01;
+      transform: scale(0.5);
+    }
+  }
+
+  .appear-active > &,
+  .appear-done > & {
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 `
 
-const StyledIcon = styled.img`
-  display: block;
-  height: 3em;
+const StyledSVGWrapper = styled.div`
   margin-bottom: 1rem;
-  width: 3rem;
-`
 
-const StyledH4 = styled.h4`
-  margin-bottom: unset;
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    margin-bottom: 2rem;
+  }
+
+  svg {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+
+    [stroke] {
+      stroke: var(--color-primary);
+    }
+
+    [fill] {
+      fill: var(--color-primary);
+    }
+  }
 `
 
 export const ContentCard = ({
-  alt,
-  src,
+  svg,
   title,
+  description,
+  children,
 }: {
-  alt: string
-  src: string
-  title: string
+  svg?: React.ReactNode
+  title?: string
+  description?: string
+  children?: React.ReactNode
 }) => {
   return (
     <StyledCard className='card'>
-      <StyledIcon src={src} alt={alt} />
-      <StyledH4>{title}</StyledH4>
+      {svg && <StyledSVGWrapper>{svg}</StyledSVGWrapper>}
+      {title && <h4>{title}</h4>}
+      {description && <p>{description}</p>}
+      {children}
     </StyledCard>
   )
 }

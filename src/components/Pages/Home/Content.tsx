@@ -45,7 +45,9 @@ const StyledButton = styled.button`
 
   span {
     border-bottom: ${({ dropdownExpanded }) =>
-      dropdownExpanded ? 'unset' : '1px dashed var(--color-primary)'};
+      dropdownExpanded
+        ? '1px dashed transparent'
+        : '1px dashed var(--color-primary)'};
   }
 
   &:hover {
@@ -129,9 +131,9 @@ const StyledLi = styled.li`
 
 // constants
 const ROLE = {
-  all: 'Product design + development',
+  all: 'Design and development',
   design: 'Product design',
-  development: 'Frontend development',
+  development: 'UI development',
 }
 
 export const Content = () => {
@@ -152,7 +154,7 @@ export const Content = () => {
   return (
     <StyledDropdownWrapper>
       <StyledP id='im-a'>
-        What can I help&nbsp;with?
+        How can I&nbsp;help?
         <StyledButton
           aria-label='Select one of my skills'
           aria-haspopup='listbox'
