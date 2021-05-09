@@ -37,6 +37,13 @@ const StyledStrong = styled.strong`
 const DATA_RESIZE_PARENT = 'resize-parent'
 const CARD_DATA = [
   {
+    description: (
+      <>Years designing and developing front end thingies (and counting).</>
+    ),
+    id: 0,
+    visual: <h3>6+</h3>,
+  },
+  {
     arrowColor: 'var(--color-primary)',
     description: (
       <>
@@ -47,23 +54,16 @@ const CARD_DATA = [
       </>
     ),
     href: 'https://kamerons-resume.netlify.app',
-    id: 0,
+    id: 1,
     srOnlyTitle: 'Visit interactive resume',
     visual: SVGResume,
-  },
-  {
-    description: (
-      <>Years designing and developing front end thingies (and counting).</>
-    ),
-    id: 1,
-    visual: <h3>6+</h3>,
   },
   {
     arrowColor: '#02A678',
     description: (
       <>
         <StyledStrong color='#02A678'>
-          Senior product designer & frontend developer
+          Senior product designer & UI developer
         </StyledStrong>
         &nbsp;for a hybrid Rails app serving homeowners, service providers, and
         B2B real estate agents.

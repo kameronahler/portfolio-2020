@@ -18,18 +18,15 @@ const StyledCardLink = styled.a`
   flex-direction: column;
   position: relative;
   transition-property: box-shadow, transform;
-
-  &:hover {
-    transform: translateY(-0.5rem);
-  }
 `
 
 const StyledCardStatic = styled.div`
   align-items: flex-start;
   border: 0.0625rem solid var(--color-bg-dark);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  box-shadow: none;
+  transition: unset;
 
   h3 {
     font-size: 3rem;
