@@ -3,7 +3,7 @@ import React from 'react'
 export const SVGUI = (
   <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 32 32'>
     <path
-      stroke='#252427'
+      stroke='var(--color-text)'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.5'

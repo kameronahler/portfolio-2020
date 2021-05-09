@@ -3,14 +3,14 @@ import React from 'react'
 export const SVGJS = (
   <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 32 32'>
     <path
-      stroke='#252427'
+      stroke='var(--color-text)'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.5'
       d='M3.87 30A1.87 1.87 0 012 28.13V3.87C2 2.84 2.84 2 3.87 2h24.26C29.16 2 30 2.84 30 3.87v24.26c0 1.03-.84 1.87-1.87 1.87H3.87z'
     />
     <path
-      stroke='#252427'
+      stroke='var(--color-text)'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.5'

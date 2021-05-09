@@ -7,7 +7,7 @@ export const SVGClose = (
       height='3'
       x='16.58'
       y='14.95'
-      fill='#252427'
+      fill='var(--color-text)'
       rx='1.5'
       transform='rotate(45 16.58 14.95)'
     />
@@ -16,7 +16,7 @@ export const SVGClose = (
       height='3'
       x='14.45'
       y='31.92'
-      fill='#252427'
+      fill='var(--color-text)'
       rx='1.5'
       transform='rotate(-45 14.45 31.92)'
     />

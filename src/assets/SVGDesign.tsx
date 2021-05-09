@@ -3,21 +3,21 @@ import React from 'react'
 export const SVGDesign = (
   <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 32 32'>
     <path
-      stroke='#252427'
+      stroke='var(--color-text)'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.5'
       d='M7.19 2v1.04M3.04 7.19H2M7.19 30v-1.04M3.04 24.81H2M24.81 2v1.04M28.96 7.19H30M24.81 30v-1.04M28.96 24.81H30M7.19 7.19h18.66v18.66H7.2V7.2z'
     />
     <path
-      stroke='#252427'
+      stroke='var(--color-text)'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.5'
       d='M14.74 18.6h-2.67v0c-.98 0-1.77-.83-1.77-1.85v0-4.61 0c0-1.02.8-1.84 1.77-1.84h2.67v0c.98 0 1.78.82 1.78 1.84 0 0 0 0 0 0v.92'
     />
     <path
-      stroke='#252427'
+      stroke='var(--color-text)'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.5'
