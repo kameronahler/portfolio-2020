@@ -2,9 +2,6 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 
-// packages
-import styled from 'styled-components'
-
 // components
 import { SRHeader } from '../../SRHeader/SRHeader'
 import { ContentCardsWrapper } from './ContentCardsWrapper'
@@ -19,32 +16,9 @@ import { SVGCSS } from '../../../assets/SVGCSS'
 import { SVGJS } from '../../../assets/SVGJS'
 import { SVGAdvocate } from '../../../assets/SVGAdvocate'
 
-// styled
-const StyledSVGWrapper = styled.div`
-  margin-bottom: 1rem;
-
-  @media (min-width: ${THEME.w.screenDesktop}) {
-    margin-bottom: 2rem;
-  }
-
-  svg {
-    display: block;
-    height: 2rem;
-    width: 2rem;
-
-    [stroke] {
-      stroke: var(--color-primary);
-    }
-
-    [fill] {
-      fill: var(--color-primary);
-    }
-  }
-`
-
 export const Development = () => {
   return (
-    <CSSTransition appear={true} in={true} timeout={THEME.duration[500]}>
+    <CSSTransition appear={true} in={true} timeout={+THEME.duration[500]}>
       <ContentCardsWrapper>
         <SRHeader>
           <h3>How I can help with development</h3>

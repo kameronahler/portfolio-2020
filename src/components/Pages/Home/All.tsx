@@ -33,7 +33,7 @@ const StyledBlockquote = styled.blockquote`
 
 export const All = () => {
   return (
-    <CSSTransition appear={true} in={true} timeout={THEME.duration[500]}>
+    <CSSTransition appear={true} in={true} timeout={+THEME.duration[500]}>
       <ContentCardsWrapper>
         <SRHeader>
           <h3>How I can help with design and development</h3>

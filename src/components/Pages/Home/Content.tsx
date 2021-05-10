@@ -66,11 +66,13 @@ const StyledUl = styled.ul`
   top: 0;
   visibility: ${({ dropdownExpanded }) =>
     dropdownExpanded ? 'visible' : 'hidden'};
+  width: 100vw;
   z-index: ${({ dropdownExpanded }) =>
     dropdownExpanded ? 'var(--z-above-overlay)' : ''};
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     font-size: var(--font-size-h2);
+    width: auto;
   }
 
   &::before {
@@ -150,7 +152,6 @@ export const Content = () => {
     setDropdownExpanded(false)
     setRole(role)
   }
-
   return (
     <StyledDropdownWrapper>
       <StyledP id='im-a'>

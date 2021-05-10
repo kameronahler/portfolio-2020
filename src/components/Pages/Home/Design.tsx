@@ -18,7 +18,7 @@ import { SVGDesignSystem } from '../../../assets/SVGDesignSystem'
 
 export const Design = () => {
   return (
-    <CSSTransition appear={true} in={true} timeout={THEME.duration[500]}>
+    <CSSTransition appear={true} in={true} timeout={+THEME.duration[500]}>
       <ContentCardsWrapper>
         <SRHeader>
           <h3>How I can help with design</h3>
