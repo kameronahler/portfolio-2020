@@ -3,15 +3,24 @@ import React, { useEffect, useState } from 'react'
 
 // packages
 import { formium } from '../../../lib/formium'
-import { FormiumForm, defaultComponents } from '@formium/react'
+import {
+  defaultComponents,
+  FormiumForm,
+  FormiumComponents,
+  FormControlProps,
+} from '@formium/react'
 
 // components
-import { Header } from '../../Page/Header'
+import { Header as PageHeader } from '../../Page/Header'
 
+// formium
 const fetchFormiumForm = async () => {
-  const form = await formium.getFormBySlug('contact')
-  console.log(form)
-  return form
+  try {
+    const form = await formium.getFormBySlug('contact')
+    return form
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 const ElementsWrapper = React.memo(function ElementsWrapper(props) {
@@ -23,18 +32,14 @@ const FieldWrapper = React.memo(function FieldWrapper(props) {
 })
 
 const FormControl = React.memo(function FormControl({
-  labelFor,
-  label,
-  description,
   children,
+  description,
   error,
-}) {
-  const modifier = label
-    .toLowerCase()
-    .replaceAll(/[{}()]/gi, '')
-    .replaceAll(/[\s_]/gi, '-')
+  label,
+  labelFor,
+}: FormControlProps) {
   return (
-    <div className={`form-control form-control--${modifier}`}>
+    <div className={`form-control`}>
       {label && (
         <label className='form-control__label' htmlFor={labelFor}>
           {label}
@@ -49,15 +54,20 @@ const FormControl = React.memo(function FormControl({
   )
 })
 
+const Header = React.memo(function Header() {
+  return <></>
+})
+
 const TextInput = React.memo(function TextInput(props) {
   return <input {...props} className='text-input' />
 })
 
-const myComponents = {
+const myComponents: FormiumComponents = {
   ...defaultComponents,
   ElementsWrapper,
   FieldWrapper,
   FormControl,
+  Header,
   TextInput,
 }
 
@@ -65,23 +75,24 @@ export const PageContact = () => {
   const [form, setForm] = useState(null)
 
   useEffect(() => {
-    fetchFormiumForm().then(form => {
-      setForm(form)
-    })
+    fetchFormiumForm()
+      .then(form => {
+        setForm(form)
+      })
+      .catch(err => console.error(err))
   }, [])
 
   return (
     <>
-      <Header title={'Contact'} />
+      <PageHeader title={'Contact'} />
       {form ? (
         <section>
           <FormiumForm
             components={myComponents}
             data={form}
             onSubmit={async values => {
-              console.log(values)
+              console.log('success', values)
               // await formium.submitForm(process.env.FORMIUM_SLUG, values)
-              alert('Success')
             }}
           />
         </section>
