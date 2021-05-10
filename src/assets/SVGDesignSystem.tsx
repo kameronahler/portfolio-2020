@@ -7,7 +7,7 @@ export const SVGDesignSystem = (
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.5'
-      clip-path='url(#clip0)'
+      clipPath='url(#clip0)'
     >
       <path d='M17.4 14.57a2 2 0 11-2.83 2.83 2 2 0 012.83-2.83z' />
       <path d='M21.44 4.68c6.25-3 8.87-.38 5.86 5.87-3 6.24-10.5 13.75-16.75 16.75-6.25 3.01-8.87.39-5.87-5.86C7.7 15.19 15.2 7.69 21.44 4.68' />
