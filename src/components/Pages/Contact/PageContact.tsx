@@ -9,9 +9,12 @@ import {
   FormiumComponents,
   FormControlProps,
 } from '@formium/react'
+import styled from 'styled-components'
 
 // components
 import { Header as PageHeader } from '../../Page/Header'
+import { Loader } from '../../Loader/Loader'
+import { LoaderWrapper } from '../../Loader/LoaderWrapper'
 
 // formium
 const fetchFormiumForm = async () => {
@@ -58,6 +61,14 @@ const Header = React.memo(function Header() {
   return <></>
 })
 
+const SubmitButton = React.memo(function Button(props) {
+  return (
+    <div {...props} className='button-wrapper'>
+      <button>Submit</button>
+    </div>
+  )
+})
+
 const TextInput = React.memo(function TextInput(props) {
   return <input {...props} className='text-input' />
 })
@@ -68,8 +79,49 @@ const myComponents: FormiumComponents = {
   FieldWrapper,
   FormControl,
   Header,
+  SubmitButton,
   TextInput,
 }
+
+// styled
+const StyledFormWrapper = styled.section`
+  form {
+    max-width: 65ch;
+  }
+
+  .form-control {
+    margin-bottom: 2rem;
+
+    &__label {
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    &__field {
+      display: block;
+    }
+  }
+
+  .button-wrapper {
+    text-align: right;
+  }
+
+  button {
+    border: 0.0625rem var(--color-primary) solid;
+    border-radius: 0.25rem;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    padding: 1rem 1.5rem;
+    transition-duration: var(--duration-250ms);
+    transition-property: background-color, color;
+    transition-timing-function: var(--easing-default);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+`
 
 export const PageContact = () => {
   const [form, setForm] = useState(null)
@@ -86,7 +138,7 @@ export const PageContact = () => {
     <>
       <PageHeader title={'Contact'} />
       {form ? (
-        <section>
+        <StyledFormWrapper>
           <FormiumForm
             components={myComponents}
             data={form}
@@ -95,8 +147,12 @@ export const PageContact = () => {
               // await formium.submitForm(process.env.FORMIUM_SLUG, values)
             }}
           />
-        </section>
-      ) : null}
+        </StyledFormWrapper>
+      ) : (
+        <LoaderWrapper>
+          <Loader size={50} strokeWidth={6} />
+        </LoaderWrapper>
+      )}
     </>
   )
 }
