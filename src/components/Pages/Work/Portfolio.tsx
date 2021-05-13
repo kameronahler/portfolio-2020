@@ -13,17 +13,15 @@ import { Loader } from '../../Loader/Loader'
 import { PortfolioArticles } from './PortfolioArticles'
 
 // constants
-const CONTENTFUL_TYPE = 'portfolioPost'
+const CONTENTFUL_TYPE = 'portfolioEntryV2'
 
 export const Portfolio = ({
   ariaControlledBy,
 }: {
   ariaControlledBy: string
 }) => {
-  const [
-    contentfulEntries,
-    setContentfulEntries,
-  ] = useState<EntryCollection<any> | null>(null)
+  const [contentfulEntries, setContentfulEntries] =
+    useState<EntryCollection<any> | null>(null)
   const mounted = useRef<Boolean>(true)
 
   useEffect(() => {

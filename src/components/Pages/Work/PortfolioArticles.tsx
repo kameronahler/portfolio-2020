@@ -177,11 +177,6 @@ export const PortfolioArticles = ({
         </StyledUl>
       </StyledNav>
 
-      {/* hero */}
-      {contentfulEntries.items[currentArticle].fields.hero && (
-        <HeroImg hero={contentfulEntries.items[currentArticle].fields.hero} />
-      )}
-
       {/* article */}
       <article>
         <SRHeader>
