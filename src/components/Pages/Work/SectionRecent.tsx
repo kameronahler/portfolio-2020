@@ -53,14 +53,16 @@ const StyledHr = styled.hr`
 // constants
 const CONTENTFUL_TYPE = 'blogPost'
 
-export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
+export const SectionRecent = ({
+  ariaControlledBy,
+}: {
+  ariaControlledBy: string
+}) => {
   const mounted = useRef<Boolean>(true)
   const transitionRef = useRef<HTMLDivElement>()
 
-  const [
-    contentfulEntries,
-    setContentfulEntries,
-  ] = useState<EntryCollection<any> | null>(null)
+  const [contentfulEntries, setContentfulEntries] =
+    useState<EntryCollection<any> | null>(null)
 
   useEffect(() => {
     useFetchContentful<IContentfulPortfolioEntry>({

@@ -12,9 +12,9 @@ import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
 // theme
 import { THEME } from '../../../styles/Theme'
 import { SRHeader } from '../../SRHeader/SRHeader'
-import { PortfolioArticlesNav } from './PortfolioArticlesNav'
+import { PortfolioArticlesNav } from './OverviewNav'
 
-export const PortfolioArticles = ({
+export const OverviewContent = ({
   contentfulEntries,
 }: {
   contentfulEntries: EntryCollection<any>
