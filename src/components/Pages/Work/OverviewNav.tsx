@@ -39,11 +39,11 @@ const StyledHeader = styled.header`
   h2 {
     font-size: var(--font-size-h4-clamp);
     margin-bottom: 0;
+    text-align: center;
+
     @media (min-width: ${THEME.w.screenSm}) {
       font-size: var(--font-size-h3-clamp);
-    }
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      font-size: var(--font-size-h2);
+      text-align: unset;
     }
   }
 `
