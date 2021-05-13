@@ -124,11 +124,11 @@ export const Tabs = ({ currentTab, setCurrentTab }) => {
             aria-controls='portfolioPost'
             aria-selected={currentTab === 'portfolioPost' ? true : false}
             className='link-uppercase'
-            data-tab='Portfolio'
+            data-tab='Overview'
             onClick={() => setCurrentTab('portfolioPost')}
             role='tab'
           >
-            Portfolio
+            Overview
           </button>
         </StyledLi>
         <StyledLi currentTab={currentTab === 'blogPost' ? true : false}>

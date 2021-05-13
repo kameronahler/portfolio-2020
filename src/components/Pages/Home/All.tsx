@@ -67,7 +67,7 @@ export const All = () => {
           svg={SVGFrontEnd}
           title={'Front end'}
           description={
-            'Utilize HTML, CSS, and JS to help build our features how we want them to work, feel, and behave.'
+            'Utilize HTML, CSS, and JS to help craft the feel of an app.'
           }
         />
       </ContentCardsWrapper>

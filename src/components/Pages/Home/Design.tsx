@@ -27,7 +27,7 @@ export const Design = () => {
           svg={SVGDiscovery}
           title={'Discovery'}
           description={
-            'Utilize stakeholders, user research, competitive reviews, and moodboarding to focus and frame our solutions.'
+            'Utilize stakeholders, user research, competitive reviews, and moodboarding to focus and frame problems and potential solutions.'
           }
         />
         <ContentCard
@@ -41,14 +41,14 @@ export const Design = () => {
           svg={SVGUI}
           title={'UI'}
           description={
-            'Design UI while keeping accessibility, reusability, and scalability in mind.'
+            'Design UI with accessibility, reusability, and scalability in mind.'
           }
         />
         <ContentCard
           svg={SVGDesignSystem}
           title={'Design systems'}
           description={
-            'Build, maintain, and contribute to design systems in design or code, permanently working toward  consistency, flexibility, and predicatability.'
+            'Build, maintain, and contribute to design systems in design or code, permanently working toward  consistency, flexibility, and predictability.'
           }
         />
       </ContentCardsWrapper>

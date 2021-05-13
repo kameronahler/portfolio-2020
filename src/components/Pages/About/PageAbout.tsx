@@ -9,12 +9,12 @@ export const PageAbout = () => {
     <>
       <Header title={'About'} />
       <section>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
-          aliquam vel laudantium deleniti nobis reprehenderit eaque
-          necessitatibus itaque quasi, nisi voluptas quod ea, dolores quibusdam
-          amet? Qui rem fuga eligendi.
-        </p>
+        <p>Coming soon.</p>
+        <img
+          width='300'
+          src='https://media1.tenor.com/images/0487756ba4d2ac7d6d0b0f5dd921f3f7/tenor.gif?itemid=4858777'
+          alt='Samuel L Jackson being super over it, but also hella smart'
+        />
       </section>
     </>
   )

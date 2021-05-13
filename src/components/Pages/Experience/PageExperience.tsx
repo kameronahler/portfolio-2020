@@ -38,19 +38,22 @@ const DATA_RESIZE_PARENT = 'resize-parent'
 const CARD_DATA = [
   {
     description: (
-      <>Years designing and developing front end thingies (and counting).</>
+      <>
+        <strong>Years (and counting)</strong> designing user experiences and
+        making UI.
+      </>
     ),
     id: 0,
-    visual: <h3>6+</h3>,
+    visual: <h3>7+</h3>,
   },
   {
     arrowColor: 'var(--color-primary)',
     description: (
       <>
         <StyledStrong color={'var(--color-primary)'}>
-          Looking for a resume?
+          Looking for a resume perhaps?
         </StyledStrong>
-        &nbsp;Head on over to this interactive resume, fren.
+        <p>Check out this interactive one I made.</p>
       </>
     ),
     href: 'https://kamerons-resume.netlify.app',
@@ -65,8 +68,8 @@ const CARD_DATA = [
         <StyledStrong color='#02A678'>
           Senior product designer & UI developer
         </StyledStrong>
-        &nbsp;for a hybrid Rails app serving homeowners, service providers, and
-        B2B real estate agents.
+        &nbsp;for an app serving homeowners, service providers, and B2B real
+        estate agents.
       </>
     ),
     href: 'https://zaarly.com',

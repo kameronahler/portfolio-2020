@@ -133,7 +133,7 @@ const StyledLi = styled.li`
 
 // constants
 const ROLE = {
-  all: 'Design and development',
+  all: 'Design & development',
   design: 'Product design',
   development: 'UI development',
 }

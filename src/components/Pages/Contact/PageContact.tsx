@@ -77,7 +77,7 @@ export const PageContact = () => {
             <p>Thanks for stopping by, friend!</p>
           </StyledIntroWrapper>
           <StyledFormWrapper>
-            <p>Drop me a line, and I'll try to respond promptly.</p>
+            <p>Drop me a line!</p>
             <Form form={form}></Form>
           </StyledFormWrapper>
         </StyledLayout>
