@@ -90,9 +90,7 @@ export const Base = createGlobalStyle`
 
   a,
   button,
-  img,
-  input,
-  textarea {
+  img{
     &:focus {
       outline: none;
     }
@@ -121,10 +119,25 @@ export const Base = createGlobalStyle`
 
   input,
   textarea {
-    border: unset;
     border-radius: .25rem;
+    border: .0625rem solid var(--color-bg-accent);
     padding: 1rem;
     width: 100%;
+    transition-duration: var(--duration-250ms);
+    transition-property: border;
+    transition-timing-function: var(--easing-default);
+
+    &:focus-visible {
+      border-color: var(--color-primary);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      color: var(--color-black);
+    }
   }
 
   textarea {

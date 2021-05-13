@@ -1,17 +1,19 @@
 export const THEME = {
   color: {
+    accent: '#3DD8F0',
     bg: '#f8f8f8',
     bgAccent: '#ecebf5',
     bgCard: '#ffffff',
     bgDark: '#e8e8e8',
     bgInverse: '#000000',
+    black: '#252427',
     overlay: '#ffffff',
     primary: '#4c36d3',
     primaryLight: '#9988ff',
-    accent: '#3DD8F0',
+    warning: '#CE3350',
     text: '#252427',
-    textLight: '#706D76',
     textInverse: 'rgba(255, 255, 255, .95)',
+    textLight: '#706D76',
     white: '#ffffff',
   },
   duration: {
@@ -64,8 +66,7 @@ export const THEME = {
     card: '0.125rem',
   },
   shadow: {
-    card:
-      '0 12px 32px -12px rgba(0, 0, 0, 0.1), 0 6px 32px -12px rgba(78, 55, 212, 0.2);',
+    card: '0 12px 32px -12px rgba(0, 0, 0, 0.1), 0 6px 32px -12px rgba(78, 55, 212, 0.2);',
   },
   w: {
     screenSm: '36rem', // 576

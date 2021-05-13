@@ -3,20 +3,46 @@ import React, { useEffect, useState } from 'react'
 
 // packages
 import { formium } from '../../../lib/formium'
-import {
-  defaultComponents,
-  FormiumForm,
-  FormiumComponents,
-  FormControlProps,
-} from '@formium/react'
 import styled from 'styled-components'
 
 // components
 import { Header as PageHeader } from '../../Page/Header'
 import { Loader } from '../../Loader/Loader'
 import { LoaderWrapper } from '../../Loader/LoaderWrapper'
+import { Form } from './Form'
 
-// formium
+// theme
+import { THEME } from '../../../styles/Theme'
+// styled
+const StyledLayout = styled.div`
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+`
+
+const StyledIntroWrapper = styled.div`
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    grid-column: 9/13;
+  }
+
+  p {
+    display: none;
+
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      display: block;
+    }
+  }
+`
+
+const StyledFormWrapper = styled.div`
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    grid-column: 1/8;
+    grid-row: 1/2;
+  }
+`
+
 const fetchFormiumForm = async () => {
   try {
     const form = await formium.getFormBySlug('contact')
@@ -26,110 +52,13 @@ const fetchFormiumForm = async () => {
   }
 }
 
-const ElementsWrapper = React.memo(function ElementsWrapper(props) {
-  return <div {...props} className='elements-wrapper'></div>
-})
-
-const FieldWrapper = React.memo(function FieldWrapper(props) {
-  return <div {...props} className='field-wrapper'></div>
-})
-
-const FormControl = React.memo(function FormControl({
-  children,
-  description,
-  error,
-  label,
-  labelFor,
-}: FormControlProps) {
-  return (
-    <div className={`form-control`}>
-      {label && (
-        <label className='form-control__label' htmlFor={labelFor}>
-          {label}
-        </label>
-      )}
-      {description && (
-        <div className='form-control__description'>{description}</div>
-      )}
-      <div className='form-control__field'>{children}</div>
-      {error && <div className='form-control__error-message'>{error}</div>}
-    </div>
-  )
-})
-
-const Header = React.memo(function Header() {
-  return <></>
-})
-
-const SubmitButton = React.memo(function Button(props) {
-  return (
-    <div {...props} className='button-wrapper'>
-      <button>Submit</button>
-    </div>
-  )
-})
-
-const TextInput = React.memo(function TextInput(props) {
-  return <input {...props} className='text-input' />
-})
-
-const myComponents: FormiumComponents = {
-  ...defaultComponents,
-  ElementsWrapper,
-  FieldWrapper,
-  FormControl,
-  Header,
-  SubmitButton,
-  TextInput,
-}
-
-// styled
-const StyledFormWrapper = styled.section`
-  form {
-    max-width: 65ch;
-  }
-
-  .form-control {
-    margin-bottom: 2rem;
-
-    &__label {
-      display: block;
-      margin-bottom: 0.75rem;
-    }
-
-    &__field {
-      display: block;
-    }
-  }
-
-  .button-wrapper {
-    text-align: right;
-  }
-
-  button {
-    border: 0.0625rem var(--color-primary) solid;
-    border-radius: 0.25rem;
-    color: var(--color-primary);
-    font-weight: var(--font-weight-bold);
-    padding: 1rem 1.5rem;
-    transition-duration: var(--duration-250ms);
-    transition-property: background-color, color;
-    transition-timing-function: var(--easing-default);
-
-    &:hover {
-      background-color: var(--color-primary);
-      color: var(--color-white);
-    }
-  }
-`
-
 export const PageContact = () => {
   const [form, setForm] = useState(null)
 
   useEffect(() => {
     fetchFormiumForm()
-      .then(form => {
-        setForm(form)
+      .then(formConfig => {
+        setForm(formConfig)
       })
       .catch(err => console.error(err))
   }, [])
@@ -137,17 +66,21 @@ export const PageContact = () => {
   return (
     <>
       <PageHeader title={'Contact'} />
+
       {form ? (
-        <StyledFormWrapper>
-          <FormiumForm
-            components={myComponents}
-            data={form}
-            onSubmit={async values => {
-              console.log('success', values)
-              // await formium.submitForm(process.env.FORMIUM_SLUG, values)
-            }}
-          />
-        </StyledFormWrapper>
+        <StyledLayout>
+          <StyledIntroWrapper>
+            <h2 aria-hidden='true' className='h1'>
+              ✌️
+            </h2>
+            <p>And if not...</p>
+            <p>Thanks for stopping by, friend!</p>
+          </StyledIntroWrapper>
+          <StyledFormWrapper>
+            <p>Drop me a line, and I'll try to respond promptly.</p>
+            <Form form={form}></Form>
+          </StyledFormWrapper>
+        </StyledLayout>
       ) : (
         <LoaderWrapper>
           <Loader size={50} strokeWidth={6} />
