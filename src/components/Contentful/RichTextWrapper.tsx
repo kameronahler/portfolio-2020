@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 // styled
 const StyledWrapper = styled.div`
-  max-width: 60ch;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2rem;
