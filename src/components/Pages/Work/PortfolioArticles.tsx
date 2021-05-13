@@ -9,7 +9,6 @@ import styled from 'styled-components'
 // components
 import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichTextResponsiveImg'
 import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
-import { HeroImg } from '../../../components/Contentful/HeroImg'
 
 // assets
 import { SVGChevronLeft } from '../../../assets/SVGChevronLeft'
