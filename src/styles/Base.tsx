@@ -90,7 +90,7 @@ export const Base = createGlobalStyle`
 
   a,
   button,
-  img {
+  img{
     &:focus {
       outline: none;
     }
@@ -111,5 +111,36 @@ export const Base = createGlobalStyle`
       opacity: .25;
       cursor: not-allowed;
     }
+  }
+
+  label {
+    font-weight: var(--font-weight-bold);
+  }
+
+  input,
+  textarea {
+    border-radius: .25rem;
+    border: .0625rem solid var(--color-bg-accent);
+    padding: 1rem;
+    width: 100%;
+    transition-duration: var(--duration-250ms);
+    transition-property: border;
+    transition-timing-function: var(--easing-default);
+
+    &:focus-visible {
+      border-color: var(--color-primary);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      color: var(--color-black);
+    }
+  }
+
+  textarea {
+    display: block;
   }
 `

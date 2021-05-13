@@ -39,6 +39,7 @@ export const CSSVariables = createGlobalStyle`
     --color-text-light: #E5E1F5;
     --color-text: #d6d3e5;
     --color-white: #ffffff;
+    --color-warning: #F75C78;
     --shadow-card: 0 8px 24px -8px rgba(0,0,0,1);
     }
   }
