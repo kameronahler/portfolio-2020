@@ -2,7 +2,7 @@ interface IPropsUseFetchContentful<ContentfulClientApi, EntryCollection> {
   contentfulEntryType: string
   mountedRef: React.MutableRefObject<Boolean>
   setState: React.Dispatch<React.SetStateAction<EntryCollection>>
-  filterByLabel?: string
+  filterByTag?: string
 }
 
 interface ILocation {
