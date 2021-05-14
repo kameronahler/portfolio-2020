@@ -8,6 +8,7 @@ export const useFetchContentful = async <T,>({
   contentfulEntryType,
   mountedRef,
   setState,
+  filterByLabel,
 }: IPropsUseFetchContentful<
   ContentfulClientApi,
   EntryCollection<any>
@@ -19,34 +20,34 @@ export const useFetchContentful = async <T,>({
     accessToken: CONTENTFUL_ACCESS_TOKEN,
   })
 
+  const filter = async (res: EntryCollection<any>, filterByLabel: string) => {
+    res.items = res.items.filter((entry: any) => {
+      return entry.metadata.tags.some(tag => tag.sys.id === filterByLabel)
+    })
+    return res
+  }
+
   try {
-    if (mountedRef.current) {
-      const res = await CONTENTFUL_CLIENT.getEntries<T>({
+    if (mountedRef.current && filterByLabel) {
+      const unfilteredCollection = await CONTENTFUL_CLIENT.getEntries<T>({
         content_type: contentfulEntryType,
       })
-      setState(res)
+
+      const filteredCollection = await filter(
+        unfilteredCollection,
+        filterByLabel
+      )
+
+      setState(filteredCollection)
+    } else if (mountedRef.current) {
+      const unfilteredCollection = await CONTENTFUL_CLIENT.getEntries<T>({
+        content_type: contentfulEntryType,
+      })
+
+      setState(unfilteredCollection)
     }
+    return
   } catch (err) {
     console.error(err)
   }
-}
-
-export const useFilterContentfulByTag = ({
-  entries,
-  targetTag,
-}: {
-  entries: EntryCollection<any>
-  targetTag: string
-}) => {
-  const filteredDown = entries.items.filter((entry: any) => {
-    // this any is needed because metadata is not part of contentful's types at the moment...
-    const filteredByTag = entry.metadata.tags.filter(
-      tag => tag.sys.id === targetTag
-    )
-
-    if (filteredByTag.length) {
-      return entry
-    }
-  })
-  return filteredDown
 }
