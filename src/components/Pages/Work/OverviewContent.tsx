@@ -5,6 +5,9 @@ import React, { useState, useRef, useEffect } from 'react'
 import { EntryCollection } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
+// hooks
+import { useFilterContentfulByTag } from '../../../hooks/hooks'
+
 // components
 import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichTextResponsiveImg'
 import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
@@ -45,10 +48,17 @@ export const OverviewContent = ({
           <h1>{contentfulEntries.items[currentArticle].fields.title}</h1>
         </SRHeader>
         <RichTextWrapper>
-          {documentToReactComponents(
-            contentfulEntries.items[currentArticle].fields.body,
-            CONTENTFUL_RICH_TEXT_OPTIONS
-          )}
+          {
+            <>
+              {useFilterContentfulByTag(contentfulEntries, 'workProduct').map(
+                filteredEntry =>
+                  documentToReactComponents(
+                    filteredEntry.fields.body,
+                    CONTENTFUL_RICH_TEXT_OPTIONS
+                  )
+              )}
+            </>
+          }
         </RichTextWrapper>
       </article>
     </div>
