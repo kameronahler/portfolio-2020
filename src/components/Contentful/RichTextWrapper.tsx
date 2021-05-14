@@ -115,6 +115,10 @@ const StyledWrapper = styled.div`
     color: var(--color-bg-dark);
     margin: 2rem auto;
   }
+
+  code {
+    color: var(--color-accent);
+  }
 `
 
 export const RichTextWrapper = ({
