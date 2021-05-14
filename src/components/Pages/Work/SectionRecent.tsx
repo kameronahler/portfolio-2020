@@ -85,6 +85,7 @@ export const SectionRecent = ({
     <>
       {contentfulEntries ? (
         <div className='animate-fade-in' ref={transitionRef}>
+          <p>Just some random things I've tried recently.</p>
           {contentfulEntries.items
             .sort((a, b) => (a.sys.createdAt < b.sys.createdAt ? 1 : -1))
             .map(entry => {
