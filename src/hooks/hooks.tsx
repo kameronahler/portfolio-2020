@@ -12,7 +12,7 @@ export const useFetchContentful = async <T,>({
 }: IPropsUseFetchContentful<
   ContentfulClientApi,
   EntryCollection<any>
->): Promise<void> => {
+>): Promise<EntryCollection<any>> => {
   const CONTENTFUL_SPACE = process.env.CONTENTFUL_SPACE
   const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN
   const CONTENTFUL_CLIENT = createClient({

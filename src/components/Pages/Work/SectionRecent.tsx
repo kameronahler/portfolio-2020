@@ -53,11 +53,7 @@ const StyledHr = styled.hr`
 // constants
 const CONTENTFUL_TYPE = 'blogPost'
 
-export const SectionRecent = ({
-  ariaControlledBy,
-}: {
-  ariaControlledBy: string
-}) => {
+export const SectionRecent = ({ ariaControlledBy }: ISectionRecent) => {
   const mounted = useRef<Boolean>(true)
   const transitionRef = useRef<HTMLDivElement>()
 

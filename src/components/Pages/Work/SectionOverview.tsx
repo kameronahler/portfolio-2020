@@ -15,11 +15,7 @@ import { OverviewContent } from './OverviewContent'
 // constants
 const CONTENTFUL_TYPE = 'portfolioEntryV2'
 
-export const SectionOverview = ({
-  ariaControlledBy,
-}: {
-  ariaControlledBy: string
-}) => {
+export const SectionOverview = ({ ariaControlledBy }: ISectionOverview) => {
   const [contentfulEntries, setContentfulEntries] =
     useState<EntryCollection<any> | null>(null)
   const mounted = useRef<Boolean>(true)

@@ -16,13 +16,7 @@ const StyledHeader = styled.header`
   }
 `
 
-export const Header = ({
-  children,
-  title,
-}: {
-  children?: React.ReactChild
-  title: string | React.ReactNode
-}) => {
+export const Header = ({ children, title }: IHeader) => {
   return (
     <StyledHeader>
       <h1>{title}</h1>

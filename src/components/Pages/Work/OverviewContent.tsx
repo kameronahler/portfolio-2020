@@ -15,7 +15,19 @@ import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
 // theme
 import { THEME } from '../../../styles/Theme'
 import { SRHeader } from '../../SRHeader/SRHeader'
-import { PortfolioArticlesNav } from './OverviewNav'
+import { OverviewNav } from './OverviewNav'
+
+// constants
+const TAGS = [
+  {
+    contentful: 'workDev',
+    title: 'Dev',
+  },
+  {
+    contentful: 'workProduct',
+    title: 'Product',
+  },
+]
 
 export const OverviewContent = ({
   contentfulEntries,
@@ -23,7 +35,7 @@ export const OverviewContent = ({
   contentfulEntries: EntryCollection<any>
 }) => {
   const transitionRef = useRef<HTMLDivElement>()
-  const [currentArticle, setCurrentArticle] = useState<number>(0)
+  const [currentTagIndex, setCurrentTagIndex] = useState<number>(0)
 
   useEffect(() => {
     if (contentfulEntries) {
@@ -36,26 +48,28 @@ export const OverviewContent = ({
 
   return (
     <div className='animate-fade-in' ref={transitionRef}>
-      <PortfolioArticlesNav
-        contentfulEntries={contentfulEntries}
-        currentArticle={currentArticle}
-        setCurrentArticle={setCurrentArticle}
+      <OverviewNav
+        currentTagIndex={currentTagIndex}
+        currentTagTitle={TAGS[currentTagIndex].title}
+        setCurrentTagIndex={setCurrentTagIndex}
+        totalTags={TAGS.length}
       />
 
-      {/* article */}
       <article>
         <SRHeader>
-          <h1>{contentfulEntries.items[currentArticle].fields.title}</h1>
+          <h1>{contentfulEntries.items[currentTagIndex].fields.title}</h1>
         </SRHeader>
         <RichTextWrapper>
           {
             <>
-              {useFilterContentfulByTag(contentfulEntries, 'workProduct').map(
-                filteredEntry =>
-                  documentToReactComponents(
-                    filteredEntry.fields.body,
-                    CONTENTFUL_RICH_TEXT_OPTIONS
-                  )
+              {useFilterContentfulByTag(
+                contentfulEntries,
+                TAGS[currentTagIndex].contentful
+              ).map(filteredEntry =>
+                documentToReactComponents(
+                  filteredEntry.fields.body,
+                  CONTENTFUL_RICH_TEXT_OPTIONS
+                )
               )}
             </>
           }

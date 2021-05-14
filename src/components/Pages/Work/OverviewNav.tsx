@@ -112,33 +112,26 @@ const StyledNavButton = styled.button`
   }
 `
 
-export const PortfolioArticlesNav = ({
-  contentfulEntries,
-  currentArticle,
-  setCurrentArticle,
-}: {
-  contentfulEntries: EntryCollection<any>
-  currentArticle: number
-  setCurrentArticle: React.Dispatch<React.SetStateAction<number>>
-}) => {
-  const handleArticleChange = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setCurrentArticle(parseInt(e.currentTarget.dataset.article))
-  }
+export const OverviewNav = ({
+  currentTagIndex,
+  currentTagTitle,
+  setCurrentTagIndex,
+  totalTags,
+}: IOverviewNav) => {
+  const handleTagChange = (increment: number) =>
+    setCurrentTagIndex(currentTagIndex + increment)
 
   return (
     <StyledNav>
       <StyledHeader>
-        <h2>{contentfulEntries.items[currentArticle].fields.title}</h2>
+        <h2>{currentTagTitle}</h2>
       </StyledHeader>
       <StyledUl>
         <li>
           <StyledNavButton
             aria-label='Previous article'
-            data-article={currentArticle - 1}
-            disabled={currentArticle - 1 >= 0 ? false : true}
-            onClick={e => handleArticleChange(e)}
+            disabled={currentTagIndex - 1 >= 0 ? false : true}
+            onClick={() => handleTagChange(-1)}
           >
             {SVGChevronLeft}
           </StyledNavButton>
@@ -146,11 +139,8 @@ export const PortfolioArticlesNav = ({
         <li>
           <StyledNavButton
             aria-label='Next article'
-            disabled={
-              currentArticle + 1 < contentfulEntries.items.length ? false : true
-            }
-            data-article={currentArticle + 1}
-            onClick={e => handleArticleChange(e)}
+            disabled={currentTagIndex + 1 < totalTags ? false : true}
+            onClick={() => handleTagChange(1)}
           >
             {SVGChevronRight}
           </StyledNavButton>

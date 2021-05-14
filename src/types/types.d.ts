@@ -49,3 +49,38 @@ interface IExperienceCard {
   srOnlyTitle?: string
   visual: React.ReactNode
 }
+
+interface IOverviewNav {
+  currentTagIndex: number
+  currentTagTitle: string
+  setCurrentTagIndex: React.Dispatch<React.SetStateAction<number>>
+  totalTags: number
+}
+interface ISectionDribbble {
+  ariaControlledBy: string
+}
+interface ISectionOverview {
+  ariaControlledBy: string
+}
+interface ISectionRecent {
+  ariaControlledBy: string
+}
+interface ISectionTabs {
+  currentTab: string
+  setCurrentTab: React.Dispatch<React.SetStateAction<string>>
+}
+
+interface IContentCard {
+  svg?: React.ReactNode
+  title?: string
+  description?: string
+  children?: React.ReactNode
+}
+interface IHeader {
+  children?: React.ReactChild
+  title: string | React.ReactNode
+}
+interface IPageItems {
+  location: ILocation
+  setMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>
+}

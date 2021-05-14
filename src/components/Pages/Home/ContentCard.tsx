@@ -62,12 +62,7 @@ export const ContentCard = ({
   title,
   description,
   children,
-}: {
-  svg?: React.ReactNode
-  title?: string
-  description?: string
-  children?: React.ReactNode
-}) => {
+}: IContentCard) => {
   return (
     <StyledCard className='card'>
       {svg && <StyledSVGWrapper>{svg}</StyledSVGWrapper>}

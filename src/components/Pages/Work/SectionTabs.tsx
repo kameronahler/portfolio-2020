@@ -115,7 +115,7 @@ const StyledLi = styled.li`
   }
 `
 
-export const SectionTabs = ({ currentTab, setCurrentTab }) => {
+export const SectionTabs = ({ currentTab, setCurrentTab }: ISectionTabs) => {
   return (
     <StyledNav>
       <StyledUl role='tablist' aria-label='Select which kind of work'>
