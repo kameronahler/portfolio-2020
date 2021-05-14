@@ -11,12 +11,6 @@ const StyledImg = styled.img`
   max-width: 100%;
 `
 
-const StyledFigcaption = styled.figcaption`
-  color: var(--color-text-light);
-  font-size: var(--font-size-default);
-  margin: 0.5rem 0.5rem 1rem;
-`
-
 const RichTextResponsiveImg = ({ node }: { node: Block }) => {
   const url = node.data.target.fields.file.url
   const alt = node.data.target.fields.title
@@ -44,14 +38,18 @@ const RichTextResponsiveImg = ({ node }: { node: Block }) => {
           src={url}
           tabIndex='0'
         />
-        {description && <StyledFigcaption>{description}</StyledFigcaption>}
+        {description && (
+          <figcaption className='sr-only'>{description}</figcaption>
+        )}
       </figure>
     )
   } else {
     return (
       <figure>
         <StyledImg alt={alt || ''} src={url} tabIndex='0' />
-        {description && <figcaption>{description}</figcaption>}
+        {description && (
+          <figcaption className='sr-only'>{description}</figcaption>
+        )}
       </figure>
     )
   }
