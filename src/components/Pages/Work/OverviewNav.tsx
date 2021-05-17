@@ -14,7 +14,6 @@ import { SVGChevronRight } from '../../../assets/SVGChevronRight'
 
 // styled
 const StyledNav = styled.nav`
-  background-color: var(--color-bg);
   display: grid;
   padding-left: 3rem;
   padding-right: 3rem;
@@ -23,7 +22,6 @@ const StyledNav = styled.nav`
 
   @media (min-width: ${THEME.w.screenSm}) {
     align-items: flex-start;
-    background-color: var(--color-bg);
     column-gap: 1rem;
     grid-template-columns: 1fr auto;
     justify-content: start;

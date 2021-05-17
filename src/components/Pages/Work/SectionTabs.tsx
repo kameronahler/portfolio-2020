@@ -15,24 +15,6 @@ const OVERFLOW_GRADIENT_SM = '8rem'
 const StyledNav = styled.nav`
   margin-bottom: 1rem;
   position: relative;
-
-  &::before {
-    background-image: linear-gradient(90deg, transparent, var(--color-bg));
-    content: '';
-    height: 100%;
-    position: absolute;
-    right: -1px;
-    top: 0;
-    z-index: 1;
-    width: ${OVERFLOW_GRADIENT};
-
-    @media (min-width: ${THEME.w.screenSm}) {
-      width: ${OVERFLOW_GRADIENT_SM};
-    }
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      width: ${OVERFLOW_GRADIENT_SM};
-    }
-  }
 `
 
 const StyledUl = styled.ul`
