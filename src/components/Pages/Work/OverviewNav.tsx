@@ -3,7 +3,6 @@ import React from 'react'
 
 // packages
 import styled from 'styled-components'
-import { EntryCollection } from 'contentful'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -14,6 +13,7 @@ import { SVGChevronRight } from '../../../assets/SVGChevronRight'
 
 // styled
 const StyledNav = styled.nav`
+  background-color: var(--color-bg);
   display: grid;
   padding-left: 3rem;
   padding-right: 3rem;
