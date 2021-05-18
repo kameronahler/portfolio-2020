@@ -20,12 +20,16 @@ import { OverviewNav } from './OverviewNav'
 // constants
 const TAGS = [
   {
-    contentful: 'workDev',
-    title: 'Dev',
+    contentful: 'workProduct',
+    title: 'Design & development',
   },
   {
-    contentful: 'workProduct',
-    title: 'Product',
+    contentful: 'workDev',
+    title: 'UI development',
+  },
+  {
+    contentful: 'workDesign',
+    title: 'Design',
   },
 ]
 
