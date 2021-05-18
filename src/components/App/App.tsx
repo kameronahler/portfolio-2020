@@ -41,7 +41,7 @@ export const App = () => {
       <Router>
         <StyledAppGrid id='app'>
           <Nav />
-          <StyledMain>
+          <StyledMain id='main'>
             <Page />
           </StyledMain>
         </StyledAppGrid>

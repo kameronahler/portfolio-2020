@@ -121,7 +121,7 @@ export const OverviewNav = ({
 
   return (
     <StyledNav>
-      <StyledHeader>
+      <StyledHeader className='truncate'>
         <h2>{currentTagTitle}</h2>
       </StyledHeader>
       <StyledUl>

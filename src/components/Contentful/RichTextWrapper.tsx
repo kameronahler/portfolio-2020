@@ -23,7 +23,7 @@ const StyledWrapper = styled.div`
   h2,
   h3 {
     line-height: 1.3;
-    margin: 3rem 0 1.38rem;
+    margin: 0 0 1.38rem;
   }
 
   h1 {
@@ -98,7 +98,7 @@ const StyledWrapper = styled.div`
   }
 
   figure {
-    margin: 0 0 1rem;
+    margin: unset;
   }
 
   blockquote {

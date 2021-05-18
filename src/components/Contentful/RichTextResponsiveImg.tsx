@@ -8,6 +8,7 @@ import styled from 'styled-components'
 // styled
 const StyledImg = styled.img`
   display: block;
+  width: 100%;
   max-width: 100%;
 `
 
@@ -23,7 +24,8 @@ const RichTextResponsiveImg = ({ node }: { node: Block }) => {
       <figure>
         <StyledImg
           alt={alt || ''}
-          srcSet={
+          data-lazy='true'
+          data-srcset={
             `${url}?${format}&w=200&q=90 200w,` +
             `${url}?${format}&w=300&q=90 300w,` +
             `${url}?${format}&w=400&q=80 400w,` +
@@ -35,8 +37,7 @@ const RichTextResponsiveImg = ({ node }: { node: Block }) => {
             `${url}?${format}&w=3000&q=60 3000w,` +
             `${url}?${format}&w=4000&q=60 4000w`
           }
-          src={url}
-          tabIndex='0'
+          data-src={url}
         />
         {description && (
           <figcaption className='sr-only'>{description}</figcaption>
