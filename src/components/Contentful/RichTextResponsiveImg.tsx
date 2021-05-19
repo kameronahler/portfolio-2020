@@ -24,7 +24,7 @@ const RichTextResponsiveImg = ({ node }: { node: Block }) => {
       <figure>
         <StyledImg
           alt={alt || ''}
-          data-lazy='true'
+          data-lazy-loaded='false'
           data-srcset={
             `${url}?${format}&w=200&q=90 200w,` +
             `${url}?${format}&w=300&q=90 300w,` +
@@ -38,6 +38,8 @@ const RichTextResponsiveImg = ({ node }: { node: Block }) => {
             `${url}?${format}&w=4000&q=60 4000w`
           }
           data-src={url}
+          height={400}
+          src={`${url}?${format}&h=400&q=10`}
         />
         {description && (
           <figcaption className='sr-only'>{description}</figcaption>

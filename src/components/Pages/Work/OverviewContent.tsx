@@ -57,16 +57,23 @@ const StyledArticle = styled.article`
   }
 
   img {
+    filter: blur(12px);
     width: 100%;
+
+    &[data-lazy-loaded='true'] {
+      box-shadow: var(--shadow-card);
+      filter: blur(0);
+    }
 
     @media (min-width: ${THEME.w.screenDesktop}) {
       height: 100%;
+      height: 25rem;
       object-fit: cover;
       object-position: 50% 0%;
     }
   }
 
-  & :not(figure) {
+  & > :not(figure) {
     grid-column: 1 / -1;
   }
 `
@@ -90,6 +97,7 @@ const handleIntersectingImg = (
         entry.target.getAttribute('data-srcset')
       )
       entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
+      entry.target.setAttribute('data-lazy-loaded', 'true')
       parentObserver.unobserve(entry.target)
     }
   }
@@ -113,11 +121,11 @@ export const OverviewContent = ({
 
   // intersection observer lazy load imgs
   useEffect(() => {
-    const lazyImgs = document.querySelectorAll('img[data-lazy="true"]')
+    const lazyImgs = document.querySelectorAll('img[data-lazy-loaded="false"]')
 
     const parentObserver = new IntersectionObserver(
       entries => handleIntersectingImg(entries, parentObserver),
-      { rootMargin: '50%' }
+      { rootMargin: '25%' }
     )
 
     for (let lazyImg of lazyImgs) {
