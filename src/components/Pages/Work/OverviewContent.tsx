@@ -15,46 +15,43 @@ import { THEME } from '../../../styles/Theme'
 
 // components
 import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
-import { SRHeader } from '../../SRHeader/SRHeader'
 import { OverviewNav } from './OverviewNav'
 
 // styled
 const StyledArticle = styled.article`
-  margin-bottom: 3rem;
+  display: grid;
+  grid-gap: 2rem;
+  margin-bottom: 1rem;
 
   @media (min-width: ${THEME.w.screenDesktop}) {
-    display: grid;
-    grid-gap: 2rem;
+    margin-bottom: unset;
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
+  h3,
+  p {
+    margin: unset;
+  }
+
   figure {
+    // 1
+    &:first-of-type:last-of-type {
+      @media (min-width: ${THEME.w.screenDesktop}) {
+        grid-column: 1 / -1;
+      }
+    }
+
+    // 2
     @media (min-width: ${THEME.w.screenDesktop}) {
       grid-column: span 6;
     }
 
     // 3
-    &:nth-of-type(1):nth-last-of-type(3) {
-      @media (min-width: ${THEME.w.screenDesktop}) {
-        grid-column: 1 / 5;
-      }
-    }
-
-    &:nth-of-type(2):nth-last-of-type(2) {
-      @media (min-width: ${THEME.w.screenDesktop}) {
-        grid-column: 5 / 9;
-      }
-    }
-
+    &:nth-of-type(1):nth-last-of-type(3),
+    &:nth-of-type(2):nth-last-of-type(2),
     &:nth-of-type(3):last-of-type {
       @media (min-width: ${THEME.w.screenDesktop}) {
-        grid-column: 9 / 13;
-      }
-    }
-
-    &:first-of-type:last-of-type {
-      @media (min-width: ${THEME.w.screenDesktop}) {
-        grid-column: 1 / -1;
+        grid-column: span 4;
       }
     }
   }
@@ -64,9 +61,8 @@ const StyledArticle = styled.article`
 
     @media (min-width: ${THEME.w.screenDesktop}) {
       height: 100%;
-      min-height: 300px;
-      max-height: 400px;
       object-fit: cover;
+      object-position: 50% 0%;
     }
   }
 
@@ -77,19 +73,27 @@ const StyledArticle = styled.article`
 
 // constants
 const TAGS = [
-  {
-    contentful: 'workProduct',
-    title: 'Design & development',
-  },
-  {
-    contentful: 'workDev',
-    title: 'UI development',
-  },
-  {
-    contentful: 'workDesign',
-    title: 'Design',
-  },
+  { contentful: 'workProduct', title: 'Design & development' },
+  { contentful: 'workDev', title: 'UI development' },
+  { contentful: 'workDesign', title: 'Design' },
 ]
+
+// intersection callback
+const handleIntersectingImg = (
+  entries: IntersectionObserverEntry[],
+  parentObserver: IntersectionObserver
+) => {
+  for (let entry of entries) {
+    if (entry.isIntersecting) {
+      entry.target.setAttribute(
+        'srcset',
+        entry.target.getAttribute('data-srcset')
+      )
+      entry.target.setAttribute('src', entry.target.getAttribute('data-src'))
+      parentObserver.unobserve(entry.target)
+    }
+  }
+}
 
 export const OverviewContent = ({
   contentfulEntries,
@@ -99,6 +103,7 @@ export const OverviewContent = ({
   const transitionRef = useRef<HTMLDivElement>()
   const [currentTagIndex, setCurrentTagIndex] = useState<number>(0)
 
+  // transition from OverviewNav changes
   useEffect(() => {
     setTimeout(
       () => transitionRef.current.classList.add('mounted'),
@@ -106,34 +111,20 @@ export const OverviewContent = ({
     )
   }, [])
 
+  // intersection observer lazy load imgs
   useEffect(() => {
+    const lazyImgs = document.querySelectorAll('img[data-lazy="true"]')
+
     const parentObserver = new IntersectionObserver(
-      (
-        entries: IntersectionObserverEntry[],
-        parentObserver: IntersectionObserver
-      ) => {
-        for (let entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.setAttribute(
-              'srcset',
-              entry.target.getAttribute('data-srcset')
-            )
-            entry.target.setAttribute(
-              'srcset',
-              entry.target.getAttribute('data-src')
-            )
-            parentObserver.unobserve(entry.target)
-          }
-        }
-      },
+      entries => handleIntersectingImg(entries, parentObserver),
       { rootMargin: '50%' }
     )
-    const lazyImgs = document.querySelectorAll('img[data-lazy="true"]')
 
     for (let lazyImg of lazyImgs) {
       parentObserver.observe(lazyImg)
     }
 
+    // clean up callback
     return () => {
       parentObserver.disconnect()
     }
@@ -148,22 +139,18 @@ export const OverviewContent = ({
         totalTags={TAGS.length}
       />
       <RichTextWrapper>
-        <SRHeader>
-          <h1>{contentfulEntries.items[currentTagIndex].fields.title}</h1>
-        </SRHeader>
-        <>
-          {useFilterContentfulByTag(
-            contentfulEntries,
-            TAGS[currentTagIndex].contentful
-          ).map(filteredEntry => (
-            <StyledArticle key={filteredEntry.sys.id}>
-              {documentToReactComponents(
-                filteredEntry.fields.body,
-                CONTENTFUL_RICH_TEXT_OPTIONS
-              )}
-            </StyledArticle>
-          ))}
-        </>
+        {useFilterContentfulByTag(
+          contentfulEntries,
+          TAGS[currentTagIndex].contentful
+        ).map(filteredEntry => (
+          <StyledArticle key={filteredEntry.sys.id}>
+            <h3>{filteredEntry.fields.title}</h3>
+            {documentToReactComponents(
+              filteredEntry.fields.body,
+              CONTENTFUL_RICH_TEXT_OPTIONS
+            )}
+          </StyledArticle>
+        ))}
       </RichTextWrapper>
     </div>
   )
