@@ -21,16 +21,23 @@ import { OverviewNav } from './OverviewNav'
 const StyledArticle = styled.article`
   display: grid;
   grid-gap: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 
   @media (min-width: ${THEME.w.screenDesktop}) {
-    margin-bottom: unset;
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
   h3,
   p {
     margin: unset;
+  }
+
+  h3 {
+    text-align: center;
+
+    @media (min-width: ${THEME.w.screenSm}) {
+      text-align: left;
+    }
   }
 
   figure {
@@ -57,19 +64,24 @@ const StyledArticle = styled.article`
   }
 
   img {
-    filter: blur(12px);
+    filter: blur(32px);
     width: 100%;
+    object-fit: cover;
+    object-position: 0% 0%;
 
     &[data-lazy-loaded='true'] {
       box-shadow: var(--shadow-card);
       filter: blur(0);
     }
 
-    @media (min-width: ${THEME.w.screenDesktop}) {
-      height: 100%;
+    @media (min-width: ${THEME.w.screenSm}) {
       height: 25rem;
-      object-fit: cover;
-      object-position: 50% 0%;
+      max-width: 37.5rem;
+    }
+
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      height: 25rem;
+      max-width: unset;
     }
   }
 

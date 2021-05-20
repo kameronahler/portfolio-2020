@@ -12,7 +12,13 @@ const StyledImg = styled.img`
   max-width: 100%;
 `
 
-const RichTextResponsiveImg = ({ node }: { node: Block }) => {
+const RichTextResponsiveImg = ({
+  lazy = true,
+  node,
+}: {
+  lazy?: boolean
+  node: Block
+}) => {
   const url = node.data.target.fields.file.url
   const alt = node.data.target.fields.title
   const description = node.data.target.fields.description
@@ -39,7 +45,7 @@ const RichTextResponsiveImg = ({ node }: { node: Block }) => {
           }
           data-src={url}
           height={400}
-          src={`${url}?${format}&h=400&q=10`}
+          src={lazy ? `${url}?${format}&h=400&q=20` : null}
         />
         {description && (
           <figcaption className='sr-only'>{description}</figcaption>
