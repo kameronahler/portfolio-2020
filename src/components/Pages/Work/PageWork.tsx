@@ -2,11 +2,11 @@
 import React, { useState } from 'react'
 
 //components
-import { Dribbble } from './Dribbble'
 import { Header } from '../../Page/Header'
-import { Recent } from './Recent'
-import { Tabs } from './Tabs'
-import { Portfolio } from './Portfolio'
+import { SectionDribbble } from './SectionDribbble'
+import { SectionOverview } from './SectionOverview'
+import { SectionRecent } from './SectionRecent'
+import { SectionTabs } from './SectionTabs'
 
 // constants
 export const PageWork = () => {
@@ -15,14 +15,16 @@ export const PageWork = () => {
   return (
     <>
       <Header title={'Work'} />
-      <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      <SectionTabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
       <section>
         {currentTab === 'portfolioPost' && (
-          <Portfolio ariaControlledBy={currentTab} />
+          <SectionOverview ariaControlledBy={currentTab} />
         )}
-        {currentTab === 'blogPost' && <Recent ariaControlledBy={currentTab} />}
+        {currentTab === 'blogPost' && (
+          <SectionRecent ariaControlledBy={currentTab} />
+        )}
         {currentTab === 'dribbble' && (
-          <Dribbble ariaControlledBy={currentTab} />
+          <SectionDribbble ariaControlledBy={currentTab} />
         )}
       </section>
     </>

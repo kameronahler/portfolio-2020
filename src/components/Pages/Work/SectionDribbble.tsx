@@ -112,11 +112,7 @@ const CANCEL_FETCH_MSG = 'Component unmounted before completing request'
 const ERROR_FETCH_MSG = 'Unable to load Dribbble shots'
 const PROFILE_URL = 'https://dribbble.com/kamtr0n'
 
-export const Dribbble = ({
-  ariaControlledBy,
-}: {
-  ariaControlledBy: string
-}) => {
+export const SectionDribbble = ({ ariaControlledBy }: ISectionDribbble) => {
   const transitionRef = useRef<HTMLDivElement>()
   const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
 

@@ -6,10 +6,8 @@ import styled from 'styled-components'
 
 // styled
 const StyledWrapper = styled.div`
-  max-width: 60ch;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2rem;
   font-size: 1.25rem;
   line-height: 1.75;
 
@@ -24,7 +22,7 @@ const StyledWrapper = styled.div`
   h2,
   h3 {
     line-height: 1.3;
-    margin: 3rem 0 1.38rem;
+    margin: 0 0 1.38rem;
   }
 
   h1 {
@@ -99,7 +97,7 @@ const StyledWrapper = styled.div`
   }
 
   figure {
-    margin: 0 0 1rem;
+    margin: unset;
   }
 
   blockquote {
@@ -115,6 +113,10 @@ const StyledWrapper = styled.div`
     border-top: unset;
     color: var(--color-bg-dark);
     margin: 2rem auto;
+  }
+
+  code {
+    color: var(--color-accent);
   }
 `
 

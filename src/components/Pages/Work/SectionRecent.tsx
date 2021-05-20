@@ -53,14 +53,12 @@ const StyledHr = styled.hr`
 // constants
 const CONTENTFUL_TYPE = 'blogPost'
 
-export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
+export const SectionRecent = ({ ariaControlledBy }: ISectionRecent) => {
   const mounted = useRef<Boolean>(true)
   const transitionRef = useRef<HTMLDivElement>()
 
-  const [
-    contentfulEntries,
-    setContentfulEntries,
-  ] = useState<EntryCollection<any> | null>(null)
+  const [contentfulEntries, setContentfulEntries] =
+    useState<EntryCollection<any> | null>(null)
 
   useEffect(() => {
     useFetchContentful<IContentfulPortfolioEntry>({
@@ -83,6 +81,7 @@ export const Recent = ({ ariaControlledBy }: { ariaControlledBy: string }) => {
     <>
       {contentfulEntries ? (
         <div className='animate-fade-in' ref={transitionRef}>
+          <p>Just some random things I've tried recently.</p>
           {contentfulEntries.items
             .sort((a, b) => (a.sys.createdAt < b.sys.createdAt ? 1 : -1))
             .map(entry => {

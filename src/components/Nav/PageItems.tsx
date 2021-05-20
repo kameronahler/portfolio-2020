@@ -29,7 +29,7 @@ const StyledLi = styled.li`
   }
 `
 
-export const PageItems = ({ location, setMobileNavOpen }) => {
+export const PageItems = ({ location, setMobileNavOpen }: IPageItems) => {
   const jsxListItems = routes.map(({ name, path }: IRoutes) => {
     const title = name.charAt(0).toUpperCase() + name.slice(1)
 

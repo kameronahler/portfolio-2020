@@ -106,4 +106,10 @@ export const Helpers = createGlobalStyle`
     white-space: nowrap;
     width: 1px;
   }
+
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `
