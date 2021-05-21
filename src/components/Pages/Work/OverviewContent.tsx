@@ -23,7 +23,7 @@ const StyledArticle = styled.article`
   grid-gap: 2rem;
   margin-bottom: 3rem;
 
-  @media (min-width: ${THEME.w.screenDesktop}) {
+  @media (min-width: ${THEME.w.screenLg}) {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
@@ -43,13 +43,13 @@ const StyledArticle = styled.article`
   figure {
     // 1
     &:first-of-type:last-of-type {
-      @media (min-width: ${THEME.w.screenDesktop}) {
+      @media (min-width: ${THEME.w.screenLg}) {
         grid-column: 1 / -1;
       }
     }
 
     // 2
-    @media (min-width: ${THEME.w.screenDesktop}) {
+    @media (min-width: ${THEME.w.screenLg}) {
       grid-column: span 6;
     }
 
@@ -57,7 +57,7 @@ const StyledArticle = styled.article`
     &:nth-of-type(1):nth-last-of-type(3),
     &:nth-of-type(2):nth-last-of-type(2),
     &:nth-of-type(3):last-of-type {
-      @media (min-width: ${THEME.w.screenDesktop}) {
+      @media (min-width: ${THEME.w.screenLg}) {
         grid-column: span 4;
       }
     }
@@ -65,23 +65,24 @@ const StyledArticle = styled.article`
 
   img {
     filter: blur(32px);
-    width: 100%;
+    max-width: 37.5rem;
     object-fit: cover;
-    object-position: 0% 0%;
+    object-position: 50% 0%;
+    width: 100%;
 
     &[data-lazy-loaded='true'] {
       box-shadow: var(--shadow-card);
       filter: blur(0);
     }
 
-    @media (min-width: ${THEME.w.screenSm}) {
-      height: 25rem;
-      max-width: 37.5rem;
-    }
-
-    @media (min-width: ${THEME.w.screenDesktop}) {
+    @media (min-width: ${THEME.w.screenLg}) {
       height: 25rem;
       max-width: unset;
+      object-position: 0% 0%;
+    }
+
+    @media (min-width: ${THEME.w.screenXl}) {
+      object-position: 50% 0%;
     }
   }
 

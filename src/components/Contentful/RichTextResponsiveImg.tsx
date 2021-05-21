@@ -44,7 +44,6 @@ const RichTextResponsiveImg = ({
             `${url}?${format}&w=4000&q=60 4000w`
           }
           data-src={url}
-          height={400}
           src={lazy ? `${url}?${format}&h=400&q=20` : null}
         />
         {description && (
