@@ -21,12 +21,25 @@ const StyledUl = styled.ul`
   display: flex;
   overflow-x: scroll;
   padding-bottom: 2rem;
-  padding-top: 0.5rem;
+
+  &::after {
+    background-image: linear-gradient(90deg, transparent, var(--color-bg));
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 2rem;
+    content: '';
+    width: 2rem;
+  }
 `
 
 const StyledLi = styled.li`
-  margin-right: 2rem;
+  margin-right: 1rem;
   position: relative;
+
+  @media (min-width: ${THEME.w.screenSm}) {
+    margin-right: 2rem;
+  }
 
   &:last-of-type {
     border-right: ${OVERFLOW_GRADIENT} solid transparent;
