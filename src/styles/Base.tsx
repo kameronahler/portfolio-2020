@@ -45,7 +45,7 @@ export const Base = createGlobalStyle`
 
   h1 {
     font-size: var(--font-size-h1-clamp);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   h2 {
