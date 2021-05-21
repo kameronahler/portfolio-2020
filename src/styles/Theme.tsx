@@ -13,7 +13,7 @@ export const THEME = {
     warning: '#CE3350',
     text: '#252427',
     textInverse: 'rgba(255, 255, 255, .95)',
-    textLight: '#706D76',
+    textLight: '#737079',
     white: '#ffffff',
   },
   duration: {

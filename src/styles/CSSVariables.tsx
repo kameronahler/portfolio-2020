@@ -37,7 +37,7 @@ export const CSSVariables = createGlobalStyle`
     --color-primary-light: #a293ff;
     --color-primary: #735DF7;
     --color-text-inverse: rgba(0, 0, 0, .95);
-    --color-text-light: #BAB6C6;
+    --color-text-light: #7E7B86;
     --color-text: #d6d3e5;
     --color-white: #ffffff;
     --color-warning: #F75C78;

@@ -202,9 +202,9 @@ export const Nav = () => {
               KA
             </NavLink>
           </StyledLiHome>
-          <Separator />
+          <Separator top={true} aria-hidden='true' />
           <PageItems setMobileNavOpen={setMobileNavOpen} location={location} />
-          <Separator />
+          <Separator aria-hidden='true' />
           <SocialItems />
         </StyledUl>
       </StyledNav>
