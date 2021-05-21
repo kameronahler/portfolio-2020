@@ -33,6 +33,7 @@ const StyledArticle = styled.article`
   }
 
   h1 {
+    font-family: inherit;
     font-size: var(--font-size-h3-clamp);
     margin-bottom: unset;
   }

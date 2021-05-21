@@ -19,8 +19,13 @@ const StyledNav = styled.nav`
 
 const StyledUl = styled.ul`
   display: flex;
+  font-family: var(--font-heading);
   overflow-x: scroll;
   padding-bottom: 2rem;
+
+  @media (min-width: ${THEME.w.screenSm}) {
+    padding-bottom: 1rem;
+  }
 
   &::after {
     background-image: linear-gradient(90deg, transparent, var(--color-bg));

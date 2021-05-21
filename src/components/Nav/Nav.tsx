@@ -26,6 +26,7 @@ const StyledNav = styled.nav`
   align-items: flex-start;
   background-color: var(--color-bg);
   display: flex;
+  font-family: var(--font-heading);
   flex-direction: column;
   height: 100vh;
   left: 0;

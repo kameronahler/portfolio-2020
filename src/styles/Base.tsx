@@ -44,6 +44,7 @@ export const Base = createGlobalStyle`
   }
 
   h1 {
+    font-family: var(--font-heading);
     font-size: var(--font-size-h1-clamp);
     margin-bottom: 2rem;
   }
