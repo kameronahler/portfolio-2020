@@ -66,7 +66,7 @@ const StyledUl = styled.ul`
   top: 0;
   visibility: ${({ dropdownExpanded }) =>
     dropdownExpanded ? 'visible' : 'hidden'};
-  width: 100vw;
+  width: calc(100vw - 4rem);
   z-index: ${({ dropdownExpanded }) =>
     dropdownExpanded ? 'var(--z-above-overlay)' : ''};
 

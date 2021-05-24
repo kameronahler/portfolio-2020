@@ -1,8 +1,13 @@
 // packages
 import styled from 'styled-components'
+import { THEME } from '../../../styles/Theme'
 
 export const ContentCardsWrapper = styled.section`
   display: grid;
-  gap: var(--gap-lg);
   grid-template-columns: var(--grid-default);
+  row-gap: var(--gap-lg);
+
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    gap: var(--gap-lg);
+  }
 `
