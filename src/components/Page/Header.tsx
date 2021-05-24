@@ -9,7 +9,7 @@ import { THEME } from '../../styles/Theme'
 
 // styled
 const StyledHeader = styled.header`
-  padding-top: 2rem;
+  padding-top: 0.5rem;
 
   @media (min-width: ${THEME.w.screenDesktop}) {
     padding-top: unset;

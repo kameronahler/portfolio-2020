@@ -19,7 +19,7 @@ import { SVGHamburger } from '../../assets/SVGHamburger'
 import { SVGClose } from '../../assets/SVGClose'
 
 // constant
-const BUTTON_SIZE = '3rem'
+const BUTTON_SIZE = '2.5rem'
 
 // styled
 const StyledNav = styled.nav`
@@ -32,7 +32,7 @@ const StyledNav = styled.nav`
   left: 0;
   opacity: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
     mobileNavOpen ? '1' : '0'};
-  padding: var(--p-card);
+  padding: 0.5rem var(--p-card) var(--p-card);
   position: fixed;
   top: 0;
   transition: var(--duration-250ms) opacity var(--duration-250ms);
@@ -49,8 +49,8 @@ const StyledNav = styled.nav`
     left: unset;
     min-width: 11rem;
     opacity: 1;
-    position: fixed;
     padding: unset;
+    position: fixed;
     top: var(--p-card);
     visibility: visible;
     width: unset;
@@ -60,31 +60,22 @@ const StyledNav = styled.nav`
 
 const StyledMobileButton = styled.button`
   --button-size: ${BUTTON_SIZE};
-  --border-size: calc(var(--button-size) / 2);
 
   align-items: center;
-  border-color: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen
-      ? 'var(--color-primary)'
-      : 'var(--color-primary) transparent transparent var(--color-primary)'};
-  border-style: solid;
-  border-width: var(--border-size) var(--border-size) var(--border-size)
-    var(--border-size);
+  background-color: var(--color-primary);
+  border-radius: 0 0 0 0.75rem;
   display: flex;
-  height: var(--button-size);
+  height: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? '3rem' : 'var(--button-size)'};
   justify-content: center;
-  left: 0;
+  right: 0;
   line-height: 1;
   position: fixed;
   top: 0;
-  transform: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen && `translateX(calc(100vw - var(--button-size)))`};
-  transform-origin: 50% 50%;
+  width: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? '3rem' : 'var(--button-size)'};
   transition-duration: var(--duration-250ms);
-  transition-property: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen ? 'transform' : 'transform border'};
-  transition-timing-function: var(--easing-default);
-  width: var(--button-size);
+  transition-property: height, width;
   z-index: var(--z-above-nav);
 
   &:hover,
@@ -104,11 +95,9 @@ const StyledMobileButtonSVGWrapper = styled.span`
   display: flex;
   height: calc(-1 * var(--button-size) / 2);
   justify-content: center;
-  left: calc(-1 * var(--button-size) / 2);
-  opacity: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen ? '1' : '0'};
-  position: absolute;
-  width: var(--button-size);
+  transition-duration: var(--duration-250ms);
+  transition-property: transform;
+  transition-timing-function: var(--easing-default);
 
   ${StyledMobileButton}:hover & {
     opacity: 1;
