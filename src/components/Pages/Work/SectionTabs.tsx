@@ -29,11 +29,11 @@ const StyledUl = styled.ul`
 
   &::after {
     background-image: linear-gradient(90deg, transparent, var(--color-bg));
+    content: '';
+    height: 2rem;
     position: absolute;
     right: 0;
     top: 0;
-    height: 2rem;
-    content: '';
     width: 2rem;
   }
 `

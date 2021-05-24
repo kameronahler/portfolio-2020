@@ -32,14 +32,6 @@ const StyledArticle = styled.article`
     margin: unset;
   }
 
-  h3 {
-    text-align: center;
-
-    @media (min-width: ${THEME.w.screenSm}) {
-      text-align: left;
-    }
-  }
-
   figure {
     // 1
     &:first-of-type:last-of-type {
