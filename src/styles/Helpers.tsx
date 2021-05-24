@@ -72,9 +72,17 @@ export const Helpers = createGlobalStyle`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    &:active {
+      opacity: .8;
+    }
   }
 
   .link-gradient-hover {
+    &:active {
+      opacity: .8;
+    }
+
     &:hover {
       background-image: linear-gradient(
         45deg,
