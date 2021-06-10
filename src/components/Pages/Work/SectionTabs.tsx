@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // theme
-import { THEME } from '../../../styles/theme'
+import { THEME } from '../../../styles/Theme'
 
 // constants
 const OVERFLOW_GRADIENT = '2rem'
