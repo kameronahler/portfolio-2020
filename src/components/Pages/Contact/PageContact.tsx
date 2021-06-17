@@ -54,6 +54,7 @@ export const PageContact = () => {
         </StyledIntroWrapper>
         <StyledFormWrapper>
           <p>Drop me a line!</p>
+          <p>Form here</p>
         </StyledFormWrapper>
       </StyledLayout>
     </>
