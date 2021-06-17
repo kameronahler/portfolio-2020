@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react'
 
 // packages
 import styled from 'styled-components'
+import { Formik, Form, FormikProps, useField } from 'formik'
+import * as Yup from 'yup'
 
 // components
 import { Header as PageHeader } from '../../Page/Header'
+import { FormikTextInput } from './FormikTextInput'
+import { FormikTextarea } from './FormikTextarea'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -54,7 +58,47 @@ export const PageContact = () => {
         </StyledIntroWrapper>
         <StyledFormWrapper>
           <p>Drop me a line!</p>
-          <p>Form here</p>
+          <Formik
+            initialValues={{
+              email: '',
+              name: '',
+              message: '',
+            }}
+            onSubmit={(values: IContactForm, actions) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2))
+                actions.setSubmitting(false)
+              }, 500)
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email('Invalid email address')
+                .required('Email is required'),
+              message: Yup.string().required('Message is required'),
+              name: Yup.string().required('Name is required'),
+            })}
+          >
+            <Form noValidate={true}>
+              <FormikTextInput
+                labelText='Name'
+                name='name'
+                required='true'
+                type='text'
+              />
+              <FormikTextInput
+                labelText='Email'
+                name='email'
+                required='true'
+                type='email'
+              />
+              <FormikTextarea
+                labelText='Message'
+                name='message'
+                required='true'
+              />
+              <button type='submit'>Send</button>
+            </Form>
+          </Formik>
         </StyledFormWrapper>
       </StyledLayout>
     </>

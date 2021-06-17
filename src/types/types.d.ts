@@ -84,3 +84,12 @@ interface IPageItems {
   location: ILocation
   setMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+interface IContactForm {
+  email: string
+  message: string
+  name: string
+}
+interface IFormikTextInput {
+  labelText: string
+}
