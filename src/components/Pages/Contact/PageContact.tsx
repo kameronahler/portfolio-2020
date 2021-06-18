@@ -52,21 +52,31 @@ const encode = data =>
 
 export const PageContact = () => {
   const handleSubmit = (values: IContactForm, actions) => {
-    console.log(encode({ 'form-name': 'contact', ...values }))
+    console.log(
+      encode({
+        'form-name': 'contact',
+        honeypot: 'bot-field',
+        ...values,
+      })
+    )
 
     fetch('/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: encode({ 'form-name': 'contact', ...values }),
+      body: encode({
+        'form-name': 'contact',
+        honeypot: 'bot-field',
+        ...values,
+      }),
     })
       .then(res => {
         console.log(res)
 
-        // if (res.ok) {
-        //   actions.resetForm()
-        // }
+        if (res.ok) {
+          actions.resetForm()
+        }
       })
       .catch(err => console.error(err))
       .finally(() => actions.setSubmitting(false))
@@ -100,7 +110,12 @@ export const PageContact = () => {
               name: Yup.string().required('Name is required'),
             })}
           >
-            <Form data-netlify='true' name='contact' noValidate={true}>
+            <Form
+              data-netlify='true'
+              data-netlify-honeypot='bot-field'
+              name='contact'
+              noValidate={true}
+            >
               <FormikTextInput
                 labelText='Name'
                 name='name'
