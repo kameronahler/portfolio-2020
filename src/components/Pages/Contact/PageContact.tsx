@@ -45,13 +45,33 @@ const StyledFormWrapper = styled.div`
 `
 
 // fetch encode helper
-const encode = data => {
-  return Object.keys(data)
+const encode = data =>
+  Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&')
-}
 
 export const PageContact = () => {
+  const handleSubmit = (values: IContactForm, actions) => {
+    console.log(encode({ 'form-name': 'contact', ...values }))
+
+    fetch('/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: encode({ 'form-name': 'contact', ...values }),
+    })
+      .then(res => {
+        console.log(res)
+
+        // if (res.ok) {
+        //   actions.resetForm()
+        // }
+      })
+      .catch(err => console.error(err))
+      .finally(() => actions.setSubmitting(false))
+  }
+
   return (
     <>
       <PageHeader title={'Contact'} />
@@ -71,25 +91,7 @@ export const PageContact = () => {
               message: '',
               name: '',
             }}
-            onSubmit={(values: IContactForm, actions) => {
-              console.log(encode(values))
-              fetch('/', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: encode(values),
-              })
-                .then(res => {
-                  console.log(res)
-
-                  // if (res.ok) {
-                  //   actions.resetForm()
-                  // }
-                })
-                .catch(err => console.error(err))
-                .finally(() => actions.setSubmitting(false))
-            }}
+            onSubmit={handleSubmit}
             validationSchema={Yup.object({
               email: Yup.string()
                 .email('Invalid email address')
@@ -98,8 +100,7 @@ export const PageContact = () => {
               name: Yup.string().required('Name is required'),
             })}
           >
-            <Form data-netlify={true} name='contact' noValidate={true}>
-              <input type='hidden' name='form-name' value='contact' />
+            <Form name='contact' noValidate={true}>
               <FormikTextInput
                 labelText='Name'
                 name='name'
