@@ -100,7 +100,7 @@ export const PageContact = () => {
               name: Yup.string().required('Name is required'),
             })}
           >
-            <Form name='contact' noValidate={true}>
+            <Form data-netlify='true' name='contact' noValidate={true}>
               <FormikTextInput
                 labelText='Name'
                 name='name'
