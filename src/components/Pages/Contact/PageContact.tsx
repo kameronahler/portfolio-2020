@@ -44,6 +44,13 @@ const StyledFormWrapper = styled.div`
   }
 `
 
+// fetch encode helper
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
 export const PageContact = () => {
   return (
     <>
@@ -61,14 +68,24 @@ export const PageContact = () => {
           <Formik
             initialValues={{
               email: '',
-              name: '',
               message: '',
+              name: '',
             }}
             onSubmit={(values: IContactForm, actions) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2))
-                actions.setSubmitting(false)
-              }, 500)
+              fetch('/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: encode({ 'form-name': 'contact', ...values }),
+              })
+                .then(() => {
+                  alert('test')
+                  alert(encode({ 'form-name': 'contact', ...values }))
+                  actions.resetForm()
+                })
+                .catch(err => console.error(err))
+                .finally(() => actions.setSubmitting(false))
             }}
             validationSchema={Yup.object({
               email: Yup.string()
@@ -78,7 +95,8 @@ export const PageContact = () => {
               name: Yup.string().required('Name is required'),
             })}
           >
-            <Form noValidate={true}>
+            <Form data-netlify={true} name='contact' noValidate={true}>
+              <input type='hidden' name='contact' value='contact-html' />
               <FormikTextInput
                 labelText='Name'
                 name='name'
