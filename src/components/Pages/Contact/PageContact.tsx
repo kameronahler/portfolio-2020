@@ -72,17 +72,20 @@ export const PageContact = () => {
               name: '',
             }}
             onSubmit={(values: IContactForm, actions) => {
+              console.log(encode(values))
               fetch('/', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: encode({ 'form-name': 'contact', ...values }),
+                body: encode(values),
               })
-                .then(() => {
-                  alert('test')
-                  alert(encode({ 'form-name': 'contact', ...values }))
-                  actions.resetForm()
+                .then(res => {
+                  console.log(res)
+
+                  // if (res.ok) {
+                  //   actions.resetForm()
+                  // }
                 })
                 .catch(err => console.error(err))
                 .finally(() => actions.setSubmitting(false))
@@ -96,23 +99,23 @@ export const PageContact = () => {
             })}
           >
             <Form data-netlify={true} name='contact' noValidate={true}>
-              <input type='hidden' name='contact' value='contact-html' />
+              <input type='hidden' name='form-name' value='contact' />
               <FormikTextInput
                 labelText='Name'
                 name='name'
-                required='true'
+                required={true}
                 type='text'
               />
               <FormikTextInput
                 labelText='Email'
                 name='email'
-                required='true'
+                required={true}
                 type='email'
               />
               <FormikTextarea
                 labelText='Message'
                 name='message'
-                required='true'
+                required={true}
               />
               <button type='submit'>Send</button>
             </Form>
