@@ -116,6 +116,13 @@ export const PageContact = () => {
               name='contact'
               noValidate={true}
             >
+              <div hidden aria-hidden='true'>
+                <FormikTextInput
+                  labelText='Names'
+                  name='bot-field'
+                  type='text'
+                />
+              </div>
               <FormikTextInput
                 labelText='Name'
                 name='name'
