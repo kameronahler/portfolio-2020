@@ -3,13 +3,10 @@ import React from 'react'
 
 // packages
 import styled from 'styled-components'
-import { Formik, Form, FormikHelpers } from 'formik'
-import * as Yup from 'yup'
 
 // components
 import { Header as PageHeader } from '../../Page/Header'
-import { FormikField } from './FormikField'
-import { Button } from '../../Button/Button'
+import { FormikForm } from './FormikForm'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -44,42 +41,6 @@ const StyledFormWrapper = styled.div`
   }
 `
 
-// fetch encode helper
-const encode = (data: IFormikDataEncode) =>
-  Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-
-// handlers
-const handleSubmit = async (
-  values: IContactForm,
-  actions: FormikHelpers<IContactForm>
-) => {
-  actions.setSubmitting(false)
-
-  try {
-    const res = await fetch('/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: encode({
-        'form-name': 'contact',
-        honeypot: 'bot-field',
-        ...values,
-      }),
-    })
-
-    if (res.ok) {
-      actions.resetForm()
-    }
-
-    actions.setSubmitting(false)
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 export const PageContact = () => {
   return (
     <>
@@ -94,53 +55,7 @@ export const PageContact = () => {
         </StyledIntroWrapper>
         <StyledFormWrapper>
           <p>Drop me a line!</p>
-          <Formik
-            initialValues={{
-              email: '',
-              message: '',
-              name: '',
-            }}
-            onSubmit={handleSubmit}
-            validationSchema={Yup.object({
-              email: Yup.string()
-                .email('Invalid email address')
-                .required('Email is required'),
-              message: Yup.string().required('Message is required'),
-              name: Yup.string().required('Name is required'),
-            })}
-          >
-            <Form
-              data-netlify='true'
-              data-netlify-honeypot='bot-field'
-              name='contact'
-              noValidate={true}
-            >
-              <div hidden aria-hidden='true'>
-                <FormikField labelText='Names' name='bot-field' type='text' />
-              </div>
-              <FormikField
-                labelText='Name'
-                name='name'
-                required={true}
-                type='text'
-              />
-              <FormikField
-                labelText='Email'
-                name='email'
-                required={true}
-                type='email'
-              />
-              <FormikField
-                labelText='Message'
-                name='message'
-                required={true}
-                type='textarea'
-              />
-              <div>
-                <Button type='submit'>Send</Button>
-              </div>
-            </Form>
-          </Formik>
+          <FormikForm />
         </StyledFormWrapper>
       </StyledLayout>
     </>
