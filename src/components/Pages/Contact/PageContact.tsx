@@ -1,15 +1,15 @@
 // react
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 // packages
 import styled from 'styled-components'
-import { Formik, Form, FormikProps, useField } from 'formik'
+import { Formik, Form, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
 
 // components
 import { Header as PageHeader } from '../../Page/Header'
-import { FormikTextInput } from './FormikTextInput'
-import { FormikTextarea } from './FormikTextarea'
+import { FormikField } from './FormikField'
+import { Button } from '../../Button/Button'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -45,22 +45,20 @@ const StyledFormWrapper = styled.div`
 `
 
 // fetch encode helper
-const encode = data =>
+const encode = (data: IFormikDataEncode) =>
   Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&')
 
-export const PageContact = () => {
-  const handleSubmit = (values: IContactForm, actions) => {
-    console.log(
-      encode({
-        'form-name': 'contact',
-        honeypot: 'bot-field',
-        ...values,
-      })
-    )
+// handlers
+const handleSubmit = async (
+  values: IContactForm,
+  actions: FormikHelpers<IContactForm>
+) => {
+  actions.setSubmitting(false)
 
-    fetch('/', {
+  try {
+    const res = await fetch('/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -71,17 +69,18 @@ export const PageContact = () => {
         ...values,
       }),
     })
-      .then(res => {
-        console.log(res)
 
-        if (res.ok) {
-          actions.resetForm()
-        }
-      })
-      .catch(err => console.error(err))
-      .finally(() => actions.setSubmitting(false))
+    if (res.ok) {
+      actions.resetForm()
+    }
+
+    actions.setSubmitting(false)
+  } catch (err) {
+    console.error(err)
   }
+}
 
+export const PageContact = () => {
   return (
     <>
       <PageHeader title={'Contact'} />
@@ -117,30 +116,29 @@ export const PageContact = () => {
               noValidate={true}
             >
               <div hidden aria-hidden='true'>
-                <FormikTextInput
-                  labelText='Names'
-                  name='bot-field'
-                  type='text'
-                />
+                <FormikField labelText='Names' name='bot-field' type='text' />
               </div>
-              <FormikTextInput
+              <FormikField
                 labelText='Name'
                 name='name'
                 required={true}
                 type='text'
               />
-              <FormikTextInput
+              <FormikField
                 labelText='Email'
                 name='email'
                 required={true}
                 type='email'
               />
-              <FormikTextarea
+              <FormikField
                 labelText='Message'
                 name='message'
                 required={true}
+                type='textarea'
               />
-              <button type='submit'>Send</button>
+              <div>
+                <Button type='submit'>Send</Button>
+              </div>
             </Form>
           </Formik>
         </StyledFormWrapper>

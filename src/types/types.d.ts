@@ -93,3 +93,8 @@ interface IContactForm {
 interface IFormikTextInput {
   labelText: string
 }
+
+interface IFormikDataEncode extends IContactForm {
+  'form-name': string
+  honeypot: string
+}
