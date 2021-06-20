@@ -1,5 +1,5 @@
 //react
-import React, { ButtonHTMLAttributes, PropsWithChildren } from 'react'
+import React from 'react'
 
 // packages
 import styled from 'styled-components'

@@ -84,3 +84,17 @@ interface IPageItems {
   location: ILocation
   setMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+interface IContactForm {
+  email: string
+  message: string
+  name: string
+}
+interface IFormikTextInput {
+  labelText: string
+}
+
+interface IFormikDataEncode extends IContactForm {
+  'form-name': string
+  honeypot: string
+}
