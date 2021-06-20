@@ -1,13 +1,35 @@
 // react
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 // packages
+import styled from 'styled-components'
 import { Formik, Form, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
 
 // components
 import { FormikField } from './FormikField'
 import { Button } from '../../Button/Button'
+
+// theme
+import { THEME } from '../../../styles/Theme'
+
+// styled
+const StyledButtonWrapper = styled.div`
+  @media (min-width: ${THEME.w.screenSm}) {
+    align-items: center;
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: auto 1fr;
+  }
+
+  button {
+    margin-bottom: 1rem;
+
+    @media (min-width: ${THEME.w.screenSm}) {
+      margin-bottom: unset;
+    }
+  }
+`
 
 // fetch encode helper
 const encode = (data: IFormikDataEncode) =>
@@ -19,9 +41,11 @@ const encode = (data: IFormikDataEncode) =>
 const handleSubmit = async (
   values: IContactForm,
   actions: FormikHelpers<IContactForm>,
-  setSubmitted: any
+  buttonText: React.MutableRefObject<string>,
+  setSent: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
+    buttonText.current = 'Sending'
     const res = await fetch('/', {
       method: 'POST',
       headers: {
@@ -36,18 +60,24 @@ const handleSubmit = async (
 
     if (res.ok) {
       actions.resetForm()
-      setSubmitted(true)
+      setSent(true)
+    } else {
+      window.alert('There was a problem sending your message 😬')
     }
 
+    buttonText.current = 'Send'
     actions.setSubmitting(false)
   } catch (err) {
-    actions.setSubmitting(false)
     console.error(err)
+    buttonText.current = 'Send'
+    actions.setSubmitting(false)
+    window.alert('There was a problem sending your message 😬')
   }
 }
 
 export const FormikForm = () => {
-  const [submitted, setSubmitted] = useState(false)
+  const buttonText = useRef<string>('Send')
+  const [sent, setSent] = useState<boolean>(false)
 
   return (
     <Formik
@@ -57,7 +87,7 @@ export const FormikForm = () => {
         name: '',
       }}
       onSubmit={(values, actions) => {
-        handleSubmit(values, actions, setSubmitted)
+        handleSubmit(values, actions, buttonText, setSent)
       }}
       validationSchema={Yup.object({
         email: Yup.string()
@@ -96,17 +126,12 @@ export const FormikForm = () => {
             required={true}
             type='textarea'
           />
-          <div>
+          <StyledButtonWrapper>
             <Button disabled={isSubmitting ? true : false} type='submit'>
-              {isSubmitting
-                ? 'Sending'
-                : dirty
-                ? 'Send'
-                : submitted
-                ? 'Sent'
-                : 'Send'}
+              {buttonText.current}
             </Button>
-          </div>
+            {sent && !dirty && <p>Your message was sent!</p>}
+          </StyledButtonWrapper>
         </Form>
       )}
     </Formik>
