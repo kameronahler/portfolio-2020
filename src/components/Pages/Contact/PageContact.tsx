@@ -50,11 +50,9 @@ export const PageContact = () => {
           <h2 aria-hidden='true' className='h1'>
             ✌️
           </h2>
-          <p>And if not...</p>
-          <p>Thanks for stopping by, friend!</p>
+          <p>Drop me a line, friend!</p>
         </StyledIntroWrapper>
         <StyledFormWrapper>
-          <p>Drop me a line!</p>
           <FormikForm />
         </StyledFormWrapper>
       </StyledLayout>
