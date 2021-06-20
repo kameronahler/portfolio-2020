@@ -130,12 +130,7 @@ export const Base = createGlobalStyle`
     transition-timing-function: var(--easing-default);
 
     &:focus {
-      border-color: var(--color-primary);
-    }
-
-    &:focus-visible {
-      outline: 1px dashed var(--color-text);
-      outline-offset: 0.25rem;
+      outline-color: var(--color-primary);
     }
 
     &:disabled {
