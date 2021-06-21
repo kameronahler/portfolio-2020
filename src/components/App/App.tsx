@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import styled from 'styled-components'
 
 // components
-import { Nav } from '../Nav/Nav'
+import { SiteNav } from '../SiteNav/SiteNav'
 import { Page } from '../Page/Page'
 
 // theme
@@ -40,10 +40,11 @@ export const App = () => {
       <Styles />
       <Router>
         <StyledAppGrid id='app'>
-          <Nav />
+          <SiteNav />
           <StyledMain id='main'>
             <Page />
           </StyledMain>
+          <div id='overlay-container'></div>
         </StyledAppGrid>
       </Router>
     </>

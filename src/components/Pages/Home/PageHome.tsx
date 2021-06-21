@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // components
-import { Header } from '../../Page/Header'
+import { PageHeader } from '../../Page/PageHeader'
 import { Content } from './Content'
 
 // theme
@@ -25,13 +25,13 @@ const StyledEmojiWrapper = styled.span`
 export const PageHome = () => {
   return (
     <>
-      <Header
+      <PageHeader
         title={
           <>
             Kameron Ahler <StyledEmojiWrapper>👋</StyledEmojiWrapper>
           </>
         }
-      ></Header>
+      ></PageHeader>
       <Content />
     </>
   )

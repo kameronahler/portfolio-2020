@@ -13,6 +13,7 @@ const OVERFLOW_GRADIENT_SM = '8rem'
 
 // styled
 const StyledNav = styled.nav`
+  margin-top: -1rem;
   margin-bottom: 1rem;
   position: relative;
 `

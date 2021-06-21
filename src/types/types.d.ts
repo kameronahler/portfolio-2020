@@ -37,9 +37,14 @@ interface ILoaderSVG {
   strokeWidth: number
 }
 
-interface IHomeMenuOverlay {
-  dropdownExpanded: boolean
-  setDropdownExpanded: React.SetStateAction<any>
+interface IModal extends IOverlay {
+  children: React.ReactElement
+}
+
+interface IOverlay {
+  appendToId: string
+  ariaLabel: string
+  setOpen: React.SetStateAction<any>
 }
 
 interface IExperienceCard {

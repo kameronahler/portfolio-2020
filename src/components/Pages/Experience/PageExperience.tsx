@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 // components
-import { Header } from '../../Page/Header'
+import { PageHeader } from '../../Page/PageHeader'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -159,7 +159,7 @@ export const PageExperience = () => {
 
   return (
     <>
-      <Header title={'Experience'} />
+      <PageHeader title={'Experience'} />
       <StyledCardsWrapper data-id={DATA_RESIZE_PARENT}>
         {CARD_DATA.map(card => (
           <ExperienceCard

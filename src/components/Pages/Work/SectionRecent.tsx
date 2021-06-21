@@ -26,6 +26,10 @@ const StyledArticle = styled.article`
     grid-template-columns: 1fr minmax(300px, 1fr);
   }
 
+  &:first-of-type {
+    margin-top: 3rem;
+  }
+
   header {
     @media (min-width: ${THEME.w.screenMd}) {
       grid-column: 1/3;
@@ -34,14 +38,18 @@ const StyledArticle = styled.article`
 
   h1 {
     font-family: inherit;
-    font-size: var(--font-size-h3-clamp);
-    margin-bottom: unset;
+    font-size: var(--font-size-h4-clamp);
+    margin-bottom: 1rem;
   }
 
   img {
     display: block;
     margin-top: 2rem;
     width: 100%;
+
+    @media (min-width: ${THEME.w.screenDesktop}) {
+      margin-top: unset;
+    }
   }
 `
 

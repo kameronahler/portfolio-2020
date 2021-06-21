@@ -149,7 +149,7 @@ const StyledLiHome = styled.li`
   }
 `
 
-export const Nav = () => {
+export const SiteNav = () => {
   const location: ILocation = useLocation()
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
 

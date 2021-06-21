@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // components
-import { Header as PageHeader } from '../../Page/Header'
+import { PageHeader } from '../../Page/PageHeader'
 import { FormikForm } from './FormikForm'
 
 // theme

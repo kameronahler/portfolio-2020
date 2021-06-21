@@ -12,7 +12,7 @@ import { THEME } from '../../../styles/Theme'
 import { All } from './All'
 import { Design } from './Design'
 import { Development } from './Development'
-import { Overlay } from './Overlay'
+import { Overlay } from '../../Overlay/Overlay'
 
 // styled
 const StyledDropdownWrapper = styled.section`
@@ -304,10 +304,13 @@ export const Content = () => {
       {role === ROLE.design && <Design />}
       {role === ROLE.development && <Development />}
 
-      <Overlay
-        dropdownExpanded={dropdownExpanded}
-        setDropdownExpanded={setDropdownExpanded}
-      />
+      {dropdownExpanded && (
+        <Overlay
+          appendToId='overlay-container'
+          ariaLabel='Close menu'
+          setOpen={setDropdownExpanded}
+        />
+      )}
     </StyledDropdownWrapper>
   )
 }

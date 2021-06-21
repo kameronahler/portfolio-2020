@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 //components
-import { Header } from '../../Page/Header'
+import { PageHeader } from '../../Page/PageHeader'
 import { SectionDribbble } from './SectionDribbble'
 import { SectionOverview } from './SectionOverview'
 import { SectionRecent } from './SectionRecent'
@@ -14,7 +14,7 @@ export const PageWork = () => {
 
   return (
     <>
-      <Header title={'Work'} />
+      <PageHeader title={'Work'} />
       <SectionTabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
       <section>
         {currentTab === 'portfolioPost' && (

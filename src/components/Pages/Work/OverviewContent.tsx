@@ -29,6 +29,7 @@ const StyledArticle = styled.article`
 
   h3,
   p {
+    grid-column: 1 / -1;
     margin: unset;
   }
 
@@ -76,10 +77,6 @@ const StyledArticle = styled.article`
     @media (min-width: ${THEME.w.screenXl}) {
       object-position: 50% 0%;
     }
-  }
-
-  & > :not(figure) {
-    grid-column: 1 / -1;
   }
 `
 

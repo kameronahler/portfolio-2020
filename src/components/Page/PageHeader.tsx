@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
   }
 `
 
-export const Header = ({ children, title }: IHeader) => {
+export const PageHeader = ({ children, title }: IHeader) => {
   return (
     <StyledHeader>
       <h1>{title}</h1>

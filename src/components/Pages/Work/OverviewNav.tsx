@@ -25,7 +25,7 @@ const StyledNav = styled.nav`
     column-gap: 1rem;
     grid-template-columns: 1fr auto;
     justify-content: start;
-    margin-bottom: unset;
+    margin-bottom: 1rem;
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -37,11 +37,26 @@ const StyledHeader = styled.header`
   h2 {
     font-size: var(--font-size-h4-clamp);
     margin-bottom: 0;
-    /* text-align: center; */
 
     @media (min-width: ${THEME.w.screenSm}) {
       font-size: var(--font-size-h3-clamp);
+      padding-bottom: 0.75rem;
+      position: relative;
       text-align: unset;
+    }
+
+    &::before {
+      @media (min-width: ${THEME.w.screenSm}) {
+        background-color: var(--color-primary);
+        border-radius: 9999px;
+        bottom: 0;
+        content: '';
+        height: 0.125rem;
+        left: 0;
+        position: absolute;
+        width: 3rem;
+        z-index: -1;
+      }
     }
   }
 `
@@ -56,13 +71,15 @@ const StyledUl = styled.ul`
 
   @media (min-width: ${THEME.w.screenSm}) {
     justify-content: unset;
+    margin-top: 0.25rem;
+    padding-right: 2rem;
     position: static;
     top: unset;
     transform: unset;
   }
 
   @media (min-width: ${THEME.w.screenDesktop}) {
-    margin-top: 0.75rem;
+    padding-right: unset;
   }
 
   li:first-of-type {

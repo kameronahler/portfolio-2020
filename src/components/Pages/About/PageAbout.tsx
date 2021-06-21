@@ -2,12 +2,12 @@
 import React from 'react'
 
 // components
-import { Header } from '../../Page/Header'
+import { PageHeader } from '../../Page/PageHeader'
 
 export const PageAbout = () => {
   return (
     <>
-      <Header title={'About'} />
+      <PageHeader title={'About'} />
       <section>
         <p>Coming soon.</p>
         <img
