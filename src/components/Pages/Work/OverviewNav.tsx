@@ -29,7 +29,7 @@ const StyledNav = styled.nav`
     padding: 1rem 0;
     position: sticky;
     top: 0;
-    z-index: var(--z-nav);
+    z-index: var(--z-beneath-nav);
   }
 `
 

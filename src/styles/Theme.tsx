@@ -80,6 +80,7 @@ export const THEME = {
     navDesktop: '16rem',
   },
   z: {
+    beneathNav: '900',
     nav: '1000',
     aboveNav: '2000',
     overlay: '3000',
