@@ -6,6 +6,9 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 // packages
 import styled from 'styled-components'
 
+// helpers
+import { useToggleBodyOverflow } from '../../hooks/hooks'
+
 // routes
 import { routes } from '../../routes'
 
@@ -59,16 +62,15 @@ export const Page = () => {
         <CSSTransition
           key={location.key}
           onExiting={() => {
-            document.body.style.height = '100vh'
-            document.body.style.overflow = 'hidden'
+            useToggleBodyOverflow(true)
+
             setTimeout(
               () => window.scroll(0, 0),
               +THEME.duration.pageTransition - 50
             )
           }}
           onEntered={() => {
-            document.body.style.height = null
-            document.body.style.overflow = null
+            useToggleBodyOverflow(false)
           }}
           timeout={PAGE_TRANSITION_DURATION}
         >

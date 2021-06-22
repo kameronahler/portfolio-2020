@@ -66,3 +66,13 @@ export const useFilterContentfulByTag = (
   })
   return filteredCollection
 }
+
+export const useToggleBodyOverflow = (frozen: boolean) => {
+  if (frozen) {
+    document.body.style.height = '100vh'
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.height = null
+    document.body.style.overflow = null
+  }
+}

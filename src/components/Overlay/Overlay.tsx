@@ -2,6 +2,9 @@
 import React, { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
+// helpers
+import { useToggleBodyOverflow } from '../../hooks/hooks'
+
 // packages
 import { StyledOverlay } from './StyledOverlay'
 
@@ -16,13 +19,11 @@ export const Overlay = ({ appendToId, ariaLabel, setOpen }: IOverlay) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleEscape)
-    document.body.style.height = '100vh'
-    document.body.style.overflow = 'hidden'
+    useToggleBodyOverflow(true)
 
     return () => {
       window.removeEventListener('keydown', handleEscape)
-      document.body.style.height = null
-      document.body.style.overflow = null
+      useToggleBodyOverflow(true)
     }
   }, [])
 

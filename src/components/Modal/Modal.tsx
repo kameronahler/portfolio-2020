@@ -5,6 +5,9 @@ import { createPortal } from 'react-dom'
 // packages
 import styled from 'styled-components'
 
+// helper
+import { useToggleBodyOverflow } from '../../hooks/hooks'
+
 // components
 import { StyledOverlay } from '../Overlay/StyledOverlay'
 
@@ -58,13 +61,11 @@ export const Modal = ({ appendToId, ariaLabel, children, setOpen }: IModal) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleEscape)
-    document.body.style.height = '100vh'
-    document.body.style.overflow = 'hidden'
+    useToggleBodyOverflow(true)
 
     return () => {
       window.removeEventListener('keydown', handleEscape)
-      document.body.style.height = null
-      document.body.style.overflow = null
+      useToggleBodyOverflow(false)
     }
   }, [])
 
