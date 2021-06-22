@@ -1,16 +1,21 @@
 // react
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
 // packages
 import styled from 'styled-components'
+
+// routes
+import { routes } from '../../routes'
+
+// helpers
+import { useToggleBodyOverflow } from '../../hooks/hooks'
 
 // theme
 import { THEME } from '../../styles/Theme'
 
 // components
 import { Darkmode } from './Darkmode'
-import { PageItems } from './PageItems'
 import { Separator } from './Separator'
 import { SocialItems } from './Socialtems'
 
@@ -149,9 +154,70 @@ const StyledLiHome = styled.li`
   }
 `
 
+const StyledLi = styled.li`
+  a {
+    display: inline-flex;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+
+    &::after {
+      align-self: center;
+      background-color: var(--color-primary);
+      border-radius: 999px;
+      content: '';
+      height: 0.5rem;
+      margin-left: 1rem;
+      transform: scale(0);
+      transition: var(--easing-default) var(--duration-250ms) transform;
+      width: 0.5rem;
+    }
+
+    &.active {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+`
+
 export const SiteNav = () => {
   const location: ILocation = useLocation()
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
+
+  // handlers
+  const openMobileNav = useCallback(() => {
+    window.addEventListener('keydown', handleCloseWithEscape)
+    useToggleBodyOverflow(true)
+    setMobileNavOpen(true)
+  }, [])
+
+  const closeMobileNav = useCallback(() => {
+    window.removeEventListener('keydown', handleCloseWithEscape)
+    useToggleBodyOverflow(false)
+    setMobileNavOpen(false)
+  }, [])
+
+  const handleCloseWithEscape = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      closeMobileNav()
+    }
+  }
+
+  const handleMobileMenuToggle = () => {
+    if (mobileNavOpen) {
+      closeMobileNav()
+    } else {
+      openMobileNav()
+    }
+  }
+
+  const handleSameLinkClick = (e: MouseEvent, path: string) => {
+    if (location.pathname === path) {
+      e.preventDefault()
+    } else {
+      closeMobileNav()
+    }
+  }
 
   return (
     <>
@@ -160,7 +226,7 @@ export const SiteNav = () => {
         aria-haspopup='true'
         aria-label={mobileNavOpen ? 'Close menu' : 'Open menu'}
         mobileNavOpen={mobileNavOpen}
-        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        onClick={handleMobileMenuToggle}
       >
         <StyledMobileButtonSVGWrapper mobileNavOpen={mobileNavOpen}>
           {mobileNavOpen ? SVGClose : SVGHamburger}
@@ -174,26 +240,40 @@ export const SiteNav = () => {
         mobileNavOpen={mobileNavOpen}
       >
         <Darkmode />
-
         <StyledUl>
           <StyledLiHome>
             <NavLink
               activeClassName={'active link-gradient'}
               className='bold link-uppercase link-gradient-hover'
               exact={true}
-              onClick={(e: Event) => {
-                if (location.pathname === '/') {
-                  e.preventDefault()
-                }
-                setMobileNavOpen(false)
-              }}
+              onClick={(e: MouseEvent, path: string) =>
+                handleSameLinkClick(e, path)
+              }
               to={'/'}
             >
               KA
             </NavLink>
           </StyledLiHome>
           <Separator top={true} aria-hidden='true' />
-          <PageItems setMobileNavOpen={setMobileNavOpen} location={location} />
+          {routes.map(({ name, path }: IRoutes) => {
+            const title = name.charAt(0).toUpperCase() + name.slice(1)
+
+            return path !== '/' ? (
+              <StyledLi key={name}>
+                <NavLink
+                  activeClassName={'active bold link-gradient'}
+                  className='link-gradient-hover link-uppercase'
+                  exact={true}
+                  onClick={(e: MouseEvent, path: string) =>
+                    handleSameLinkClick(e, path)
+                  }
+                  to={path}
+                >
+                  {title}
+                </NavLink>
+              </StyledLi>
+            ) : null
+          })}
           <Separator aria-hidden='true' />
           <SocialItems />
         </StyledUl>
