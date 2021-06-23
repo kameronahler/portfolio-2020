@@ -30,10 +30,9 @@ const StyledModalImg = styled.img`
 export const ZoomedModalContent = ({ alt, src }: IZoomedModalImage) => {
   const [imgLoaded, setImgLoaded] = useState(false)
   const ref = useRef<HTMLImageElement>()
-  const handleImgLoaded = useCallback(() => {
-    console.log('loaded')
-    setImgLoaded(true)
-  }, [])
+
+  // handler
+  const handleImgLoaded = useCallback(() => setImgLoaded(true), [])
 
   useEffect(() => {
     ref.current.addEventListener('load', handleImgLoaded, { once: true })
