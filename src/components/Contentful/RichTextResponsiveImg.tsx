@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 // components
 import { Modal } from '../Modal/Modal'
+import { ZoomedModalContent } from './ZoomedModalContent'
 
 // styled
 const StyledImg = styled.img`
@@ -69,7 +70,7 @@ const RichTextResponsiveImg = ({
             ariaLabel='Close zoomed preview'
             setOpen={setModalOpen}
           >
-            <StyledModalImg alt={alt || ''} src={`${url}?${format}`} />
+            <ZoomedModalContent alt={alt || ''} src={`${url}?${format}`} />
           </Modal>
         )}
       </figure>
@@ -91,7 +92,7 @@ const RichTextResponsiveImg = ({
             ariaLabel='Close preview'
             setOpen={setModalOpen}
           >
-            <StyledImg alt={alt || ''} src={url} />
+            <ZoomedModalContent alt={alt || ''} src={`${url}?${format}`} />
           </Modal>
         )}
       </figure>
