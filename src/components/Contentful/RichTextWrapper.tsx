@@ -4,6 +4,9 @@ import React from 'react'
 // packages
 import styled from 'styled-components'
 
+// theme
+import { THEME } from '../../styles/Theme'
+
 // styled
 const StyledWrapper = styled.div`
   margin-left: auto;
@@ -36,6 +39,11 @@ const StyledWrapper = styled.div`
 
   h3 {
     font-size: 1.333rem;
+    text-align: center;
+
+    @media (min-width: ${THEME.w.screenSm}) {
+      text-align: left;
+    }
   }
 
   a {
