@@ -15,8 +15,8 @@ import { SVGChevronRight } from '../../../assets/SVGChevronRight'
 const StyledNav = styled.nav`
   background-color: var(--color-bg);
   display: grid;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
   margin-bottom: 2rem;
   position: relative;
 
@@ -37,6 +37,7 @@ const StyledHeader = styled.header`
   h2 {
     font-size: var(--font-size-h4-clamp);
     margin-bottom: 0;
+    text-align: center;
 
     @media (min-width: ${THEME.w.screenSm}) {
       font-size: var(--font-size-h3-clamp);
@@ -71,7 +72,6 @@ const StyledUl = styled.ul`
 
   @media (min-width: ${THEME.w.screenSm}) {
     justify-content: unset;
-    margin-top: 0.25rem;
     padding-right: 2rem;
     position: static;
     top: unset;
@@ -90,32 +90,40 @@ const StyledUl = styled.ul`
 `
 
 const StyledNavButton = styled.button`
-  display: block;
+  align-items: center;
+  background-color: var(--color-bg-accent);
+  border-radius: 9999px;
+  border: 1px solid var(--color-primary);
+  display: flex;
   line-height: 1;
+  padding: 0.25rem;
+  transition-duration: var(--duration-250ms);
+  transition-property: border;
+  transition-timing-function: var(--easing-default);
+  z-index: var(--z-above-nav);
 
-  @media (min-width: ${THEME.w.screenDesktop}) {
+  @media (min-width: ${THEME.w.screenSm}) {
     transition-duration: var(--duration-250ms);
-    transition-property: transform;
+    transition-property: background-color, transform;
     transition-timing-function: var(--easing-default);
   }
 
-  &:disabled {
-    opacity: 0.1;
-  }
-
   &:hover {
+    background-color: var(--color-primary);
+
     path {
-      stroke: var(--color-primary);
+      stroke: var(--color-text);
     }
   }
 
   ${StyledNav}:hover li:first-of-type & {
-    @media (min-width: ${THEME.w.screenDesktop}) {
+    @media (min-width: ${THEME.w.screenSm}) {
       transform: translateX(-0.25rem);
     }
   }
+
   ${StyledNav}:hover li:last-of-type & {
-    @media (min-width: ${THEME.w.screenDesktop}) {
+    @media (min-width: ${THEME.w.screenSm}) {
       transform: translateX(0.25rem);
     }
   }
@@ -124,6 +132,13 @@ const StyledNavButton = styled.button`
     display: block;
     height: 2rem;
     width: 2rem;
+
+    path {
+      stroke: var(--color-primary);
+      transition-duration: var(--duration-250ms);
+      transition-property: stroke;
+      transition-timing-function: var(--easing-default);
+    }
   }
 `
 
