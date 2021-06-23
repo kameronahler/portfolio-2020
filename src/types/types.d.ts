@@ -103,3 +103,8 @@ interface IFormikDataEncode extends IContactForm {
   'form-name': string
   honeypot: string
 }
+
+interface IZoomedModalImage {
+  alt: string
+  src: string
+}

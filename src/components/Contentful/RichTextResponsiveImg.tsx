@@ -7,25 +7,18 @@ import styled from 'styled-components'
 
 // components
 import { Modal } from '../Modal/Modal'
-
-// theme
-import { THEME } from '../..//styles/Theme'
+import { ZoomedModalContent } from './ZoomedModalContent'
 
 // styled
 const StyledImg = styled.img`
   display: block;
-  width: 100%;
   max-width: 100%;
+  width: 100%;
 `
 
-const StyledModalImg = styled.img`
+const StyledButton = styled.button`
   display: block;
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
   width: 100%;
-  z-index: var(--z-above-overlay);
 `
 
 const RichTextResponsiveImg = ({
@@ -46,7 +39,7 @@ const RichTextResponsiveImg = ({
   if (type === '.jpeg' || '.jpg' || '.png') {
     return (
       <figure>
-        <button onClick={() => setModalOpen(true)}>
+        <StyledButton aria-label='Zoom' onClick={() => setModalOpen(true)}>
           <StyledImg
             alt={alt || ''}
             data-lazy-loaded='false'
@@ -65,7 +58,7 @@ const RichTextResponsiveImg = ({
             data-src={url}
             src={lazy ? `${url}?${format}&h=400&q=20` : null}
           />
-        </button>
+        </StyledButton>
 
         {description && (
           <figcaption className='sr-only'>{description}</figcaption>
@@ -74,10 +67,10 @@ const RichTextResponsiveImg = ({
         {modalOpen && (
           <Modal
             appendToId='overlay-container'
-            ariaLabel='Close preview'
+            ariaLabel='Close zoomed preview'
             setOpen={setModalOpen}
           >
-            <StyledModalImg alt={alt || ''} src={`${url}?${format}`} />
+            <ZoomedModalContent alt={alt || ''} src={`${url}?${format}`} />
           </Modal>
         )}
       </figure>
@@ -99,7 +92,7 @@ const RichTextResponsiveImg = ({
             ariaLabel='Close preview'
             setOpen={setModalOpen}
           >
-            <StyledImg alt={alt || ''} src={url} />
+            <ZoomedModalContent alt={alt || ''} src={`${url}?${format}`} />
           </Modal>
         )}
       </figure>

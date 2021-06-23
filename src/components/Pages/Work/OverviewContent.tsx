@@ -57,7 +57,7 @@ const StyledArticle = styled.article`
   }
 
   img {
-    filter: blur(32px);
+    filter: blur(16px);
     max-width: 37.5rem;
     object-fit: cover;
     object-position: 50% 0%;
@@ -66,6 +66,9 @@ const StyledArticle = styled.article`
     &[data-lazy-loaded='true'] {
       box-shadow: var(--shadow-card);
       filter: blur(0);
+      transition-duration: var(--duration-1000ms);
+      transition-property: filter;
+      transition-timing-function: var(--easing-default);
     }
 
     @media (min-width: ${THEME.w.screenLg}) {

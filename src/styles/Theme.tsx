@@ -21,6 +21,8 @@ export const THEME = {
     ['250ms']: '250ms',
     ['500']: '500',
     ['500ms']: '500ms',
+    ['1000']: '1000',
+    ['1000ms']: '1000ms',
     pageTransition: '500',
     pageTransitionMs: '500ms',
   },
