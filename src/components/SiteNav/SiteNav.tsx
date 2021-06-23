@@ -22,6 +22,7 @@ import { SocialItems } from './Socialtems'
 // assets
 import { SVGHamburger } from '../../assets/SVGHamburger'
 import { SVGClose } from '../../assets/SVGClose'
+import { SVGAvatar } from '../../assets/SVGAvatar'
 
 // constant
 const BUTTON_SIZE = '2.5rem'
@@ -131,8 +132,8 @@ const StyledLiHome = styled.li`
     align-items: center;
     border-radius: 9999px;
     color: var(--color-text);
-    display: flex;
-    padding: 0.5rem 0.75rem;
+    display: inline-flex;
+    padding: 0.5rem 0 0.5rem 0.5rem;
 
     &::after {
       align-self: center;
@@ -151,6 +152,11 @@ const StyledLiHome = styled.li`
         transform: scale(1);
       }
     }
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
   }
 `
 
@@ -243,15 +249,15 @@ export const SiteNav = () => {
         <StyledUl>
           <StyledLiHome>
             <NavLink
-              activeClassName={'active link-gradient'}
-              className='bold link-uppercase link-gradient-hover'
+              activeClassName={'active'}
+              aria-label='Home'
               exact={true}
               onClick={(e: MouseEvent, path: string) =>
                 handleSameLinkClick(e, path)
               }
               to={'/'}
             >
-              KA
+              {SVGAvatar}
             </NavLink>
           </StyledLiHome>
           <Separator top={true} aria-hidden='true' />
