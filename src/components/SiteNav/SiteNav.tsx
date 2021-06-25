@@ -306,7 +306,7 @@ export const SiteNav = () => {
 
           <StyledLiSeparator top={true} aria-hidden='true' />
 
-          {routes.map(({ name, path }: IRoutes) => {
+          {routes.map(({ name, path }: ILinkRoute) => {
             const title = name.charAt(0).toUpperCase() + name.slice(1)
 
             return path !== '/' ? (

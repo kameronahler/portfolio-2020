@@ -4,7 +4,7 @@ import { PageExperience } from './components/Pages/Experience/PageExperience'
 import { PageWork } from './components/Pages/Work/PageWork'
 import { PageAbout } from './components/Pages/About/PageAbout'
 
-export const routes = [
+export const routes: IRoute[] = [
   { name: 'home', component: PageHome, path: '/' },
   { name: 'work', component: PageWork, path: '/work' },
   { name: 'experience', component: PageExperience, path: '/experience' },

@@ -8,12 +8,6 @@ interface IPropsUseFetchContentful<ContentfulClientApi, EntryCollection> {
 interface ILocation {
   pathname: string
 }
-
-interface IRoutes {
-  name: string
-  path: string
-}
-
 interface IContentfulBlogEntry {
   body: any
 }
@@ -107,4 +101,15 @@ interface IFormikDataEncode extends IContactForm {
 interface IZoomedModalImage {
   alt: string
   src: string
+}
+
+interface IRoute {
+  component: React.FC
+  name: string
+  path: string
+}
+
+interface ILinkRoute {
+  name: string
+  path: string
 }
