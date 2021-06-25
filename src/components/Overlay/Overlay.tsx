@@ -23,7 +23,7 @@ export const Overlay = ({ appendToId, ariaLabel, setOpen }: IOverlay) => {
 
     return () => {
       window.removeEventListener('keydown', handleEscape)
-      useToggleBodyOverflow(true)
+      useToggleBodyOverflow(false)
     }
   }, [])
 
