@@ -16,54 +16,19 @@ import { THEME } from '../../styles/Theme'
 
 // components
 import { Darkmode } from './Darkmode'
-import { Separator } from './Separator'
-import { SocialItems } from './Socialtems'
 
 // assets
-import { SVGHamburger } from '../../assets/SVGHamburger'
-import { SVGClose } from '../../assets/SVGClose'
 import { SVGAvatar } from '../../assets/SVGAvatar'
+import { SVGClose } from '../../assets/SVGClose'
+import { SVGCodepen } from '../../assets/SVGCodepen'
+import { SVGDribbble } from '../../assets/SVGDribbble'
+import { SVGGithub } from '../../assets/SVGGithub'
+import { SVGHamburger } from '../../assets/SVGHamburger'
 
 // constant
 const BUTTON_SIZE = '2.5rem'
 
 // styled
-const StyledNav = styled.nav`
-  align-items: flex-start;
-  background-color: var(--color-bg);
-  display: flex;
-  font-family: var(--font-heading);
-  flex-direction: column;
-  height: 100vh;
-  left: 0;
-  opacity: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen ? '1' : '0'};
-  padding: 0.5rem var(--p-card) var(--p-card);
-  position: fixed;
-  top: 0;
-  transition: var(--duration-250ms) opacity var(--duration-250ms);
-  visibility: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen ? 'visible' : 'hidden'};
-  width: 100vw;
-  z-index: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
-    mobileNavOpen ? 'var(--z-nav)' : '-1'};
-
-  @media (min-width: ${THEME.w.screenDesktop}) {
-    display: flex;
-    grid-column: 1 / 2;
-    height: calc(100vh - (2 * var(--p-card)));
-    left: unset;
-    min-width: 11rem;
-    opacity: 1;
-    padding: unset;
-    position: fixed;
-    top: var(--p-card);
-    visibility: visible;
-    width: unset;
-    z-index: auto;
-  }
-`
-
 const StyledMobileButton = styled.button`
   --button-size: ${BUTTON_SIZE};
 
@@ -121,6 +86,42 @@ const StyledMobileButtonSVGWrapper = styled.span`
   }
 `
 
+const StyledNav = styled.nav`
+  align-items: flex-start;
+  background-color: var(--color-bg);
+  display: flex;
+  font-family: var(--font-heading);
+  flex-direction: column;
+  height: 100vh;
+  left: 0;
+  opacity: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? '1' : '0'};
+  padding: 0.5rem var(--p-card) var(--p-card);
+  position: fixed;
+  top: 0;
+  transition: var(--duration-250ms) opacity var(--duration-250ms);
+  visibility: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? 'visible' : 'hidden'};
+  width: 100vw;
+  z-index: ${({ mobileNavOpen }: { mobileNavOpen: boolean }) =>
+    mobileNavOpen ? 'var(--z-nav)' : '-1'};
+
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    display: flex;
+    grid-column: 1 / 2;
+    height: calc(100vh - (2 * var(--p-card)));
+    left: unset;
+    min-width: 11rem;
+    opacity: 1;
+    padding: unset;
+    position: fixed;
+    top: var(--p-card);
+    visibility: visible;
+    width: unset;
+    z-index: auto;
+  }
+`
+
 const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
@@ -160,6 +161,19 @@ const StyledLiHome = styled.li`
   }
 `
 
+const StyledLiSeparator = styled.li`
+  background-image: ${({ top }: { top: boolean }) =>
+    top
+      ? 'linear-gradient(180deg, transparent, var(--color-text-light))'
+      : 'linear-gradient(0deg, transparent, var(--color-text-light))'};
+  display: block;
+  margin-bottom: 1rem;
+  margin-left: 1.375rem;
+  margin-top: 1rem;
+  flex-grow: 1;
+  width: 0.0625rem;
+`
+
 const StyledLi = styled.li`
   a {
     display: inline-flex;
@@ -181,6 +195,35 @@ const StyledLi = styled.li`
     &.active {
       &::after {
         transform: scale(1);
+      }
+    }
+  }
+`
+
+const StyledLiSocial = styled.li`
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+
+    svg {
+      display: block;
+      height: 1.5rem;
+      width: 1.5rem;
+
+      path {
+        fill: var(--color-text);
+        transition-duration: var(--duration-250ms);
+        transition-property: fill;
+        transition-timing-function: var(--easing-default);
+      }
+    }
+
+    &:hover {
+      path {
+        fill: var(--color-primary);
       }
     }
   }
@@ -260,7 +303,9 @@ export const SiteNav = () => {
               {SVGAvatar}
             </NavLink>
           </StyledLiHome>
-          <Separator top={true} aria-hidden='true' />
+
+          <StyledLiSeparator top={true} aria-hidden='true' />
+
           {routes.map(({ name, path }: IRoutes) => {
             const title = name.charAt(0).toUpperCase() + name.slice(1)
 
@@ -280,8 +325,38 @@ export const SiteNav = () => {
               </StyledLi>
             ) : null
           })}
-          <Separator aria-hidden='true' />
-          <SocialItems />
+
+          <StyledLiSeparator aria-hidden='true' />
+
+          <StyledLiSocial>
+            <a
+              target='_blank'
+              href='https://github.com/kameronahler'
+              aria-label='View GitHub'
+            >
+              {SVGGithub}
+            </a>
+          </StyledLiSocial>
+
+          <StyledLiSocial>
+            <a
+              aria-label='View Codepen'
+              href='https://codepen.io/kamtr0n'
+              target='_blank'
+            >
+              {SVGCodepen}
+            </a>
+          </StyledLiSocial>
+
+          <StyledLiSocial>
+            <a
+              aria-label='View Dribbble'
+              href='https://dribbble.com/kamtr0n'
+              target='_blank'
+            >
+              {SVGDribbble}
+            </a>
+          </StyledLiSocial>
         </StyledUl>
       </StyledNav>
     </>
