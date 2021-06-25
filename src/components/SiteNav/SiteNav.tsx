@@ -262,6 +262,7 @@ export const SiteNav = () => {
 
   const handleSameLinkClick = (e: MouseEvent, path: string) => {
     if (location.pathname === path) {
+      console.log('same')
       e.preventDefault()
     } else {
       closeMobileNav()
@@ -295,9 +296,7 @@ export const SiteNav = () => {
               activeClassName={'active'}
               aria-label='Home'
               exact={true}
-              onClick={(e: MouseEvent, path: string) =>
-                handleSameLinkClick(e, path)
-              }
+              onClick={(e: MouseEvent) => handleSameLinkClick(e, '/')}
               to={'/'}
             >
               {SVGAvatar}
@@ -315,9 +314,7 @@ export const SiteNav = () => {
                   activeClassName={'active bold link-gradient'}
                   className='link-gradient-hover link-uppercase'
                   exact={true}
-                  onClick={(e: MouseEvent, path: string) =>
-                    handleSameLinkClick(e, path)
-                  }
+                  onClick={(e: MouseEvent) => handleSameLinkClick(e, path)}
                   to={path}
                 >
                   {title}
