@@ -1,5 +1,5 @@
 // react
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
@@ -32,7 +32,8 @@ const StyledTransitionInner = styled.div`
     opacity: 0;
     position: absolute;
     top: 0;
-    transform: translate3d(0, -1rem, 0);
+    transform: ${({ $transitionDown }) =>
+      $transitionDown ? 'translate3d(0, 2rem, 0)' : 'translate3d(0, -2rem, 0)'};
     width: 100%;
   }
 
@@ -46,7 +47,6 @@ const StyledTransitionInner = styled.div`
   &.exit-active {
     opacity: 0;
     transition-duration: var(--duration-page-transition-ms);
-    transform: translate3d(0, 2rem, 0);
   }
 `
 
@@ -55,6 +55,20 @@ const PAGE_TRANSITION_DURATION = +THEME.duration.pageTransition * 2
 
 export const Page = () => {
   const location = useLocation()
+  const previousLocationRef = useRef<string | null>(location.pathname)
+
+  const getLocationOrder = (location: string) =>
+    routes.findIndex(route => route.path === location)
+
+  const transitionDown =
+    getLocationOrder(location.pathname) >
+    getLocationOrder(previousLocationRef.current)
+      ? true
+      : false
+
+  useEffect(() => {
+    previousLocationRef.current = location.pathname
+  }, [location])
 
   return (
     <StyledPageWrapper>
@@ -74,7 +88,7 @@ export const Page = () => {
           }}
           timeout={PAGE_TRANSITION_DURATION}
         >
-          <StyledTransitionInner>
+          <StyledTransitionInner $transitionDown={transitionDown}>
             <Switch location={location}>
               {routes.map(({ name, component, path }) => {
                 return (
