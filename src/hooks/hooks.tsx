@@ -76,3 +76,5 @@ export const useToggleBodyOverflow = (frozen: boolean) => {
     document.body.style.overflow = null
   }
 }
+
+export const useScrollTop = () => window.scroll(0, 0)

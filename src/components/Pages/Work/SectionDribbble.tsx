@@ -1,5 +1,5 @@
 // react
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // packages
 import axios, { CancelTokenSource } from 'axios'
@@ -113,7 +113,6 @@ const ERROR_FETCH_MSG = 'Unable to load Dribbble shots'
 const PROFILE_URL = 'https://dribbble.com/kamtr0n'
 
 export const SectionDribbble = ({ ariaControlledBy }: ISectionDribbble) => {
-  const transitionRef = useRef<HTMLDivElement>()
   const [shots, setShots] = useState<IDribbbleShot[] | null>(null)
 
   const fetchDribbble = async (source: CancelTokenSource) => {
@@ -141,23 +140,10 @@ export const SectionDribbble = ({ ariaControlledBy }: ISectionDribbble) => {
     }
   }, [])
 
-  useEffect(() => {
-    if (shots) {
-      setTimeout(
-        () => transitionRef.current.classList.add('mounted'),
-        +THEME.duration[250]
-      )
-    }
-  })
-
   return (
     <>
       {shots ? (
-        <StyledWrapper
-          className='animate-fade-in'
-          id={ariaControlledBy}
-          ref={transitionRef}
-        >
+        <StyledWrapper id={ariaControlledBy}>
           {shots.map(shot => (
             <StyledThumbLink href={shot.html_url} key={shot.id} target='_blank'>
               <StyledImg alt={shot.title} src={shot.images.hidpi} />

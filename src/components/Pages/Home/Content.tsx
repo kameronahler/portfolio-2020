@@ -5,6 +5,9 @@ import { CSSTransition } from 'react-transition-group'
 // packages
 import styled from 'styled-components'
 
+// hooks
+import { useToggleBodyOverflow, useScrollTop } from '../../..//hooks/hooks'
+
 // theme
 import { THEME } from '../../../styles/Theme'
 
@@ -13,6 +16,10 @@ import { All } from './All'
 import { Design } from './Design'
 import { Development } from './Development'
 import { Overlay } from '../../Overlay/Overlay'
+import {
+  TransitionType,
+  TransitionComponentGroup,
+} from '../../../components/TransitionComponentGroup/TransitionComponentGroup'
 
 // styled
 const StyledDropdownWrapper = styled.section`
@@ -131,6 +138,16 @@ const StyledLi = styled.li`
   }
 `
 
+export const ContentCardsWrapper = styled.section`
+  display: grid;
+  grid-template-columns: var(--grid-default);
+  row-gap: var(--gap-lg);
+
+  @media (min-width: ${THEME.w.screenDesktop}) {
+    gap: var(--gap-lg);
+  }
+`
+
 // constants
 const ROLE = {
   all: 'Design & development',
@@ -140,7 +157,7 @@ const ROLE = {
 
 export const Content = () => {
   const [dropdownExpanded, setDropdownExpanded] = useState<boolean>(false)
-  const [role, setRole] = useState<String>(ROLE.all)
+  const [role, setRole] = useState<string>(ROLE.all)
   const listRef = useRef<HTMLElement>()
 
   const handleDropdown = (e: React.MouseEvent<HTMLElement>) => {
@@ -299,10 +316,21 @@ export const Content = () => {
           )}
         </StyledUl>
       </CSSTransition>
-
-      {role === ROLE.all && <All />}
-      {role === ROLE.design && <Design />}
-      {role === ROLE.development && <Development />}
+      <TransitionComponentGroup
+        currentKey={role}
+        onExit={() => {
+          useScrollTop()
+          useToggleBodyOverflow(true)
+        }}
+        onEntered={() => useToggleBodyOverflow(false)}
+        type={TransitionType.SCALE_IN_OUT}
+      >
+        <ContentCardsWrapper>
+          {role === ROLE.all && <All />}
+          {role === ROLE.design && <Design />}
+          {role === ROLE.development && <Development />}
+        </ContentCardsWrapper>
+      </TransitionComponentGroup>
 
       {dropdownExpanded && (
         <Overlay

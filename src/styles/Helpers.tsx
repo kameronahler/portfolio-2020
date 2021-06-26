@@ -1,17 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const Helpers = createGlobalStyle`
-  .animate-fade-in {
-    opacity: 0;
-    transition-duration: var(--duration-500ms);
-    transition-property: opacity, transform;
-    transition-timing-function: var(--easing-default);
-
-    &.mounted {
-      opacity: 1;
-    }
-  }
-
   .bold {
     font-weight: var(--font-weight-bold);
   }

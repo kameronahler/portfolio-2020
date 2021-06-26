@@ -1,5 +1,5 @@
 // react
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 // packages
 import styled from 'styled-components'
@@ -8,14 +8,22 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { CONTENTFUL_RICH_TEXT_OPTIONS } from '../../Contentful/RichTextResponsiveImg'
 
 // hooks
-import { useFilterContentfulByTag } from '../../../hooks/hooks'
+import {
+  useFilterContentfulByTag,
+  useScrollTop,
+  useToggleBodyOverflow,
+} from '../../../hooks/hooks'
 
 // theme
 import { THEME } from '../../../styles/Theme'
 
 // components
-import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
 import { OverviewNav } from './OverviewNav'
+import { RichTextWrapper } from '../../Contentful/RichTextWrapper'
+import {
+  TransitionType,
+  TransitionComponentGroup,
+} from '../../TransitionComponentGroup/TransitionComponentGroup'
 
 // styled
 const StyledArticle = styled.article`
@@ -85,9 +93,9 @@ const StyledArticle = styled.article`
 
 // constants
 const TAGS = [
-  { contentful: 'workProduct', title: 'Design & development' },
-  { contentful: 'workDev', title: 'UI development' },
-  { contentful: 'workDesign', title: 'Design' },
+  { id: 0, contentful: 'workProduct', title: 'Design & development' },
+  { id: 1, contentful: 'workDev', title: 'UI development' },
+  { id: 2, contentful: 'workDesign', title: 'Design' },
 ]
 
 // intersection callback
@@ -113,20 +121,16 @@ export const OverviewContent = ({
 }: {
   contentfulEntries: EntryCollection<any>
 }) => {
-  const transitionRef = useRef<HTMLDivElement>()
   const [currentTagIndex, setCurrentTagIndex] = useState<number>(0)
+  const previousTagIndex = useRef<number | null>(currentTagIndex)
 
-  // transition from OverviewNav changes
-  useEffect(() => {
-    setTimeout(
-      () => transitionRef.current.classList.add('mounted'),
-      +THEME.duration[250]
-    )
-  }, [])
+  const transitionRight =
+    currentTagIndex > previousTagIndex.current ? true : false
 
   // intersection observer lazy load imgs
   useEffect(() => {
     const lazyImgs = document.querySelectorAll('img[data-lazy-loaded="false"]')
+    previousTagIndex.current = currentTagIndex
 
     const parentObserver = new IntersectionObserver(
       entries => handleIntersectingImg(entries, parentObserver),
@@ -144,27 +148,38 @@ export const OverviewContent = ({
   }, [currentTagIndex])
 
   return (
-    <div className='animate-fade-in' ref={transitionRef}>
+    <div>
       <OverviewNav
         currentTagIndex={currentTagIndex}
         currentTagTitle={TAGS[currentTagIndex].title}
         setCurrentTagIndex={setCurrentTagIndex}
         totalTags={TAGS.length}
       />
-      <RichTextWrapper>
-        {useFilterContentfulByTag(
-          contentfulEntries,
-          TAGS[currentTagIndex].contentful
-        ).map(filteredEntry => (
-          <StyledArticle key={filteredEntry.sys.id}>
-            <h3>{filteredEntry.fields.title}</h3>
-            {documentToReactComponents(
-              filteredEntry.fields.body,
-              CONTENTFUL_RICH_TEXT_OPTIONS
-            )}
-          </StyledArticle>
-        ))}
-      </RichTextWrapper>
+      <TransitionComponentGroup
+        currentKey={TAGS[currentTagIndex].contentful}
+        onExit={() => {
+          useScrollTop()
+          useToggleBodyOverflow(true)
+        }}
+        onEntered={() => useToggleBodyOverflow(false)}
+        transitionInnerProps={{ $transitionRight: transitionRight }}
+        type={TransitionType.HORIZONTAL}
+      >
+        <RichTextWrapper>
+          {useFilterContentfulByTag(
+            contentfulEntries,
+            TAGS[currentTagIndex].contentful
+          ).map(filteredEntry => (
+            <StyledArticle key={filteredEntry.sys.id}>
+              <h3>{filteredEntry.fields.title}</h3>
+              {documentToReactComponents(
+                filteredEntry.fields.body,
+                CONTENTFUL_RICH_TEXT_OPTIONS
+              )}
+            </StyledArticle>
+          ))}
+        </RichTextWrapper>
+      </TransitionComponentGroup>
     </div>
   )
 }

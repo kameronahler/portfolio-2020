@@ -5,6 +5,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 // theme
+import { useScrollTop } from '../../../hooks/hooks'
+
+// theme
 import { THEME } from '../../../styles/Theme'
 
 // assets
@@ -148,8 +151,10 @@ export const OverviewNav = ({
   setCurrentTagIndex,
   totalTags,
 }: IOverviewNav) => {
-  const handleTagChange = (increment: number) =>
+  const handleTagChange = (increment: number) => {
+    useScrollTop()
     setCurrentTagIndex(currentTagIndex + increment)
+  }
 
   return (
     <StyledNav>
