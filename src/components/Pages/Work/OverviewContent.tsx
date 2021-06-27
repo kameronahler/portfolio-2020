@@ -156,7 +156,7 @@ export const OverviewContent = ({
         totalTags={TAGS.length}
       />
       <TransitionComponentGroup
-        currentKey={TAGS[currentTagIndex].contentful}
+        currentKey={currentTagIndex}
         onExit={() => {
           useScrollTop()
           useToggleBodyOverflow(true)

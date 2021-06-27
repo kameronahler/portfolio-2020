@@ -108,7 +108,6 @@ const StyledTransitionInner = styled.div`
   ${({ $type, $transitionRight }) =>
     $type === TransitionType.HORIZONTAL &&
     `
-    @media (min-width: ${THEME.w.screenDesktop}) {
       &.enter,
       &.exit {
         transition-property: opacity, transform;
@@ -131,8 +130,7 @@ const StyledTransitionInner = styled.div`
       &.exit-active {
         opacity: 0;
       }
-    }
-  `}
+    `}
 `
 
 export enum TransitionType {

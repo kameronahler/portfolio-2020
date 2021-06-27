@@ -23,8 +23,8 @@ export const THEME = {
     ['500ms']: '500ms',
     ['1000']: '1000',
     ['1000ms']: '1000ms',
-    pageTransition: '500',
-    pageTransitionMs: '500ms',
+    pageTransition: '250',
+    pageTransitionMs: '250ms',
   },
   easing: {
     default: 'cubic-bezier(.47,.12,.27,.83)',
