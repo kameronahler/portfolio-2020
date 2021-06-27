@@ -10,6 +10,11 @@ export const Base = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  &:disabled {
+    opacity: .25;
+    cursor: not-allowed;
+  }
+
   html {
     font-size: 100%;
     min-height: 100%;
@@ -108,11 +113,6 @@ export const Base = createGlobalStyle`
     cursor: pointer;
     line-height: var(--line-height-heading);
     padding: unset;
-
-    &:disabled {
-      opacity: .25;
-      cursor: not-allowed;
-    }
   }
 
   label {
