@@ -2,7 +2,7 @@
 import React from 'react'
 
 // packages
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 // components
 import { PageHeader } from '../../Page/PageHeader'
@@ -12,13 +12,39 @@ import { Content } from './Content'
 import { THEME } from '../../../styles/Theme'
 
 // styled
+const KeyframeWaveHello = keyframes`
+  0%{
+    transform: rotate(0);
+  }
+  5%{
+    transform: rotate(15deg);
+  }
+  10%{
+    transform: rotate(-15deg);
+  }
+  15%{
+    transform: rotate(15deg);
+  }
+  20%{
+    transform: rotate(-15deg);
+  }
+  25%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(0);
+  }
+`
+
 const StyledEmojiWrapper = styled.span`
   display: none;
-  font-size: var(--font-size-h2-clamp);
-  vertical-align: middle;
 
   @media (min-width: ${THEME.w.screenSm}) {
-    display: inline;
+    animation: ${KeyframeWaveHello} 3s infinite;
+    display: inline-block;
+    font-size: var(--font-size-h2-clamp);
+    transform-origin: 75% 75%;
+    vertical-align: 15%;
   }
 `
 
