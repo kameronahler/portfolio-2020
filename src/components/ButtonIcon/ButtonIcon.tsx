@@ -5,30 +5,52 @@ import React from 'react'
 import styled from 'styled-components'
 
 // type
-export enum ButtonVariants {
+export enum ButtonIconVariants {
   SECONDARY = 'secondary',
 }
 
-interface IButton {
-  $variant?: ButtonVariants
+interface IButtonIcon {
+  'aria-label': string
+  $colorFill?: boolean
+  $variant?: ButtonIconVariants
 }
 
-type TypeButtonProps = React.PropsWithChildren<IButton> &
+type TypeButtonIconProps = React.PropsWithChildren<IButtonIcon> &
   React.ButtonHTMLAttributes<HTMLButtonElement>
 
 // styled
-const StyledButton = styled.button<TypeButtonProps>`
+const StyledButtonIcon = styled.button<TypeButtonIconProps>`
   border: 0.0625rem solid var(--color-primary);
-  border-radius: 0.25rem;
+  border-radius: 50%;
   color: var(--color-primary);
-  font-weight: var(--font-weight-bold);
-  padding: 1rem 1.5rem;
+  display: grid;
+  place-items: center;
+  padding: 0.25rem;
   transition-duration: var(--duration-250ms);
   transition-property: background-color, color;
   transition-timing-function: var(--easing-default);
 
+  svg {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  ${({ $colorFill }) =>
+    $colorFill
+      ? `
+      [fill] {
+        fill: currentColor;
+      }
+    `
+      : `
+      [stroke] {
+        stroke: currentColor;
+      }
+    `}
+
   ${({ $variant }) =>
-    $variant === ButtonVariants.SECONDARY &&
+    $variant === ButtonIconVariants.SECONDARY &&
     `
       background-color: var(--color-bg-accent);
       border-color: var(--color-bg-accent);
@@ -41,7 +63,7 @@ const StyledButton = styled.button<TypeButtonProps>`
     color: var(--color-white);
 
     ${({ $variant }) =>
-      $variant === ButtonVariants.SECONDARY &&
+      $variant === ButtonIconVariants.SECONDARY &&
       `
         border-color: var(--color-primary);
         transition-property: background-color, border-color, color;
@@ -49,4 +71,6 @@ const StyledButton = styled.button<TypeButtonProps>`
   }
 `
 
-export const Button = (props: TypeButtonProps) => <StyledButton {...props} />
+export const ButtonIcon = (props: TypeButtonIconProps) => (
+  <StyledButtonIcon {...props} />
+)

@@ -4,8 +4,11 @@ import React from 'react'
 // packages
 import styled from 'styled-components'
 
-// theme
+// hooks
 import { useScrollTop } from '../../../hooks/hooks'
+
+// theme
+import { ButtonIcon } from '../../ButtonIcon/ButtonIcon'
 
 // theme
 import { THEME } from '../../../styles/Theme'
@@ -92,55 +95,22 @@ const StyledUl = styled.ul`
   }
 `
 
-const StyledNavButton = styled.button`
-  align-items: center;
-  background-color: var(--color-bg-accent);
-  border-radius: 9999px;
-  border: 1px solid var(--color-primary);
-  display: flex;
-  line-height: 1;
-  padding: 0.25rem;
-  transition-duration: var(--duration-250ms);
-  transition-property: border;
-  transition-timing-function: var(--easing-default);
-  z-index: var(--z-above-nav);
-
+const StyledTransitionLi = styled.li`
   @media (min-width: ${THEME.w.screenSm}) {
     transition-duration: var(--duration-250ms);
-    transition-property: background-color, transform;
+    transition-property: transform;
     transition-timing-function: var(--easing-default);
   }
 
-  &:hover {
-    background-color: var(--color-primary);
-
-    path {
-      stroke: var(--color-text);
-    }
-  }
-
-  ${StyledNav}:hover li:first-of-type & {
+  ${StyledNav}:hover &:first-of-type {
     @media (min-width: ${THEME.w.screenSm}) {
       transform: translateX(-0.25rem);
     }
   }
 
-  ${StyledNav}:hover li:last-of-type & {
+  ${StyledNav}:hover &:last-of-type {
     @media (min-width: ${THEME.w.screenSm}) {
       transform: translateX(0.25rem);
-    }
-  }
-
-  svg {
-    display: block;
-    height: 2rem;
-    width: 2rem;
-
-    path {
-      stroke: var(--color-primary);
-      transition-duration: var(--duration-250ms);
-      transition-property: stroke;
-      transition-timing-function: var(--easing-default);
     }
   }
 `
@@ -162,24 +132,24 @@ export const OverviewNav = ({
         <h2>{currentTagTitle}</h2>
       </StyledHeader>
       <StyledUl>
-        <li>
-          <StyledNavButton
+        <StyledTransitionLi>
+          <ButtonIcon
             aria-label='Previous article'
             disabled={currentTagIndex - 1 >= 0 ? false : true}
             onClick={() => handleTagChange(-1)}
           >
             {SVGChevronLeft}
-          </StyledNavButton>
-        </li>
-        <li>
-          <StyledNavButton
+          </ButtonIcon>
+        </StyledTransitionLi>
+        <StyledTransitionLi>
+          <ButtonIcon
             aria-label='Next article'
             disabled={currentTagIndex + 1 < totalTags ? false : true}
             onClick={() => handleTagChange(1)}
           >
             {SVGChevronRight}
-          </StyledNavButton>
-        </li>
+          </ButtonIcon>
+        </StyledTransitionLi>
       </StyledUl>
     </StyledNav>
   )

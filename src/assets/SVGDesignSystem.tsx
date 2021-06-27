@@ -15,7 +15,7 @@ export const SVGDesignSystem = (
     </g>
     <defs>
       <clipPath id='clip0'>
-        <path fill='#fff' d='M0 0h32v32H0z' />
+        <path d='M0 0h32v32H0z' />
       </clipPath>
     </defs>
   </svg>

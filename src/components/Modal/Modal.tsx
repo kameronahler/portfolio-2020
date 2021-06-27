@@ -10,6 +10,7 @@ import { useToggleBodyOverflow } from '../../hooks/hooks'
 
 // components
 import { StyledOverlay } from '../Overlay/StyledOverlay'
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon'
 
 // theme
 import { THEME } from '../../styles/Theme'
@@ -18,35 +19,15 @@ import { THEME } from '../../styles/Theme'
 import { SVGClose } from '../../assets/SVGClose'
 
 // styled
-const StyledButton = styled.button`
-  color: var(--color-text);
-  height: 3rem;
+const StyledButtonWrapper = styled.div`
   position: absolute;
-  right: 0.5rem;
-  transition-duration: var(--duration-250ms);
-  transition-property: color;
-  transition-timing-function: var(--easing-default);
-  top: 0.5rem;
-  width: 3rem;
+  right: 0.75rem;
+  top: 0.75rem;
   z-index: var(--z-above-overlay);
 
   @media (min-width: ${THEME.w.screenDesktop}) {
-    height: 4rem;
-    right: 1rem;
-    top: 1rem;
-    width: 4rem;
-  }
-
-  &:hover {
-    color: var(--color-primary);
-  }
-
-  svg {
-    display: block;
-
-    rect {
-      fill: currentColor;
-    }
+    right: 1.75rem;
+    top: 1.75rem;
   }
 `
 
@@ -79,7 +60,11 @@ export const Modal = ({ appendToId, ariaLabel, children, setOpen }: IModal) => {
         tabindex='0'
       >
         {children}
-        <StyledButton aria-label={ariaLabel}>{SVGClose}</StyledButton>
+        <StyledButtonWrapper>
+          <ButtonIcon $colorFill={true} aria-label={ariaLabel}>
+            {SVGClose}
+          </ButtonIcon>
+        </StyledButtonWrapper>
       </StyledOverlay>
     </>,
     document.getElementById(appendToId)
