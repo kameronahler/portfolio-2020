@@ -32,9 +32,11 @@ const StyledNav = styled.nav`
     grid-template-columns: 1fr auto;
     justify-content: start;
     margin-bottom: 1rem;
-    padding: 1rem 0;
+    padding: 1rem 2rem;
     position: sticky;
     top: 0;
+    transform: translateX(-2rem);
+    width: calc(100% + 4rem);
     z-index: var(--z-beneath-nav);
   }
 `
