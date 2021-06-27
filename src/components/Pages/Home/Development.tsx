@@ -34,7 +34,7 @@ export const Development = () => {
         svg={SVGJS}
         title={'JS'}
         description={
-          'Utilize JS for presentational/interactional interfaces. Manage state and scenarios in Vanilla or a library like React.'
+          'Utilize JS for presentational/interactive interfaces. Manage state and scenarios in Vanilla or a library like React.'
         }
       />
       <ContentCard
