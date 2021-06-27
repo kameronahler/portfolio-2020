@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import { useToggleBodyOverflow, useScrollTop } from '../../hooks/hooks'
 
 // components
+import { PageHome } from '../Pages/Home/PageHome'
 import {
   TransitionType,
   TransitionComponentGroup,
@@ -59,6 +60,7 @@ export const Page = () => {
           {routes.map(({ name, component, path }) => {
             return <Route key={name} path={path} component={component} exact />
           })}
+          <Route key={'home'} path='*' component={PageHome} />
         </Switch>
       </TransitionComponentGroup>
     </StyledPageWrapper>
