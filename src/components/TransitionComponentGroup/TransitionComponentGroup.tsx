@@ -157,7 +157,7 @@ export const TransitionComponentGroup = ({
   transitionInnerProps,
   type,
 }: ITransitionComponentGroup) => (
-  <TransitionGroup className='relative'>
+  <TransitionGroup style={{ position: 'relative' }}>
     <CSSTransition
       key={currentKey}
       onExit={onExit}

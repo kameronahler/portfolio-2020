@@ -25,11 +25,21 @@ const StyledIntroWrapper = styled.div`
     grid-column: 9/13;
   }
 
+  span {
+    display: none;
+
+    @media (min-width: ${THEME.w.screenSm}) {
+      display: block;
+      font-size: var(--font-size-h1);
+    }
+  }
+
   p {
     display: none;
 
     @media (min-width: ${THEME.w.screenDesktop}) {
       display: block;
+      font-size: var(--font-size-h4);
     }
   }
 `
@@ -47,9 +57,7 @@ export const PageContact = () => {
       <PageHeader title={'Contact'} />
       <StyledLayout>
         <StyledIntroWrapper>
-          <h2 aria-hidden='true' className='h1'>
-            ✌️
-          </h2>
+          <span aria-hidden='true'>✌️</span>
           <p>Drop me a line, friend!</p>
         </StyledIntroWrapper>
         <StyledFormWrapper>

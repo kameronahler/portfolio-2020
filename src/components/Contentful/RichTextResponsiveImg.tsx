@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 // components
 import { Modal } from '../Modal/Modal'
+import { SROnly } from '../SROnly/SROnly'
 import { ZoomedModalContent } from './ZoomedModalContent'
 
 // styled
@@ -61,7 +62,9 @@ const RichTextResponsiveImg = ({
         </StyledButton>
 
         {description && (
-          <figcaption className='sr-only'>{description}</figcaption>
+          <SROnly>
+            <figcaption className='sr-only'>{description}</figcaption>
+          </SROnly>
         )}
 
         {modalOpen && (

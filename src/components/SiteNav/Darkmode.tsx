@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { THEME } from '../../styles/Theme'
 
+import { SROnly } from '../SROnly/SROnly'
+
 //styled
 const BUTTON_WIDTH = '3.25rem'
 const BUTTON_HEIGHT = '1.875rem'
@@ -19,7 +21,7 @@ const StyledButton = styled.button`
   height: ${BUTTON_HEIGHT};
   position: fixed;
   right: 4rem;
-  top: .625rem;
+  top: 0.625rem;
   transition-duration: var(--duration-250ms);
   transition-property: border;
   transition-timing-function: var(--easing-default);
@@ -33,7 +35,7 @@ const StyledButton = styled.button`
   @media (min-width: ${THEME.w.screenDesktop}) {
     position: absolute;
     right: 0;
-    top: .375rem;
+    top: 0.375rem;
   }
 `
 
@@ -78,15 +80,17 @@ export const Darkmode = () => {
   const handleClick = () => setDarkmode(!darkmode)
 
   useEffect(() => {
-    document.documentElement.classList.[darkmode ? 'add' : 'remove']('darkmode')
+    if (darkmode) {
+      document.documentElement.classList.add('darkmode')
+    } else {
+      document.documentElement.classList.remove('darkmode')
+    }
   }, [darkmode])
 
   return (
     <>
       <StyledButton darkmode={darkmode} onClick={handleClick}>
-        <span className='sr-only'>
-          {darkmode ? 'Turn light mode on' : 'Turn dark mode on'}
-        </span>
+        <SROnly>{darkmode ? 'Turn light mode on' : 'Turn dark mode on'}</SROnly>
         <SVGWrapper darkmode={darkmode}>
           {darkmode ? SVGMoon : SVGSun}
         </SVGWrapper>

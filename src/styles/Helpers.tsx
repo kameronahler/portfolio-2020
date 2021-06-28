@@ -23,30 +23,6 @@ export const Helpers = createGlobalStyle`
     box-shadow: var(--shadow-card);
   }
 
-  .h1 {
-    font-size: var(--font-size-h1);
-  }
-
-  .h2 {
-    font-size: var(--font-size-h2);
-  }
-
-  .h3 {
-    font-size: var(--font-size-h3);
-  }
-
-  .h4 {
-    font-size: var(--font-size-h4);
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .lead {
-    font-size: var(--font-size-h4);
-  }
-
   .link-uppercase {
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -82,26 +58,6 @@ export const Helpers = createGlobalStyle`
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-  }
-
-  .p {
-    font-size: var(--font-size-default);
-  }
-
-  .relative {
-    position: relative;
-  }
-
-  .sr-only {
-    border-width: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
   }
 
   .truncate {
