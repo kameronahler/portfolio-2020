@@ -37,31 +37,6 @@ const StyledStrong = styled.strong`
 const DATA_RESIZE_PARENT = 'resize-parent'
 const CARD_DATA = [
   {
-    description: (
-      <>
-        <strong>Years (and counting)</strong> designing user experiences and
-        making UI.
-      </>
-    ),
-    id: 0,
-    visual: <h3>7+</h3>,
-  },
-  {
-    arrowColor: 'var(--color-primary)',
-    description: (
-      <>
-        <StyledStrong color={'var(--color-primary)'}>
-          Looking for a resume perhaps?
-        </StyledStrong>
-        <p>Check out this interactive one I made.</p>
-      </>
-    ),
-    href: 'https://kamerons-resume.netlify.app',
-    id: 1,
-    srOnlyTitle: 'Visit interactive resume',
-    visual: SVGResume,
-  },
-  {
     arrowColor: '#02A678',
     description: (
       <>
@@ -73,7 +48,7 @@ const CARD_DATA = [
       </>
     ),
     href: 'https://zaarly.com',
-    id: 2,
+    id: 0,
     visual: SVGZaarly,
     srOnlyTitle: 'Visit Zaarly website',
   },
@@ -88,7 +63,7 @@ const CARD_DATA = [
       </>
     ),
     href: 'https://cision.com',
-    id: 3,
+    id: 1,
     visual: SVGCision,
     srOnlyTitle: 'Visit Cision website',
   },
@@ -102,7 +77,7 @@ const CARD_DATA = [
       </>
     ),
     href: 'https://konve.io/uis-is-now-konveio-landing',
-    id: 4,
+    id: 2,
     srOnlyTitle: 'Visit Urban Interactive Studio website',
     visual: (
       <img
@@ -122,9 +97,34 @@ const CARD_DATA = [
       </>
     ),
     href: 'https://prodpi.com',
-    id: 5,
+    id: 3,
     visual: SVGProdpi,
     srOnlyTitle: 'Visit ProDPI website',
+  },
+  {
+    arrowColor: 'var(--color-primary)',
+    description: (
+      <>
+        <StyledStrong color={'var(--color-primary)'}>
+          Looking for a resume perhaps?
+        </StyledStrong>
+        <p>Check out this interactive one I made.</p>
+      </>
+    ),
+    href: 'https://kamerons-resume.netlify.app',
+    id: 4,
+    srOnlyTitle: 'Visit interactive resume',
+    visual: SVGResume,
+  },
+  {
+    description: (
+      <>
+        <strong>Years (and counting)</strong> designing user experiences and
+        making UI.
+      </>
+    ),
+    id: 5,
+    visual: <h3>7+</h3>,
   },
 ]
 
