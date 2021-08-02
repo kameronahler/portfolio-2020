@@ -55,6 +55,7 @@ const StyledButton = styled.button`
       dropdownExpanded
         ? '1px dashed transparent'
         : '1px dashed var(--color-primary)'};
+    display: block;
   }
 
   &:hover {
@@ -110,16 +111,13 @@ const StyledLi = styled.li`
   cursor: pointer;
   line-height: var(--line-height-heading);
   position: relative;
-  transition-property: opacity transform;
-  transition-timing-function: var(--easing-default);
 
   ${StyledUl}.enter &:nth-of-type(n+2) {
     transform: translate3d(0, -1rem, 0);
     opacity: 0;
   }
 
-  ${StyledUl}.enter-active &:nth-of-type(n+2),
-  ${StyledUl}.enter-done & {
+  ${StyledUl}.enter-active &:nth-of-type(n+2) {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     transition-delay: var(--duration-250ms);
@@ -176,7 +174,6 @@ export const Content = () => {
         <StyledButton
           aria-label='Select one of my skills'
           aria-haspopup='listbox'
-          className='link-gradient'
           dropdownExpanded={dropdownExpanded}
           id='dropdown-button'
           onClick={e => {
@@ -184,7 +181,7 @@ export const Content = () => {
           }}
           role='listbox'
         >
-          <span>{role}</span>
+          <span className='link-gradient'>{role}</span>
         </StyledButton>
       </StyledP>
       <CSSTransition in={dropdownExpanded} timeout={+THEME.duration['250']}>

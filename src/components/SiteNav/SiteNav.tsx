@@ -176,7 +176,7 @@ const StyledLiSeparator = styled.li`
 
 const StyledLi = styled.li`
   a {
-    display: inline-flex;
+    display: block;
     padding: 0.5rem 0.75rem;
     position: relative;
 

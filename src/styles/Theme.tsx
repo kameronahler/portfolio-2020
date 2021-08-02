@@ -33,7 +33,7 @@ export const THEME = {
     sans: `'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol'`,
-    heading: `'Chivo', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    heading: `'Chivo', 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol'`,
   },
