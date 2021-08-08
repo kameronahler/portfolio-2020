@@ -1,6 +1,6 @@
 // react
 import React, { useRef, useEffect } from 'react'
-import { Route, Switch, useLocation } from 'react-router-dom'
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
 
 // packages
 import styled from 'styled-components'
@@ -9,7 +9,6 @@ import styled from 'styled-components'
 import { useToggleBodyOverflow, useScrollTop } from '../../hooks/hooks'
 
 // components
-import { PageHome } from '../Pages/Home/PageHome'
 import {
   TransitionType,
   TransitionComponentGroup,
@@ -60,7 +59,9 @@ export const Page = () => {
           {routes.map(({ name, component, path }) => {
             return <Route key={name} path={path} component={component} exact />
           })}
-          <Route key={'home'} path='*' component={PageHome} />
+          <Route key={'redirect'} path='*'>
+            <Redirect to='/' />
+          </Route>
         </Switch>
       </TransitionComponentGroup>
     </StyledPageWrapper>

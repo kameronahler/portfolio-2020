@@ -1,6 +1,7 @@
 .gitattributes
 .cache
 .parcel-cache
-dist
+dist/*.*
+dist/!_redirect
 node_modules
 .env
