@@ -44,7 +44,7 @@
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
     "@types/react-transition-group": "^4.4.1",
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "contentful": "^8.4.1",
     "formik": "^2.2.9",
     "normalize.css": "^8.0.1",
